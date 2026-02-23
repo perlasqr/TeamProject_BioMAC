@@ -1,0 +1,6 @@
+# Ignore large biomechanics data files
+data/
+*.trc
+*.mot
+*.sto
+*.c3d
