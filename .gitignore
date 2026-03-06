@@ -4,3 +4,4 @@ data/
 *.mot
 *.sto
 *.c3d
+.DS_Store
