@@ -3,5 +3,5 @@ data/
 *.trc
 *.mot
 *.sto
-*.c3d
+#*.c3d
 .DS_Store
