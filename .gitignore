@@ -1,7 +1,7 @@
 # Ignore large biomechanics data files
-data/
-*.trc
-*.mot
-*.sto
+#data/
+#*.trc
+#*.mot
+#*.sto
 #*.c3d
 .DS_Store
