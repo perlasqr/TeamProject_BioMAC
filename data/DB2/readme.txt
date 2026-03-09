@@ -13,6 +13,6 @@ Each file format folder has 13 subfolders that represent 13 participants, and tr
 - Cal: static
 
 Reference: 
- - https://www.nature.com/articles/s41597-025-05113-6#Abs1
+ - https://www.nature.com/articles/s41597-025-05113-6
  - https://www.nature.com/articles/s41597-025-05113-6/tables/2
  - https://www.nature.com/articles/s41597-025-05113-6/tables/5
