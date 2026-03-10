@@ -1,3 +1,5 @@
+Naming convention: DBx_Pxx_Txx_n-m        -> use n-m for decimal speeds; for example, 2.5 becomes 2-5
+
 DB2 description:
 
 Each file format folder has 13 subfolders that represent 13 participants, and trial files in 13 subfolders are referenced in our datasets as Pxx_CV_TT.C3D (TRC/MOT/CSV) and static files as Pxx_Cal_TT. C3D (TRC/MOT/CSV),
