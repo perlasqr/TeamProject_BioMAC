@@ -1,5 +1,5 @@
-Naming convention: DBx_Pxx_Txx_n-m_yy        -> use n-m for decimal speeds e.g., 2.5 becomes 2-5 but in DB2 speeds are always "preferred walking speed"
-                                             -> yy is "step width at increased/reduced by 6.5%/13%/25% of leg length" which will be showed as for example "reduced by 6.5%" = -65 (see ref 3)
+Naming convention: DBx_Pxx_Txx_n-m_yyy        -> use n-m for decimal speeds e.g., 2.5 becomes 2-5 but in DB2 speeds are always "preferred walking speed"
+                                             -> yyy is "step width at increased/reduced by 6.5%/13%/25% of leg length" which will be showed as for example "reduced by 6.5%" = -65 (see ref 3)
 
 DB2 description:
 
