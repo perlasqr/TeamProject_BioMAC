@@ -1,4 +1,5 @@
-Naming convention: DBx_Pxx_Txx_n-m        -> use n-m for decimal speeds; for example, 2.5 becomes 2-5
+Naming convention: DBx_Pxx_Txx_n-m_yy        -> use n-m for decimal speeds e.g., 2.5 becomes 2-5 but in DB2 speeds are always "preferred walking speed"
+                                             -> yy is "step width at increased/reduced by 6.5%/13%/25% of leg length" which will be showed as for example "reduced by 6.5%" = -65 (see ref 3)
 
 DB2 description:
 
@@ -6,7 +7,7 @@ Each file format folder has 13 subfolders that represent 13 participants, and tr
 
 - Pxx: identification of the participant number
 
-- C: step width conditions, i.e., −130, −65, p, 65, 130, or 250
+- C: step width conditions, i.e., −130, −65, p (for preffered), 65, 130, or 250
 
 - V: locomotion condition, i.e. w, r1, or r2
 
@@ -15,6 +16,6 @@ Each file format folder has 13 subfolders that represent 13 participants, and tr
 - Cal: static
 
 Reference: 
- - https://www.nature.com/articles/s41597-025-05113-6
- - https://www.nature.com/articles/s41597-025-05113-6/tables/2
- - https://www.nature.com/articles/s41597-025-05113-6/tables/5
+ 1- https://www.nature.com/articles/s41597-025-05113-6
+ 2- https://www.nature.com/articles/s41597-025-05113-6/tables/2
+ 3- https://www.nature.com/articles/s41597-025-05113-6/tables/5
