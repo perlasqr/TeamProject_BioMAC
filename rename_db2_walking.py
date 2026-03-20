@@ -2,7 +2,7 @@ import os
 import shutil
 import re
 
-base_dir = "/home/mohityadav001/Documents/FAU/Project/Wang"
+base_dir = "path to folder"
 output_dir = os.path.join(base_dir, "Renamed_Walking_Trials")
 
 # Create output dir if it doesn't exist
