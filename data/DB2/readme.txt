@@ -13,7 +13,7 @@ Each file format folder has 13 subfolders that represent 13 participants, and tr
 
 - TT: trial number, i.e. 01 to 10
 
-- Cal: static
+- SP: static
 
 Reference: 
  1- https://www.nature.com/articles/s41597-025-05113-6
