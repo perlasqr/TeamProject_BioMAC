@@ -1,3 +1,7 @@
 [2026-03-17 14:10:14.979] [info] Updating Model file from 40000 to latest format...
 [2026-03-17 14:10:15.004] [info] Loaded model FullBodyModel_MuscleActuatedLowerLimb_TorqueActuatedUpperBody from file C:/Users/perla/Documents/AT/TeamProject/GitHub/TeamProject/models/Rajagopal2015_ViconPlugInGait.osim
 [2026-03-17 14:13:59.878] [info] Loaded marker file C:\Users\perla\Documents\AT\TeamProject\project\data\Han\s001_20220513_walk_1_markers.trc (99 markers, 1078 frames)
+[2026-03-23 10:26:20.353] [info] Updating Model file from 40000 to latest format...
+[2026-03-23 10:26:20.401] [info] Loaded model FullBodyModel_MuscleActuatedLowerLimb_TorqueActuatedUpperBody from file C:/Users/perla/Documents/AT/TeamProject/GitHub/TeamProject/models/Rajagopal2015_ViconPlugInGait.osim
+[2026-03-23 10:27:00.809] [info] ExternalLoads 'Ex1' was renamed and is being reset to 'externalloads'.
+[2026-03-23 10:27:00.817] [info] ExternalLoads 'Ex2' was renamed and is being reset to 'externalloads'.
