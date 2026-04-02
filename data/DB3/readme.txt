@@ -1,24 +1,36 @@
-Description of Vielemeyer Dataset:
+Description Grouvel Dataset:
 
-Participants walked at self-selected walking speed. Incline and decline trials were recorded alternately. 
-Subjects reached the force plates after approximately three steps. Twelve valid trials were recorded for each condition.
-A trial was considered valid when the left and right foot each hit a force plate without overstepping.
+For each participant, the entire data collection was performed in a single session which lasted approximately one hour.
 
-The repository contains three folders, corresponding to three levels of data:
- (1) Raw data in c3d format, 
- (2) exported raw data in txt format, 
- (3) calculated data, including biomechanical variables packed in npz format
+Data are organized by participant folder (PXX_SYY, P: for Participant, S: for Session) and each folder contains two sub-folders:
 
-All three main folders contain subfolders named Ref_01, Ref_02, etc.
-Then again, these subfolders are separated into folders named after the six experimental setups:
-level_up, level_down, ramp_75_up, ramp_75_down, ramp_10_up, ramp_10_down
+- RAW_DATA
+  - One .c3d file per trial recorded during the session
+  - Eight .bin files corresponding to the IMUs data recorded during the session
+  - One .txt file corresponding to the insole data recorded during the session
 
-Here, “ramp_75” denotes walking over a ramp of 7.5°, and “ramp_10” denotes walking over a ramp of 10°.
-For example, the c3d file for participant 1, level_up, first trial is called Ref01_sss_le_shoes04.c3d.
+- SYNC_DATA
+  - One .csv file per trial with all the optoelectronic, IMUs and insole synchronized data recorded during the session
 
-Reference: 
-- https://www.nature.com/articles/s41597-025-06535-y
-- https://www.nature.com/articles/s41597-025-06535-y/tables/1
-- https://www.nature.com/articles/s41597-025-06535-y/tables/2
-- https://www.c3d.org/
-- https://github.com/jvielemeyer/human-ramp-walking
+C3D trial files are referenced in our dataset9 as PXX_SYY_[Trial type]_[Trial number].c3d, with the following correspondence:
+
+- P: for Participant
+- XX: participant number (e.g. 01)
+- S: for Session
+- YY: session number (e.g. 01)
+- [Trial type]: task performed (https://www.nature.com/articles/s41597-023-02077-3/tables/7)
+- [Trial number]: trial number (e.g. 01)
+
+IMUs are referenced as PXX_SYY_ZZ_Inertial_sensor.bin, with:
+
+- ZZ: sensor name including TR: torso/SA: pelvis/RT: right thigh/RS: right shank/RF: right foot/LT: left thigh/LS: left shank/LF: left foot
+
+Insoles data are referenced as PXX_SYY_Sensor_insoles.txt.
+
+Synchronized data are referenced with the same name as c3d files but with the file extension .csv.
+
+
+Reference:
+- https://www.nature.com/articles/s41597-023-02077-3
+- https://www.nature.com/articles/s41597-023-02077-3/tables/1
+- https://www.nature.com/articles/s41597-023-02077-3/tables/3
