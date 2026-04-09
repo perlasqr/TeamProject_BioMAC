@@ -1,3 +1,6 @@
+_, _FG, _G, SG (2minWlak, fast gait, gait and slow gait)
+
+
 Description Grouvel Dataset:
 
 For each participant, the entire data collection was performed in a single session which lasted approximately one hour.
