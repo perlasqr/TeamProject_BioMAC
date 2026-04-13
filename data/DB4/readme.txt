@@ -1,3 +1,11 @@
+Naming convention: DBx_Pxx_Txx
+
+DBx - Database
+
+Pxx - Participant Number
+
+Txx - Trial Number
+
 Description of Han Dataset:
 
 This page(https://csr.bu.edu/groundlink/) contains captured and measured data for:

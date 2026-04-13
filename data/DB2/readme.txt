@@ -1,6 +1,12 @@
 Naming convention: DBx_Pxx_Txx_n-m_yyy        -> use n-m for decimal speeds e.g., 2.5 becomes 2-5 but in DB2 speeds are always "preferred walking speed"
                                              -> yyy is "step width at increased/reduced by 6.5%/13%/25% of leg length" which will be showed as for example "reduced by 6.5%" = -65 (see ref 3)
 
+DBx - Database
+
+Pxx - Participant Number
+
+Txx - Trial Number
+
 DB2 description:
 
 Each file format folder has 13 subfolders that represent 13 participants, and trial files in 13 subfolders are referenced in our datasets as Pxx_CV_TT.C3D (TRC/MOT/CSV) and static files as Pxx_Cal_TT. C3D (TRC/MOT/CSV),

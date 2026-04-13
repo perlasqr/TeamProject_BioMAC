@@ -1,4 +1,16 @@
-_, _FG, _G, SG (2minWlak, fast gait, gait and slow gait)
+Naming convention: DBx_Pxx_Txx_yy 
+
+DBx - Database
+
+Pxx - Participant Number
+
+Txx - Trial Number
+
+yy refers to the following: 
+_   - 2 min walk without stop at a comfortable speed
+_FG - Gait at faster speed than comfortable walking speed
+_G  - Gait at comfortable speed
+_SG - Gait at slower speed than comfortable walking speed
 
 
 Description Grouvel Dataset:
