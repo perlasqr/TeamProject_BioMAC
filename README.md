@@ -10,7 +10,7 @@ Exploring Dataset Bias in Multi-Source Gait Biomechanics using IK and ID
 ## Post-processing of data
 ### Exclude data
 1. Discard trials with clear measurement errors through visual inspection.
-   <ins>How?</ins> Plot all the *vertical GRF* stored in the <kbd>C3D</kbd> file, and all the *sagittal plane joint angles* (IK results for hip_flexion, knee and ankle angle) stored in the <kbd>MOT</kbd> file, identify the outliers, and report them in _database_inventory_.
+   <ins>How?</ins> Plot all the **vertical GRF** stored in the <kbd>C3D</kbd> file, and all the **sagittal plane joint angles** (IK results for hip_flexion, knee and ankle angle) stored in the <kbd>MOT</kbd> file, identify the outliers, and report them in _database_inventory_.
     The typical vertical GRF during walking has an **M-shape** pattern.
 3. (If speed is given) Identify the trials with speeds lower than 0.4 m/s and report them in _database_inventory_
 4. Investigate the average step width in human walking, identify, in <kbd>DB2</kbd>, the trials where the step width is not close to this value, and report them in _database_inventory_.
