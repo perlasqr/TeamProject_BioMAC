@@ -10,8 +10,7 @@ Exploring Dataset Bias in Multi-Source Gait Biomechanics using IK and ID
 ## Post-processing of data
 ### Exclude data
 1. Discard trials with clear measurement errors through visual inspection.
-   <ins>How?</ins> Plot all the vertical GRF stored in the <kbd>C3D</kbd> file, identify the outliers, and report them in _database_inventory_.
-   Plot all the sagittal plane joint angles (IK results for hip_flexion, knee and ankle angle) stored in the <kbd>MOT</kbd> file, identify the outliers, and report them in _database_inventory_.
+   <ins>How?</ins> Plot all the **vertical GRF** stored in the <kbd>C3D</kbd> file, and all the **sagittal plane joint angles** (IK results for hip_flexion, knee and ankle angle) stored in the <kbd>MOT</kbd> file, identify the outliers, and report them in _database_inventory_.
     The typical vertical GRF during walking has an **M-shape** pattern.
 3. (If speed is given) Identify the trials with speeds lower than 0.4 m/s and report them in _database_inventory_
 4. Investigate the average step width in human walking, identify, in <kbd>DB2</kbd>, the trials where the step width is not close to this value, and report them in _database_inventory_.
@@ -26,7 +25,7 @@ Exploring Dataset Bias in Multi-Source Gait Biomechanics using IK and ID
 
 After identifying all the labels corresponding to the data of interest for the 4 data types, find a way to extract them form the complete dataset and keep them separated. We will later investigate the order and structure in which they should be stored for the following steps.
 
-You can use the variables: point_labels, analog_labels, ik_ref_cols, id_ref_cols declared in _3. Metadata Extraction_
+You can use the variables: _point_labels, analog_labels, ik_ref_cols, id_ref_cols_ declared in **3. Metadata Extraction**
 
 ### Filter the data
 Bidirectional second-order Butterworth filter with 10 Hz cut-off frequency
