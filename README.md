@@ -25,7 +25,7 @@ Exploring Dataset Bias in Multi-Source Gait Biomechanics using IK and ID
 
 After identifying all the labels corresponding to the data of interest for the 4 data types, find a way to extract them form the complete dataset and keep them separated. We will later investigate the order and structure in which they should be stored for the following steps.
 
-You can use the variables: point_labels, analog_labels, ik_ref_cols, id_ref_cols declared in _3. Metadata Extraction_
+You can use the variables: _point_labels, analog_labels, ik_ref_cols, id_ref_cols_ declared in **3. Metadata Extraction**
 
 ### Filter the data
 Bidirectional second-order Butterworth filter with 10 Hz cut-off frequency
