@@ -27,9 +27,11 @@ After identifying all the labels corresponding to the data of interest for the 4
 
 You can use the variables: _point_labels, analog_labels, ik_ref_cols, id_ref_cols_ declared in **3. Metadata Extraction**
 
+### Convert V to N & Inversion of GRF (if required)
+
 ### Filter the data
 Bidirectional second-order Butterworth filter with 10 Hz cut-off frequency
-??  **Filter all the data de same**
+??  **Filter all the data de same*
 
 ### Cut trajectories to one gait cycle
 DONE...
