@@ -1,0 +1,47 @@
+Data Records
+The dataset can be downloaded at PHAIDRA4. The data is organized into individual folders for each recorded participant. Each folder is named using the format N0XX, where ‘N’ stands for number and ‘XX’ denotes a randomly assigned ID encompassing all the evaluated participants. The data can be accessed in both .c3d and .csv file formats.The folders are organized into three categories: “Stand”, “Static”, and “Dynamic”, each containing distinct types of files:
+
+Stand Files: These contain recordings of participants assuming an “A” pose on the force plate. This pose is characterized by standing with feet hip-width apart and hands slightly extended to the sides, as illustrated in Fig. 3. Before each session, calibration trials are conducted, labeled as “ZSX”, where ‘X’ corresponds to the subsequent testing condition. For example, “ZSA” would denote a calibration trial conducted before testing in the actual laboratory setting.
+
+Static Files: Similar to the “Stand” files, these record the “A” pose but with a modification of slightly bent knees.
+
+Dynamic Files: These encompass the recordings of gait sessions.
+
+Each file name includes a letter and a sequential number, which indicate the experiment’s condition and the progression of the session, respectively. The letters signify the following:
+
+A: The actual laboratory setting.
+
+B: The VRLab, a virtual replica of the laboratory with dimensions of 11.9 × 5.4 m, closely resembling the real-world laboratory.
+
+C: The VRLab−, a smaller version of the VRLab with dimensions of 8.7 × 5.4 m.
+
+D: The VRLab+, a larger version which is twice as long as the VRLab, measuring 23.5 × 5.4 m.
+
+C3D file content
+The C3D file contains the following data:
+
+nFrame: Number of frames in the region of interest.
+
+iFrame: First frame of the region of interest.
+
+fFrame: Last frame of the region of interest.
+
+VideoFreq: Frequency of trajectory capturing.
+
+AnalogRate: Number of Ground Reaction Force (GRF) subframes.
+
+AnalogFreq: Frequency of GRF data capturing.
+
+Traj: Trajectories of every physical marker sphere and modeled trajectories. The label data field gives the position of the corresponding name in the value data field with the format Frame x Label x Three-Dimensional Position Data in mm.
+
+FP: Ground reaction forces with the force in the data field F represented as Frame x Three-Dimensional Force Data in N, and the center of pressure in the data field CoP represented as Frame x Three-Dimensional Position Data in mm.
+
+Event: Heel strike (HS) and toe off (TO) event data. FrameOffset defines the frame the frame number in RTO, LTO, RHS, and LHS to which it is referred. R stands for the right foot, and L for the left foot.
+
+Processing: Contains parameters describing the participant. In addition to values required for internal calculations, general data such as body mass, height, and various length and width measurements of the participant are included.
+
+TDP, EMG, and Aux: The variables presented are placeholders, as this specific data was not acquired during our experimental trials.
+
+Model: Randomly assigned ID for each recorded participant.
+
+The provided names are merely illustrative, meant to represent the content within the file. The specific labels for individual data fields might differ based on the software utilized to access the file. Nevertheless, given that C3D is a standardized format, you have the flexibility to import and process the data using your software of choice.
