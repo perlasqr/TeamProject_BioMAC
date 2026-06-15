@@ -128,7 +128,8 @@ class DataProcessor:
             print(f"Error loading {file_path.name}: {e}")
             return None
     
-    ## ------ PROCESSING DATA ------ ##
+    
+    # ------ PROCESSING DATA ------ ##
     def reorient_coordinates(self, df, file_type):
         """
         Reorients the dataframe columns to match OpenSim standard: X = Forward, Y = Up, Z = Right
@@ -177,17 +178,132 @@ class DataProcessor:
 
         return new_df
     
+    ## ------ SELECTING RELEVANT COLUMNS ------ #
+    def select_relevant_data(self, df, file_type):
+
+        if df is None:
+            print("Warning: Input DataFrame is None. Skipping column selection.")
+            return None
+
+        # Make column lookup case-insensitive, but preserve original column names
+        col_map = {col.lower(): col for col in df.columns}
+
+        if file_type == "trc_marker":
+            markers_to_keep = [
+                "LSHO", "LASI", "LKNE", "LANK", "LHEE",
+                "RSHO", "RASI", "RKNE", "RANK", "RHEE"
+            ]
+
+            selected_cols = []
+
+            # Your TRC loader creates "Time", not "time", but this also works if it is "time"
+            if "time" in col_map:
+                selected_cols.append(col_map["time"])
+            else:
+                print("Warning: Time column not found in TRC file.")
+
+            for marker in markers_to_keep:
+                for axis in ["X", "Y", "Z"]:
+                    col_name = f"{marker}_{axis}"
+                
+                    if col_name.lower() in col_map:
+                        selected_cols.append(col_map[col_name.lower()])
+                    else:
+                        print(f"Warning: Missing TRC column: {col_name}")
+
+            return df[selected_cols].copy()
+    
+        elif file_type == "mot_grf":
+            # Keep all GRF data
+            return df.copy()
+
+        elif file_type == "mot_ik":
+            cols_to_keep = [
+                "time",
+                "hip_flexion_r",
+                "knee_angle_r",
+                "ankle_angle_r",
+                "hip_flexion_l",
+                "knee_angle_l",
+                "ankle_angle_l"
+            ]
+            return df[cols_to_keep].copy()
+        
+        elif file_type == "sto_id":
+            cols_to_keep = [
+                "time",
+                "hip_flexion_r_moment",
+                "knee_angle_r_moment",
+                "ankle_angle_r_moment",
+                "hip_flexion_l_moment",
+                "knee_angle_l_moment",
+                "ankle_angle_l_moment"
+            ]
+
+        else:
+            print(f"Warning: Unknown file type '{file_type}'. Returning original DataFrame.")
+            return df.copy()
+
+        selected_cols = []
+
+        for col in cols_to_keep:
+            if col.lower() in col_map:
+                selected_cols.append(col_map[col.lower()])
+            else:
+                print(f"Warning: Missing column in {file_type}: {col}")
+
+        return df[selected_cols].copy()
+
+    def process_participant_files(self, participant_id):
+        """Loads all files for one participant, reorients TRC/GRF if needed, and selects only the relevant columns."""
+
+        paths = self.get_file_paths(participant_id)
+
+        processed_data = {
+            "trc_marker": [],
+            "mot_grf": [],
+            "mot_ik": [],
+            "sto_id": []
+        }
+
+        for file_type, file_list in paths.items():
+
+            for file_path in file_list:
+                df = self.load_data(file_path)
+
+                if df is None:
+                    print(f"Skipping {file_path.name} because it could not be loaded.")
+                    continue
+
+                # Reorientation just for TRC & GRF
+                if file_type in ["trc_marker", "mot_grf"]:
+                    df = self.reorient_coordinates(df, file_type)
+
+                # Select only relevant columns
+                df_selected = self.select_relevant_data(df, file_type)
+
+                processed_data[file_type].append({
+                    "participant_id": participant_id,
+                    "file_type": file_type,
+                    "file_name": file_path.name,
+                    "file_path": file_path,
+                    "data": df_selected
+                })
+
+        return processed_data
+
+    
 
 
 
 
-    def process_database(self):
-        """Main execution loop that iterates through all participants in the database."""
-        print(f"Starting processing for {self.db_name}...")
-        for p_id in self.participants:
-            print(f"> Processing participant: {p_id}")
-            files = self.get_file_paths(p_id)
-            
-            # Logic for calling processing functions would go here
-            # e.g., self.apply_filters(files)
-        print(f"Finished processing {self.db_name}.")
+    # def process_database(self):
+    #    """Main execution loop that iterates through all participants in the database."""
+    #   print(f"Starting processing for {self.db_name}...")
+    #    for p_id in self.participants:
+    #        print(f"> Processing participant: {p_id}")
+    #        files = self.get_file_paths(p_id)
+    #        
+    #        # Logic for calling processing functions would go here
+    #        # e.g., self.apply_filters(files)
+    #    print(f"Finished processing {self.db_name}.")
