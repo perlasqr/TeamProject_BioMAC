@@ -12,16 +12,21 @@ class DataProcessor:
         """
         self.root_dir = Path(root_dir)
         self.db_name = db_name
-        ## self.db_data_path = self.root_dir / "data" / f"{self.db_name}_retargeted"
         self.db_results_path = self.root_dir / "results" / self.db_name
 
         # Global Reference Axis Configuration map
         # Structure: (target_axis) -> (source_axis, multiplier)
         self.axis_mappings = {
-            'DB1': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)},
-            'DB2': {'x': ('x', -1), 'y': ('y', 1), 'z': ('z', -1)},
-            'DB3': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)},
-            'DB4': {'x': ('z', 1),  'y': ('y', 1), 'z': ('x', -1)}
+            'DB1': {'trc': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}, 
+                    'mot': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}},
+            'DB2': {'trc': {'x': ('x', -1), 'y': ('y', 1), 'z': ('z', -1)}, 
+                    'mot': {'x': ('x', -1), 'y': ('y', 1), 'z': ('z', -1)}},
+            'DB3': {'trc': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}, 
+                    'mot': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}},
+            'DB4': {'trc': {'x': ('z', 1),  'y': ('y', 1), 'z': ('x', -1)}, 
+                    'mot': {'x': ('z', 1),  'y': ('y', 1), 'z': ('x', -1)}},
+            'DB5': {'trc': {'x': ('x', -1), 'y': ('y', -1), 'z': ('z', 1)}, 
+                    'mot': {'x': ('x', 1),  'y': ('y', 1),  'z': ('z', 1)}}
         }
         
         self.participants = self._get_participant_list()
@@ -35,21 +40,37 @@ class DataProcessor:
             return []
         return [p.name for p in self.db_results_path.iterdir() if p.is_dir()]
         
-    def get_file_paths(self, participant_id):
-        """Locates and returns a dictionary of relevant file paths for a participant."""
-        ## p_data = self.db_data_path / participant_id
+    def get_trial_file_map(self, participant_id):
+        """
+        Groups all related files for each trial into a dictionary.
+        Returns: { 'Trial_Name': {'trc': path, 'mot_ik': path, 'mot_grf': path, 'sto': path} }
+        """
         p_res = self.db_results_path / participant_id
         
-        paths = {
-            "trc_marker": list((p_res / "IK" / "MarkerData").glob("*.trc")),
-            "mot_grf":    list((p_res / "ID" / "GRF").glob("*_grf.mot")),
-            "mot_ik":     list((p_res / "IK").glob("*_ik.mot")),
-            "sto_id":     list((p_res / "ID").glob("*.sto"))
+        # 1. Gather all potential files
+        # We look for all files recursively in the participant's folders
+        all_files = list(p_res.rglob("*.trc")) + \
+                    list(p_res.rglob("*_ik.mot")) + \
+                    list(p_res.rglob("*_grf.mot")) + \
+                    list(p_res.rglob("*.sto"))
+        
+        trial_map = {}
+        
+        # 2. Extract common "Trial Name" by removing known suffixes
+        for f in all_files:
+            # Create a base name by removing the file extension and type markers
+            base_name = f.name.replace(".trc", "").replace("_ik.mot", "").replace("_grf.mot", "").replace(".sto", "")
             
-            ## "c3d": list(p_data.glob("*.c3d")),
-        }
-        print(f"[{participant_id}] Found: {len(paths['trc_marker'])} TRC (Marker), {len(paths['mot_grf'])} MOT (Forces) files.")
-        return paths
+            if base_name not in trial_map:
+                trial_map[base_name] = {'trc': None, 'mot_ik': None, 'mot_grf': None, 'sto': None}
+            
+            # Map based on extension and suffix
+            if f.suffix == '.trc': trial_map[base_name]['trc'] = f
+            elif f.name.endswith('_ik.mot'): trial_map[base_name]['mot_ik'] = f
+            elif f.name.endswith('_grf.mot'): trial_map[base_name]['mot_grf'] = f
+            elif f.suffix == '.sto': trial_map[base_name]['sto'] = f
+            
+        return trial_map
     
     def _get_skiprows(self, file_path):
         """Determines skiprows based on file extension."""
@@ -67,18 +88,6 @@ class DataProcessor:
             return 5
             
         return 0
-
-
-    def load_data_oldversion(self, file_path):
-        """Loads a file into a pandas DataFrame and flattens TRC headers."""
-        print(f"Loading: {file_path.name}...")
-        skip = self._get_skiprows(file_path)
-        
-        try:
-            return pd.read_csv(file_path, sep='\t', skiprows=skip)
-        except Exception as e:
-            print(f"Error loading {file_path.name}: {e}")
-            return None
         
     def load_data(self, file_path, file_type=None):
         """Loads a file into a pandas DataFrame, handling specific biomech formats."""
@@ -128,18 +137,25 @@ class DataProcessor:
             print(f"Error loading {file_path.name}: {e}")
             return None
     
+<<<<<<< Updated upstream
     
     # ------ PROCESSING DATA ------ ##
+=======
+    ## ------ PREPARING DATA ------ ##
+>>>>>>> Stashed changes
     def reorient_coordinates(self, df, file_type):
         """
         Reorients the dataframe columns to match OpenSim standard: X = Forward, Y = Up, Z = Right
         """
-        if self.db_name not in self.axis_mappings:
+        # Determine if we are looking at trc or mot/sto data
+        mapping_key = 'trc' if file_type == 'trc_marker' else 'mot'
+
+        if self.db_name not in self.axis_mappings or mapping_key not in self.axis_mappings[self.db_name]:
             print(f"Warning: No rotation mapping found for {self.db_name}. Skipping reorientation.")
             return df
 
         print(f"Reorienting {file_type} coordinate system for {self.db_name}...")    
-        mapping = self.axis_mappings[self.db_name]
+        mapping = self.axis_mappings[self.db_name][mapping_key]
         new_df = df.copy()
         
         if file_type == 'trc_marker':
@@ -297,6 +313,7 @@ class DataProcessor:
 
 
 
+<<<<<<< Updated upstream
     # def process_database(self):
     #    """Main execution loop that iterates through all participants in the database."""
     #   print(f"Starting processing for {self.db_name}...")
