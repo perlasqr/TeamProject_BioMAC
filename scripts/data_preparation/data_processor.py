@@ -59,7 +59,7 @@ class DataProcessor:
         # 2. Extract common "Trial Name" by removing known suffixes
         for f in all_files:
             # Create a base name by removing the file extension and type markers
-            base_name = f.name.replace(".trc", "").replace("_ik.mot", "").replace("_grf.mot", "").replace(".sto", "")
+            base_name = f.name.replace(".trc", "").replace("_ik.mot", "").replace("_grf.mot", "").replace("_id.sto", "")
             
             if base_name not in trial_map:
                 trial_map[base_name] = {'trc': None, 'mot_ik': None, 'mot_grf': None, 'sto': None}
@@ -81,11 +81,15 @@ class DataProcessor:
                 for i, line in enumerate(f):
                     if 'endheader' in line:
                         return i + 1
-            # Fallback if 'endheader' is missing
-            return 11 
+            return 11 # Fallback if 'endheader' is missing
             
         elif ext == '.trc': # TRC files use a fixed header structure
-            return 5
+            with open(file_path, 'r') as f:
+                for i, line in enumerate(f):
+                    # Look for the line starting with 'Frame#'
+                    if line.startswith('Frame#'):
+                        return i
+            return 5 # Fallback if 'endheader' is missing
             
         return 0
         
@@ -96,34 +100,38 @@ class DataProcessor:
         
         try:
             if ext == '.trc':
-                # --- TRC Header Flattening Logic ---
-                raw_headers = pd.read_csv(file_path, sep='\t', skiprows=3, nrows=0).columns.tolist()
-                clean_cols = []
-                current_marker = ""
+                    # 1. Read data first to see how many columns actually exist
+                df = pd.read_csv(file_path, sep='\t', skiprows=6, header=None)
+                num_cols = df.shape[1]
                 
-                for i, col in enumerate(raw_headers):
-                    if i == 0:
-                        clean_cols.append("Frame")
-                    elif i == 1:
-                        clean_cols.append("Time")
-                    else:
-                        if not col.startswith("Unnamed"):
-                            current_marker = col
-                            clean_cols.append(f"{current_marker}_X")
-                        else:
-                            if clean_cols[-1].endswith("_X"):
-                                clean_cols.append(f"{current_marker}_Y")
-                            else:
-                                clean_cols.append(f"{current_marker}_Z")
+                # 2. Extract marker names from line 4 (index 3)
+                header_row = pd.read_csv(file_path, sep='\t', skiprows=3, nrows=1, header=None)
+                raw_markers = header_row.iloc[0, 2:].tolist()
                 
-                df = pd.read_csv(file_path, sep='\t', skiprows=5, header=None)
+                # 3. Create column names 1-to-1 with data columns
+                columns = ['Frame', 'Time']
+                axes = ['X', 'Y', 'Z']
+                axis_idx = 0
+                current_m = "Unknown"
                 
-                if df.shape[1] > len(clean_cols):
-                    df = df.iloc[:, :len(clean_cols)]
+                for m in raw_markers:
+                    # If the cell is not empty/NaN/Unnamed, update the current marker name
+                    m_str = str(m).strip()
+                    if m_str != '' and m_str != 'nan' and 'Unnamed' not in m_str:
+                        current_m = m_str
+                    
+                    # Append exactly ONE axis for this specific column
+                    if len(columns) < num_cols:
+                        columns.append(f"{current_m}_{axes[axis_idx]}")
+                        axis_idx = (axis_idx + 1) % 3  # Cycles 0, 1, 2, 0, 1, 2 (X, Y, Z)
                 
-                df.columns = clean_cols
+                # 4. Final safety check: fill any remaining unnamed columns
+                while len(columns) < num_cols:
+                    columns.append(f"Extra_{len(columns)}")
+                    
+                df.columns = columns[:num_cols]
                 return df
-                
+                    
             elif ext in ['.mot', '.sto']:
                 # --- Dynamic MOT/STO Loading Logic ---
                 skip = self._get_skiprows(file_path)
@@ -137,12 +145,9 @@ class DataProcessor:
             print(f"Error loading {file_path.name}: {e}")
             return None
     
-<<<<<<< Updated upstream
     
-    # ------ PROCESSING DATA ------ ##
-=======
-    ## ------ PREPARING DATA ------ ##
->>>>>>> Stashed changes
+    ## ------ PREPARING DATA METHODS ------ ##
+    ## ------ REORIENTING COORDINATE SYSTEMS ------ #
     def reorient_coordinates(self, df, file_type):
         """
         Reorients the dataframe columns to match OpenSim standard: X = Forward, Y = Up, Z = Right
@@ -205,122 +210,65 @@ class DataProcessor:
         col_map = {col.lower(): col for col in df.columns}
 
         if file_type == "trc_marker":
-            markers_to_keep = [
-                "LSHO", "LASI", "LKNE", "LANK", "LHEE",
-                "RSHO", "RASI", "RKNE", "RANK", "RHEE"
-            ]
-
-            selected_cols = []
-
-            # Your TRC loader creates "Time", not "time", but this also works if it is "time"
-            if "time" in col_map:
-                selected_cols.append(col_map["time"])
-            else:
-                print("Warning: Time column not found in TRC file.")
-
-            for marker in markers_to_keep:
+            markers = ["LSHO", "LASI", "LKNE", "LANK", "LHEE", "RSHO", "RASI", "RKNE", "RANK", "RHEE"]
+            
+            # Find the time column regardless of case
+            time_col = next((col_map[c] for c in col_map if 'time' in c), None)
+            selected_cols = [time_col] if time_col else []
+            
+            # Find markers
+            for m in markers:
                 for axis in ["X", "Y", "Z"]:
-                    col_name = f"{marker}_{axis}"
-                
-                    if col_name.lower() in col_map:
-                        selected_cols.append(col_map[col_name.lower()])
-                    else:
-                        print(f"Warning: Missing TRC column: {col_name}")
-
+                    col = f"{m}_{axis}"
+                    if col.lower() in col_map:
+                        selected_cols.append(col_map[col.lower()])
+            
             return df[selected_cols].copy()
     
         elif file_type == "mot_grf":
             # Keep all GRF data
             return df.copy()
 
-        elif file_type == "mot_ik":
-            cols_to_keep = [
-                "time",
-                "hip_flexion_r",
-                "knee_angle_r",
-                "ankle_angle_r",
-                "hip_flexion_l",
-                "knee_angle_l",
-                "ankle_angle_l"
-            ]
-            return df[cols_to_keep].copy()
-        
-        elif file_type == "sto_id":
-            cols_to_keep = [
-                "time",
-                "hip_flexion_r_moment",
-                "knee_angle_r_moment",
-                "ankle_angle_r_moment",
-                "hip_flexion_l_moment",
-                "knee_angle_l_moment",
-                "ankle_angle_l_moment"
-            ]
+        elif file_type in ["mot_ik", "sto_id"]:
+            # Combine the logic for IK/ID to avoid repetition
+            targets = ["time", "hip_flexion_r", "knee_angle_r", "ankle_angle_r", 
+                       "hip_flexion_l", "knee_angle_l", "ankle_angle_l"]
+            if file_type == "sto_id":
+                targets = [t + "_moment" if t != "time" else t for t in targets]
+            
+            selected_cols = [col_map[t] for t in targets if t in col_map]
+            return df[selected_cols].copy()
 
-        else:
-            print(f"Warning: Unknown file type '{file_type}'. Returning original DataFrame.")
-            return df.copy()
+        return df.copy()
 
-        selected_cols = []
 
-        for col in cols_to_keep:
-            if col.lower() in col_map:
-                selected_cols.append(col_map[col.lower()])
-            else:
-                print(f"Warning: Missing column in {file_type}: {col}")
-
-        return df[selected_cols].copy()
-
+    ## PREPARING DATA 
     def process_participant_files(self, participant_id):
-        """Loads all files for one participant, reorients TRC/GRF if needed, and selects only the relevant columns."""
+        trial_map = self.get_trial_file_map(participant_id)
+        processed_data = [] # List to hold trials
 
-        paths = self.get_file_paths(participant_id)
+        for trial_name, files in trial_map.items():
+            trial_results = {"trial_name": trial_name, "data": {}}
+            
+            for file_key, file_path in files.items():
+                if file_path is None: continue
+                
+                # Map keys to match your file_type expected by other methods
+                file_type = "trc_marker" if file_key == 'trc' else \
+                            "mot_ik"     if file_key == 'mot_ik' else \
+                            "mot_grf"    if file_key == 'mot_grf' else "sto_id"
+                
+                df = self.load_data(file_path, file_type=file_type)
+                if df is None: continue
 
-        processed_data = {
-            "trc_marker": [],
-            "mot_grf": [],
-            "mot_ik": [],
-            "sto_id": []
-        }
-
-        for file_type, file_list in paths.items():
-
-            for file_path in file_list:
-                df = self.load_data(file_path)
-
-                if df is None:
-                    print(f"Skipping {file_path.name} because it could not be loaded.")
-                    continue
-
-                # Reorientation just for TRC & GRF
                 if file_type in ["trc_marker", "mot_grf"]:
                     df = self.reorient_coordinates(df, file_type)
 
-                # Select only relevant columns
-                df_selected = self.select_relevant_data(df, file_type)
-
-                processed_data[file_type].append({
-                    "participant_id": participant_id,
-                    "file_type": file_type,
-                    "file_name": file_path.name,
-                    "file_path": file_path,
-                    "data": df_selected
-                })
-
+                trial_results["data"][file_type] = self.select_relevant_data(df, file_type)
+            
+            processed_data.append(trial_results)
         return processed_data
 
     
 
 
-
-
-<<<<<<< Updated upstream
-    # def process_database(self):
-    #    """Main execution loop that iterates through all participants in the database."""
-    #   print(f"Starting processing for {self.db_name}...")
-    #    for p_id in self.participants:
-    #        print(f"> Processing participant: {p_id}")
-    #        files = self.get_file_paths(p_id)
-    #        
-    #        # Logic for calling processing functions would go here
-    #        # e.g., self.apply_filters(files)
-    #    print(f"Finished processing {self.db_name}.")
