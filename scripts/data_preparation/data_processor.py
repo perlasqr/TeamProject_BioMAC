@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 import pandas as pd
+import numpy as np
+from scipy.interpolate import interp1d
 
 class DataProcessor:
     def __init__(self, root_dir, db_name):
@@ -146,7 +148,6 @@ class DataProcessor:
             return None
     
     
-    ## ------ PREPARING DATA METHODS ------ ##
     ## ------ REORIENTING COORDINATE SYSTEMS ------ #
     def reorient_coordinates(self, df, file_type):
         """
@@ -201,7 +202,6 @@ class DataProcessor:
     
     ## ------ SELECTING RELEVANT COLUMNS ------ #
     def select_relevant_data(self, df, file_type):
-
         if df is None:
             print("Warning: Input DataFrame is None. Skipping column selection.")
             return None
@@ -240,6 +240,158 @@ class DataProcessor:
             return df[selected_cols].copy()
 
         return df.copy()
+
+    ## ------ EXTRACTING GAIT EVENTS & TIME-NORMALIZING ------- #
+    def extract_gait_events(self, grf_df, marker_df, leg='l', force_threshold=20):
+        """
+        Finds the timestamps for HS1 (Heel Strike 1), TO (Toe-Off), and HS2 (Heel Strike 2).
+        Returns: (hs1_time, to_time, hs2_time) or (None, None, None) if not found.
+        """
+        # 1. Identify specific columns based on the active leg
+        if leg.lower() == 'l':
+            grf_v_col = next((c for c in grf_df.columns if 'calcn_l_vy' in c.lower()), None)
+            heel_y_col = 'LHEE_Y'
+        else:
+            grf_v_col = next((c for c in grf_df.columns if 'calcn_r_vy' in c.lower()), None)
+            heel_y_col = 'RHEE_Y'
+
+        if not grf_v_col or heel_y_col not in marker_df.columns:
+            print(f"  [Error] Missing columns for {leg} leg detection.")
+            return None, None, None
+
+        # 2. Find HS1 and TO using GRF (Vertical Force)
+        fz = grf_df[grf_v_col].values
+        times_grf = grf_df['time'].values
+        
+        contact = (fz > force_threshold).astype(int)
+        transitions = np.diff(contact)
+        
+        hs_indices = np.where(transitions == 1)[0] + 1
+        to_indices = np.where(transitions == -1)[0] + 1
+        
+        if len(hs_indices) == 0 or len(to_indices) == 0:
+            return None, None, None
+            
+        # Grab the FIRST valid heel strike and the first toe-off that happens AFTER it
+        hs1_idx = hs_indices[0]
+        valid_tos = to_indices[to_indices > hs1_idx]
+        if len(valid_tos) == 0:
+            return None, None, None
+            
+        to_idx = valid_tos[0]
+        
+        hs1_time = times_grf[hs1_idx]
+        to_time = times_grf[to_idx]
+        
+        # 3. Find HS2 using Kinematics (Heel Marker Height)
+        # Because Y is UP in OpenSim, we look at LHEE_Y / RHEE_Y
+        times_mrk = marker_df['Time'].values
+        heel_y = marker_df[heel_y_col].values
+        
+        # Find the marker frame closest to our GRF events
+        hs1_mrk_idx = np.argmin(np.abs(times_mrk - hs1_time))
+        to_mrk_idx = np.argmin(np.abs(times_mrk - to_time))
+        
+        ref_height = heel_y[hs1_mrk_idx]
+        buffer = 0.02 # 2 cm buffer (assuming TRC is in meters!)
+        
+        search_start = to_mrk_idx + 10 # Start looking a bit after toe-off
+        hs2_time = None
+        
+        for i in range(search_start, len(heel_y) - 1):
+            current_h = heel_y[i]
+            velocity = heel_y[i+1] - heel_y[i]
+            
+            # Condition: Heel drops near baseline height AND is moving downward
+            if current_h <= (ref_height + buffer) and velocity < 0:
+                hs2_time = times_mrk[i]
+                break
+                
+        return hs1_time, to_time, hs2_time
+
+    def time_normalize(self, df, time_col_name, start_time, end_time, n_points=101):
+        """
+        Slices a DataFrame between start_time and end_time, then interpolates all columns 
+        to exactly `n_points` (0% to 100% of gait cycle).
+        """
+        # 1. Slice the data to the specific gait cycle
+        cycle_df = df[(df[time_col_name] >= start_time) & (df[time_col_name] <= end_time)].copy()
+        
+        if len(cycle_df) < 5:
+            return None # Not enough data to interpolate safely
+            
+        old_time = cycle_df[time_col_name].values
+        new_time = np.linspace(start_time, end_time, n_points)
+        
+        # 2. Interpolate each column
+        norm_data = {}
+        for col in cycle_df.columns:
+            if col == time_col_name:
+                norm_data[col] = np.linspace(0, 100, n_points) # Convert time to % Gait Cycle
+            else:
+                f = interp1d(old_time, cycle_df[col].values, kind='linear', fill_value="extrapolate")
+                norm_data[col] = f(new_time)
+                
+        return pd.DataFrame(norm_data)
+
+    def convert_leg_labels(self, df, file_type, leading_leg):
+        if df is None: return None
+        
+        lead_char = leading_leg.lower()
+        trail_char = 'r' if lead_char == 'l' else 'l'
+        
+        new_columns = {}
+        
+        for raw_col in df.columns:
+            # Strip any hidden spaces from the column name just in case
+            col = str(raw_col).strip()
+            
+            if col.lower() == 'time':
+                new_columns[raw_col] = 'Time'
+                continue
+                
+            new_col = col
+            
+            if file_type == 'trc_marker':
+                if len(col) >= 4 and col[0].lower() in ['l', 'r'] and col[-2:] in ['_X', '_Y', '_Z']:
+                    side = col[0].lower()
+                    base_marker = col[1:-2]
+                    axis = col[-1]
+                    
+                    if base_marker == 'ANK': base_marker = 'ANKL'
+                    
+                    suffix = '1' if side == lead_char else '2'
+                    new_col = f"{base_marker}_{axis}{suffix}"
+                    
+            elif file_type == 'mot_grf':
+                if f"_{lead_char}_v" in col or f"_{lead_char}_p" in col or f"_{lead_char}_m" in col:
+                    new_col = col.replace(f"_{lead_char}_", "_") + "1"
+                elif f"_{trail_char}_v" in col or f"_{trail_char}_p" in col or f"_{trail_char}_m" in col:
+                    new_col = col.replace(f"_{trail_char}_", "_") + "2"
+                    
+            elif file_type in ['mot_ik', 'sto_id']:
+                if f"_{lead_char}_moment" in new_col:
+                    new_col = new_col.replace(f"_{lead_char}_moment", "_1_moment")
+                elif f"_{trail_char}_moment" in new_col:
+                    new_col = new_col.replace(f"_{trail_char}_moment", "_2_moment")
+                elif new_col.endswith(f"_{lead_char}"):
+                    new_col = new_col[:-2] + "_1"
+                elif new_col.endswith(f"_{trail_char}"):
+                    new_col = new_col[:-2] + "_2"
+                    
+            # Map the original raw column name to the new clean name
+            new_columns[raw_col] = new_col
+            
+        # --- DEBUG PRINT ---
+        # Let's print out the first 3 changes it made to see if the logic worked
+        changed_cols = {k: v for k, v in new_columns.items() if k != v}
+        if changed_cols:
+            print(f"  [Debug] {file_type} successfully mapped {len(changed_cols)} columns. Example: {list(changed_cols.items())[:3]}")
+        else:
+            print(f"  [Debug] {file_type} found ZERO columns to rename!")
+            
+        # Explicitly return the renamed dataframe
+        return df.rename(columns=new_columns)
 
 
     ## PREPARING DATA 
