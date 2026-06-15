@@ -44,12 +44,12 @@ def plot_reoriented_force(mot_df, force_base="ground_force_calcn_r_v"):
 ## ------- MAIN ------- ##
 
 root = r"C:\Users\perla\Documents\AT\TeamProject\GitHub\TeamProject" 
-db_name = "DB4"
+db_name = "DB5"
 
 processor = DataProcessor(root, db_name)
 
 if processor.participants:
-    test_p = processor.participants[0]
+    test_p = processor.participants[23]
     print(f"\n--- Testing participant: {test_p} ---")
     
     # 2. Get files for this participant
@@ -57,7 +57,7 @@ if processor.participants:
     
     # 3. Load and Reorient TRC (Marker Data)
     if files['trc_marker']:
-        trc_path = files['trc_marker'][0]
+        trc_path = files['trc_marker'][1]
         raw_trc = processor.load_data(trc_path, file_type='trc_marker')
         
         # Apply reorientation
