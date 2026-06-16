@@ -94,7 +94,8 @@ class DataProcessor:
             return 5 # Fallback if 'endheader' is missing
             
         return 0
-        
+
+    ## ------ LOAD Data ------ #   
     def load_data(self, file_path, file_type=None):
         """Loads a file into a pandas DataFrame, handling specific biomech formats."""
         print(f"Loading: {file_path.name}...")
@@ -334,9 +335,13 @@ class DataProcessor:
                 
         return pd.DataFrame(norm_data)
 
+    ## ------ CONVERT LEG LABELS ------ #
     def convert_leg_labels(self, df, file_type, leading_leg):
         if df is None: return None
         
+        if leading_leg.lower() not in ["l", "r"]:
+            raise ValueError("leading_leg must be either 'l' or 'r'")
+
         lead_char = leading_leg.lower()
         trail_char = 'r' if lead_char == 'l' else 'l'
         
@@ -392,6 +397,47 @@ class DataProcessor:
             
         # Explicitly return the renamed dataframe
         return df.rename(columns=new_columns)
+
+    ## ------ RELATIVE PELVIS-CENTERED AP COORDINATE SYSTEM ------ #
+    def define_pelvis_centered_ap_coordinate_system(self, marker_df):
+        
+        if marker_df is None:
+            print("  [Warning] marker_df is None. Skipping pelvis-centered AP coordinate system.")
+            return None
+
+        new_df = marker_df.copy()
+
+        def clean_col_name(col):
+            return str(col).split("[")[0].strip().upper().replace(" ", "")
+
+        clean_to_original = {
+            clean_col_name(col): col for col in new_df.columns
+        }
+
+        asi_x1_col = clean_to_original.get("ASI_X1")
+        asi_x2_col = clean_to_original.get("ASI_X2")
+
+        if asi_x1_col is None or asi_x2_col is None:
+            print("  [Warning] ASI_X1 and/or ASI_X2 not found. Skipping pelvis-centered AP shift.")
+            print(f"  Available columns example: {list(new_df.columns)[:12]}")
+            return new_df
+
+        pelvis_center_x = (new_df[asi_x1_col] + new_df[asi_x2_col]) / 2
+
+        for col in new_df.columns:
+            cleaned = clean_col_name(col)
+
+            if cleaned in ["TIME", "FRAME", "FRAME#"]:
+                continue
+
+            # Shift only anterior-posterior marker columns
+            # Examples: SHO_X1, ASI_X1, KNE_X2, ANKL_X1, HEE_X2
+            if "_X" in cleaned:
+                new_df.loc[:, col] = new_df.loc[:, col].sub(pelvis_center_x, axis="index")
+
+        print("  Pelvis-centered AP coordinate system applied using ASI_X1 and ASI_X2.")
+
+        return new_df
 
     def define_global_coordinate_system(self, df):
         """
@@ -460,6 +506,6 @@ class DataProcessor:
 
     
 
-    def test_pipeline(self):
+
         
         
