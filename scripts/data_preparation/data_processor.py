@@ -667,5 +667,100 @@ class DataProcessor:
         return processed_data
 
     
+    ## ------ EXPORTING RESULTS ------ #
+    def export_database_results(self):
+        """
+        Runs the full processing pipeline for all participants in the database.
+        Generates two files:
+        1. A Summary Report CSV tracking success/failure for every trial.
+        2. A Master ML Matrix CSV with flattened 101-point features for all valid trials.
+        """
+        summary_rows = []
+        ml_rows = []
+        
+        print(f"\n--- Starting Full Database Export for {self.db_name} ---")
+        
+        for participant in self.participants:
+            print(f"Processing participant: {participant}...")
+            
+            # Run our robust pipeline for this specific participant
+            trials = self.process_participant_files(participant)
+            
+            for trial in trials:
+                t_name = trial['trial_name']
+                is_success = trial.get('normalized_data') is not None
+                
+                # --- 1. BUILD SUMMARY REPORT ROW ---
+                status = "Success" if is_success else "Failed"
+                error_msg = trial.get('error', '')
+                leg = trial.get('gait_events', {}).get('leg_used', '') if is_success else ''
+                
+                summary_rows.append({
+                    'DB': self.db_name,
+                    'Participant': participant,
+                    'Trial': t_name,
+                    'Status': status,
+                    'Leg_Used': leg,
+                    'Error_Message': error_msg
+                })
+                
+                # --- 2. BUILD FLATTENED ML MATRIX ROW ---
+                if is_success:
+                    # Initialize the row with critical metadata
+                    flat_row = {
+                        'DB': self.db_name,
+                        'Participant': participant,
+                        'Trial': t_name,
+                        'Leg_Used': leg,
+                        'Mass_kg': trial['anthropometrics']['mass_kg'],
+                        'Height_m': trial['anthropometrics']['height_m']
+                    }
+                    
+                    norm_data = trial['normalized_data']
+                    
+                    # Map the internal dictionary keys to your ML prefixes
+                    prefix_map = {
+                        'trc_marker': 'TRC',
+                        'mot_grf': 'GRF',
+                        'mot_ik': 'IK',
+                        'sto_id': 'ID'
+                    }
+                    
+                    for f_type, prefix in prefix_map.items():
+                        if f_type in norm_data and norm_data[f_type] is not None:
+                            df = norm_data[f_type]
+                            
+                            for col in df.columns:
+                                # Skip time-tracking columns
+                                if col.upper() in ['TIME', 'FRAME', 'FRAME#']:
+                                    continue
+                                    
+                                # Flatten the 101 points
+                                vals = df[col].values
+                                for i, val in enumerate(vals):
+                                    # Creates headers like: TRC_ANKL_X1_0, GRF_vy1_100
+                                    flat_row[f"{prefix}_{col}_{i}"] = val
+                                    
+                    ml_rows.append(flat_row)
 
+        # --- 3. SAVE THE CSV FILES ---
+        # Ensure the output directory exists
+        out_dir = self.root_dir / "results" / self.db_name
+        out_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Save Summary Report
+        df_summary = pd.DataFrame(summary_rows)
+        summary_path = out_dir / f"{self.db_name}_Processing_Report.csv"
+        df_summary.to_csv(summary_path, index=False)
+        print(f"\n[Export Complete] Summary Report saved: {summary_path}")
+        
+        # Save Master ML Matrix
+        if ml_rows:
+            df_ml = pd.DataFrame(ml_rows)
+            ml_path = out_dir / f"{self.db_name}_ML_Matrix.csv"
+            df_ml.to_csv(ml_path, index=False)
+            print(f"[Export Complete] Master ML Matrix saved: {ml_path}")
+            print(f"  -> Final Matrix Shape: {df_ml.shape[0]} trials x {df_ml.shape[1]} features")
+        else:
+            print("\n[Warning] No successful trials were found. ML Matrix was not created.")
 

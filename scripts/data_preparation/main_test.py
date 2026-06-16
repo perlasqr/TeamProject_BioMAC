@@ -44,70 +44,71 @@ db_name = "DB1"
 
 processor = DataProcessor(root, db_name)
 
-# # # To check the output:
-# # for trial in all_trial_results:
-# #     if trial.get('normalized_data'):
-# #         print(f"[SUCCESS] {trial['trial_name']} processed using {trial['gait_events']['leg_used']} leg.")
-# #     else:
-# #         print(f"[SKIPPED] {trial['trial_name']} - {trial.get('error')}")
-
-
-
-if not processor.participants:
-    print("No participants found.")
+# Trigger the entire database pipeline and export
+if processor.participants:
+    processor.export_database_results()
 else:
-    test_p = processor.participants[0]
-    print(f"\n--- Running Full Pipeline for Participant: {test_p} ---")
-    
-    # 1. Run the newly integrated method
-    all_trial_results = processor.process_participant_files(test_p)
-    
-    # 2. Verify the Math
-    print(f"\n--- Anthropometric Normalization Sanity Checks ---")
-    for trial in all_trial_results:
-        # Find the first trial that successfully processed without errors
-        if trial.get('normalized_data') is not None:
-            print(f"\nTrial Verified: {trial['trial_name']}")
-            
-            # A. Verify Excel Metadata extraction
-            mass = trial['anthropometrics']['mass_kg']
-            height = trial['anthropometrics']['height_m']
-            calculated_bw = mass * 9.81
-            print(f"  [Excel Check] Mass: {mass} kg | Height: {height} m | Calculated BW: {calculated_bw:.2f} N")
-            
-            norm_data = trial['normalized_data']
-            
-            # B. Sanity Check Forces (Peak should be roughly 1.0 to 1.3 BW for walking)
-            if 'mot_grf' in norm_data:
-                df_grf = norm_data['mot_grf']
-                vy_col = next((c for c in df_grf.columns if 'vy1' in c.lower()), None)
-                if vy_col:
-                    peak_force = df_grf[vy_col].max()
-                    print(f"  [Force Check] Peak Vertical GRF ({vy_col}): {peak_force:.4f} BW")
-                    if 0.8 <= peak_force <= 1.5:
-                        print("    -> SUCCESS: Value is in the expected walking range.")
-                    else:
-                        print("    -> WARNING: Force scaling magnitude looks suspicious!")
-            
-            # C. Sanity Check Markers (Should be small decimal fractions of height)
-            if 'trc_marker' in norm_data:
-                df_trc = norm_data['trc_marker']
-                print(f"  [Marker Check] Sample Dimensionless Positions (Frame 0):")
-                sample_cols = [c for c in df_trc.columns if c.upper() not in ['TIME', 'FRAME', 'FRAME#']][:3]
-                for col in sample_cols:
-                    val = df_trc.loc[0, col]
-                    print(f"    {col}: {val:.4f} (Fraction of Height)")
-                    
-            # D. Sanity Check Inverse Dynamics Moments
-            if 'sto_id' in norm_data:
-                df_id = norm_data['sto_id']
-                mom_col = next((c for c in df_id.columns if 'moment' in c.lower()), None)
-                if mom_col:
-                    sample_mom = df_id.loc[0, mom_col]
-                    print(f"  [ID Check] Sample Moment {mom_col} (Frame 0): {sample_mom:.4f} (%BW*ht)")
+    print("No participants to process.")
 
-            print(f"\n==================================================")
-            break # Stop after checking the first successful trial to keep console clean
+
+
+### ------- CODE TO TEST METHODS ------- ####    IGNORE :)
+
+# # # if not processor.participants:
+# # #     print("No participants found.")
+# # # else:
+# # #     test_p = processor.participants[0]
+# # #     print(f"\n--- Running Full Pipeline for Participant: {test_p} ---")
+    
+# # #     # 1. Run the newly integrated method
+# # #     all_trial_results = processor.process_participant_files(test_p)
+    
+# # #     # 2. Verify the Math
+# # #     print(f"\n--- Anthropometric Normalization Sanity Checks ---")
+# # #     for trial in all_trial_results:
+# # #         # Find the first trial that successfully processed without errors
+# # #         if trial.get('normalized_data') is not None:
+# # #             print(f"\nTrial Verified: {trial['trial_name']}")
+            
+# # #             # A. Verify Excel Metadata extraction
+# # #             mass = trial['anthropometrics']['mass_kg']
+# # #             height = trial['anthropometrics']['height_m']
+# # #             calculated_bw = mass * 9.81
+# # #             print(f"  [Excel Check] Mass: {mass} kg | Height: {height} m | Calculated BW: {calculated_bw:.2f} N")
+            
+# # #             norm_data = trial['normalized_data']
+            
+# # #             # B. Sanity Check Forces (Peak should be roughly 1.0 to 1.3 BW for walking)
+# # #             if 'mot_grf' in norm_data:
+# # #                 df_grf = norm_data['mot_grf']
+# # #                 vy_col = next((c for c in df_grf.columns if 'vy1' in c.lower()), None)
+# # #                 if vy_col:
+# # #                     peak_force = df_grf[vy_col].max()
+# # #                     print(f"  [Force Check] Peak Vertical GRF ({vy_col}): {peak_force:.4f} BW")
+# # #                     if 0.8 <= peak_force <= 1.5:
+# # #                         print("    -> SUCCESS: Value is in the expected walking range.")
+# # #                     else:
+# # #                         print("    -> WARNING: Force scaling magnitude looks suspicious!")
+            
+# # #             # C. Sanity Check Markers (Should be small decimal fractions of height)
+# # #             if 'trc_marker' in norm_data:
+# # #                 df_trc = norm_data['trc_marker']
+# # #                 print(f"  [Marker Check] Sample Dimensionless Positions (Frame 0):")
+# # #                 sample_cols = [c for c in df_trc.columns if c.upper() not in ['TIME', 'FRAME', 'FRAME#']][:3]
+# # #                 for col in sample_cols:
+# # #                     val = df_trc.loc[0, col]
+# # #                     print(f"    {col}: {val:.4f} (Fraction of Height)")
+                    
+# # #             # D. Sanity Check Inverse Dynamics Moments
+# # #             if 'sto_id' in norm_data:
+# # #                 df_id = norm_data['sto_id']
+# # #                 mom_col = next((c for c in df_id.columns if 'moment' in c.lower()), None)
+# # #                 if mom_col:
+# # #                     sample_mom = df_id.loc[0, mom_col]
+# # #                     print(f"  [ID Check] Sample Moment {mom_col} (Frame 0): {sample_mom:.4f} (%BW*ht)")
+
+# # #             print(f"\n==================================================")
+# # #             break # Stop after checking the first successful trial to keep console clean
 
 
 
