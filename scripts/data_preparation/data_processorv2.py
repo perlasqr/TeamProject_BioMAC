@@ -458,8 +458,3 @@ class DataProcessor:
             processed_data.append(trial_results)
         return processed_data
 
-    
-
-    def test_pipeline(self):
-        
-        
