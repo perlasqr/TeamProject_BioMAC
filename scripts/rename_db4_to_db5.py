@@ -1,7 +1,7 @@
 import os
 
 # ── Set this to your target folder ──────────────────────────────────────────
-FOLDER = r"/home/mohityadav001/Documents/FAU/Project/TeamProject/results/DB5/P51/IK/MarkerData"
+FOLDER = r"path to your folder"
 # ────────────────────────────────────────────────────────────────────────────
 
 renamed = 0
