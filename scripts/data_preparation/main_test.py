@@ -43,114 +43,171 @@ root = r"C:\Users\perla\Documents\AT\TeamProject\GitHub\TeamProject"
 db_name = "DB1"
 
 processor = DataProcessor(root, db_name)
-processor = DataProcessor(root, db_name)
 
-# 2. Pick a participant (e.g., the first one found)
+# # # To check the output:
+# # for trial in all_trial_results:
+# #     if trial.get('normalized_data'):
+# #         print(f"[SUCCESS] {trial['trial_name']} processed using {trial['gait_events']['leg_used']} leg.")
+# #     else:
+# #         print(f"[SKIPPED] {trial['trial_name']} - {trial.get('error')}")
+
+
+
 if not processor.participants:
     print("No participants found.")
 else:
     test_p = processor.participants[0]
-    print(f"\n--- Testing Full Pipeline for Participant: {test_p} ---")
+    print(f"\n--- Running Full Pipeline for Participant: {test_p} ---")
     
-    # 3. Process all trials for this participant
-    # This will now return a list of trials, each with a dict of DataFrames
+    # 1. Run the newly integrated method
     all_trial_results = processor.process_participant_files(test_p)
     
-    # 4. Verify the output
-    print(f"Processed {len(all_trial_results)} trials.")
-    
+    # 2. Verify the Math
+    print(f"\n--- Anthropometric Normalization Sanity Checks ---")
     for trial in all_trial_results:
-        print(f"\nTrial Name: {trial['trial_name']}")
-        for f_type, df in trial['data'].items():
-            if df is not None:
-                print(f"  - {f_type}: Shape {df.shape} | Columns: {list(df.columns[:3])}...")
-            else:
-                print(f"  - {f_type}: [FAILED/MISSING]")
-
-
-for trial in all_trial_results:
-    trial_name = trial['trial_name']
-    data = trial['data']
-
-    hs1_t, to_t, hs2_t = None, None, None
-    leg_used = None
-    
-    if data.get('mot_grf') is not None and data.get('trc_marker') is not None:
-        
-        leg_used = 'L'
-        hs1_t, to_t, hs2_t = processor.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='l')
-        
-        if hs1_t is None or hs2_t is None:
-            leg_used = 'R'
-            hs1_t, to_t, hs2_t = processor.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='r')
+        # Find the first trial that successfully processed without errors
+        if trial.get('normalized_data') is not None:
+            print(f"\nTrial Verified: {trial['trial_name']}")
             
-        if hs1_t is not None and hs2_t is not None:
-            print(f"\n[{trial_name}] Valid Cycle ({leg_used}): HS1={hs1_t:.2f}s, HS2={hs2_t:.2f}s")
+            # A. Verify Excel Metadata extraction
+            mass = trial['anthropometrics']['mass_kg']
+            height = trial['anthropometrics']['height_m']
+            calculated_bw = mass * 9.81
+            print(f"  [Excel Check] Mass: {mass} kg | Height: {height} m | Calculated BW: {calculated_bw:.2f} N")
             
-            normalized_trial = {}
-            for f_type, df in data.items():
-                if df is not None:
-                    # 1. Time normalize
-                    t_col = 'Time' if 'Time' in df.columns else 'time'
-                    norm_df = processor.time_normalize(df, t_col, hs1_t, hs2_t)
-                    
-                    # 2. Convert L/R labels to 1/2
-                    renamed_df = processor.convert_leg_labels(norm_df, f_type, leg_used)
-                    
-                    # 3. Apply Global Coordinate Shift (ONLY to TRC markers)
-                    if f_type == 'trc_marker':
-                        # Save the 'before' state for our printout
-                        df_before = renamed_df.copy()
-                        
-                        # Apply your co-worker's method
-                        final_df = processor.define_global_coordinate_system(renamed_df)
-                        normalized_trial[f_type] = final_df
-                        
-                        # --- Coordinate Shift Test Printout ---
-                        print(f"  --- Coordinate Shift Test ---")
-                        # Check frame 0 (start of cycle) and frame 50 (mid cycle)
-                        for frame_idx in [0, 50]:
-                            print(f"  Gait Cycle: {frame_idx}%")
-                            
-                            # Print ANKL_1 (Should become exactly 0.0000)
-                            print(f"    BEFORE ANKL_1: X={df_before.loc[frame_idx, 'ANKL_X1']:.4f}, Y={df_before.loc[frame_idx, 'ANKL_Y1']:.4f}, Z={df_before.loc[frame_idx, 'ANKL_Z1']:.4f}")
-                            print(f"    AFTER  ANKL_1: X={final_df.loc[frame_idx, 'ANKL_X1']:.4f}, Y={final_df.loc[frame_idx, 'ANKL_Y1']:.4f}, Z={final_df.loc[frame_idx, 'ANKL_Z1']:.4f}")
-                            
-                            # Print another marker like Shoulder to see relative distance
-                            if 'SHO_X1' in final_df.columns:
-                                print(f"    BEFORE SHO_1 : X={df_before.loc[frame_idx, 'SHO_X1']:.4f}, Y={df_before.loc[frame_idx, 'SHO_Y1']:.4f}, Z={df_before.loc[frame_idx, 'SHO_Z1']:.4f}")
-                                print(f"    AFTER  SHO_1 : X={final_df.loc[frame_idx, 'SHO_X1']:.4f}, Y={final_df.loc[frame_idx, 'SHO_Y1']:.4f}, Z={final_df.loc[frame_idx, 'SHO_Z1']:.4f}")
-                            print("-" * 30)
+            norm_data = trial['normalized_data']
+            
+            # B. Sanity Check Forces (Peak should be roughly 1.0 to 1.3 BW for walking)
+            if 'mot_grf' in norm_data:
+                df_grf = norm_data['mot_grf']
+                vy_col = next((c for c in df_grf.columns if 'vy1' in c.lower()), None)
+                if vy_col:
+                    peak_force = df_grf[vy_col].max()
+                    print(f"  [Force Check] Peak Vertical GRF ({vy_col}): {peak_force:.4f} BW")
+                    if 0.8 <= peak_force <= 1.5:
+                        print("    -> SUCCESS: Value is in the expected walking range.")
                     else:
-                        normalized_trial[f_type] = renamed_df
-                        
-            trial['normalized_data'] = normalized_trial
+                        print("    -> WARNING: Force scaling magnitude looks suspicious!")
             
-            # Stop after the first successful trial to easily read the output
-            break 
-            
-        else:
-            print(f"[{trial_name}] FAILED: Could not extract full gait cycle.")
-    else:
-        print(f"[{trial_name}] Skipped: Missing GRF or Marker data.")
+            # C. Sanity Check Markers (Should be small decimal fractions of height)
+            if 'trc_marker' in norm_data:
+                df_trc = norm_data['trc_marker']
+                print(f"  [Marker Check] Sample Dimensionless Positions (Frame 0):")
+                sample_cols = [c for c in df_trc.columns if c.upper() not in ['TIME', 'FRAME', 'FRAME#']][:3]
+                for col in sample_cols:
+                    val = df_trc.loc[0, col]
+                    print(f"    {col}: {val:.4f} (Fraction of Height)")
+                    
+            # D. Sanity Check Inverse Dynamics Moments
+            if 'sto_id' in norm_data:
+                df_id = norm_data['sto_id']
+                mom_col = next((c for c in df_id.columns if 'moment' in c.lower()), None)
+                if mom_col:
+                    sample_mom = df_id.loc[0, mom_col]
+                    print(f"  [ID Check] Sample Moment {mom_col} (Frame 0): {sample_mom:.4f} (%BW*ht)")
 
-# # 3. Process if successful
+            print(f"\n==================================================")
+            break # Stop after checking the first successful trial to keep console clean
+
+
+
+
+''' TEST RELABEL & COORDINATE SYSTEMS '''
+# # 2. Pick a participant (e.g., the first one found)
+# if not processor.participants:
+#     print("No participants found.")
+# else:
+#     test_p = processor.participants[0]
+#     print(f"\n--- Testing Full Pipeline for Participant: {test_p} ---")
+    
+#     # 3. Process all trials for this participant
+#     # This will now return a list of trials, each with a dict of DataFrames
+#     all_trial_results = processor.process_participant_files(test_p)
+    
+#     # 4. Verify the output
+#     print(f"Processed {len(all_trial_results)} trials.")
+    
+#     for trial in all_trial_results:
+#         print(f"\nTrial Name: {trial['trial_name']}")
+#         for f_type, df in trial['data'].items():
+#             if df is not None:
+#                 print(f"  - {f_type}: Shape {df.shape} | Columns: {list(df.columns[:3])}...")
+#             else:
+#                 print(f"  - {f_type}: [FAILED/MISSING]")
+
+
+# for trial in all_trial_results:
+#     trial_name = trial['trial_name']
+#     data = trial['data']
+
+#     hs1_t, to_t, hs2_t = None, None, None
+#     leg_used = None
+    
+#     if data.get('mot_grf') is not None and data.get('trc_marker') is not None:
+        
+#         leg_used = 'L'
+#         hs1_t, to_t, hs2_t = processor.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='l')
+        
+#         if hs1_t is None or hs2_t is None:
+#             leg_used = 'R'
+#             hs1_t, to_t, hs2_t = processor.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='r')
+            
 #         if hs1_t is not None and hs2_t is not None:
-#             print(f"[{trial_name}] Valid Cycle ({leg_used}): HS1={hs1_t:.2f}s, HS2={hs2_t:.2f}s")
+#             print(f"\n[{trial_name}] Valid Cycle ({leg_used}): HS1={hs1_t:.2f}s, HS2={hs2_t:.2f}s")
             
 #             normalized_trial = {}
 #             for f_type, df in data.items():
 #                 if df is not None:
-#                     # Time normalize first
+#                     # 1. Time normalize
 #                     t_col = 'Time' if 'Time' in df.columns else 'time'
 #                     norm_df = processor.time_normalize(df, t_col, hs1_t, hs2_t)
                     
-#                     # Convert the L/R labels to Leading(1) / Trailing(2)
+#                     # 2. Convert L/R labels to 1/2
 #                     renamed_df = processor.convert_leg_labels(norm_df, f_type, leg_used)
                     
-#                     normalized_trial[f_type] = renamed_df
-                    
+#                     # 3. Apply Coordinate Shifts (ONLY to TRC markers)
+#                     if f_type == 'trc_marker':
+#                         df_before = renamed_df.copy()
+                        
+#                         # 1st Shift: Global (Y, Z axes using Ankle)
+#                         df_global = processor.define_global_coordinate_system(df_before)
+                        
+#                         # 2nd Shift: Relative AP (X axis using Pelvis with Auto-Direction)
+#                         df_final = processor.define_pelvis_centered_ap_coordinate_system(df_global)
+                        
+#                         normalized_trial[f_type] = df_final
+                        
+#                         # --- Coordinate Shift Harmony Test ---
+#                         print(f"  --- Coordinate Shift Test (Frame 0 - Heel Strike) ---")
+                        
+#                         def get_pelvis_x(df):
+#                             # Looking at index 0 instead of 50
+#                             return (df.loc[0, 'ASI_X1'] + df.loc[0, 'ASI_X2']) / 2
+                            
+#                         print(f"  [1] BEFORE SHIFTS:")
+#                         print(f"      Pelvis Center X : {get_pelvis_x(df_before):.4f}")
+#                         print(f"      Ankle 1 (X,Y,Z) : {df_before.loc[0, 'ANKL_X1']:.4f}, {df_before.loc[0, 'ANKL_Y1']:.4f}, {df_before.loc[0, 'ANKL_Z1']:.4f}")
+                        
+#                         print(f"\n  [2] AFTER GLOBAL (Y/Z) SHIFT:")
+#                         print(f"      Pelvis Center X : {get_pelvis_x(df_global):.4f}  <-- Unchanged")
+#                         print(f"      Ankle 1 (X,Y,Z) : {df_global.loc[0, 'ANKL_X1']:.4f}, {df_global.loc[0, 'ANKL_Y1']:.4f}, {df_global.loc[0, 'ANKL_Z1']:.4f}  <-- Y/Z are now 0.00")
+                        
+#                         print(f"\n  [3] AFTER PELVIS (X) SHIFT:")
+#                         print(f"      Pelvis Center X : {get_pelvis_x(df_final):.4f}  <-- X is now 0.00")
+#                         print(f"      Ankle 1 (X,Y,Z) : {df_final.loc[0, 'ANKL_X1']:.4f}, {df_final.loc[0, 'ANKL_Y1']:.4f}, {df_final.loc[0, 'ANKL_Z1']:.4f}  <-- X should be POSITIVE, Y/Z remain 0.00")
+#                         print("-" * 50)
+#                     else:
+#                         normalized_trial[f_type] = renamed_df
+                        
 #             trial['normalized_data'] = normalized_trial
+            
+#             # Stop after the first successful trial to easily read the output
+#             break 
+            
+#         else:
+#             print(f"[{trial_name}] FAILED: Could not extract full gait cycle.")
+#     else:
+#         print(f"[{trial_name}] Skipped: Missing GRF or Marker data.")
 
 
 """# Check for duplicate column names

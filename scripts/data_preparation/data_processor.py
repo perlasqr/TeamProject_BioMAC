@@ -3,6 +3,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from scipy.interpolate import interp1d
+import os
 
 class DataProcessor:
     def __init__(self, root_dir, db_name):
@@ -160,7 +161,7 @@ class DataProcessor:
             print(f"Warning: No rotation mapping found for {self.db_name}. Skipping reorientation.")
             return df
 
-        print(f"Reorienting {file_type} coordinate system for {self.db_name}...")    
+        #print(f"Reorienting {file_type} coordinate system for {self.db_name}...")    
         mapping = self.axis_mappings[self.db_name][mapping_key]
         new_df = df.copy()
         
@@ -336,6 +337,9 @@ class DataProcessor:
 
     def convert_leg_labels(self, df, file_type, leading_leg):
         if df is None: return None
+
+        if leading_leg.lower() not in ["l", "r"]:
+            raise ValueError("leading_leg must be either 'l' or 'r'")
         
         lead_char = leading_leg.lower()
         trail_char = 'r' if lead_char == 'l' else 'l'
@@ -382,16 +386,196 @@ class DataProcessor:
             # Map the original raw column name to the new clean name
             new_columns[raw_col] = new_col
             
-        # --- DEBUG PRINT ---
-        # Let's print out the first 3 changes it made to see if the logic worked
-        changed_cols = {k: v for k, v in new_columns.items() if k != v}
-        if changed_cols:
-            print(f"  [Debug] {file_type} successfully mapped {len(changed_cols)} columns. Example: {list(changed_cols.items())[:3]}")
-        else:
-            print(f"  [Debug] {file_type} found ZERO columns to rename!")
+        # # --- DEBUG PRINT ---
+        # # Let's print out the first 3 changes it made to see if the logic worked
+        # changed_cols = {k: v for k, v in new_columns.items() if k != v}
+        # if changed_cols:
+        #     print(f"  [Debug] {file_type} successfully mapped {len(changed_cols)} columns. Example: {list(changed_cols.items())[:3]}")
+        # else:
+        #     print(f"  [Debug] {file_type} found ZERO columns to rename!")
             
         # Explicitly return the renamed dataframe
         return df.rename(columns=new_columns)
+
+    ## ------ GLOBAL COORDINATE SYSTEM ------ #
+    def define_global_coordinate_system(self, df):
+        """
+        Defines a global coordinate system for all TRC markers such that ANKL_1 
+        (ANKL_Y1, ANKL_Z1) becomes the origin (0, 0) at each frame.
+        Uses subtraction in each corresponding axis.
+        """
+        if df is None: return None
+        
+        new_df = df.copy()
+        
+        # Find the origin columns (case-insensitive lookup)
+        ankl_y = next((col for col in new_df.columns if col.upper() == 'ANKL_Y1'), None)
+        ankl_z = next((col for col in new_df.columns if col.upper() == 'ANKL_Z1'), None)
+        
+        if not (ankl_y and ankl_z):
+            print("  [Warning] Origin marker ANKL_1 not found in dataframe. Skipping global coordinate shift.")
+            return new_df
+            
+        origin_y = new_df[ankl_y]
+        origin_z = new_df[ankl_z]
+        
+        # Apply subtraction to all marker coordinates corresponding to X, Y, Z axes
+        for col in new_df.columns:
+            if col.lower() == 'time' or col.lower() == 'frame':
+                continue
+                
+            if '_Y' in col.upper():
+                new_df[col] = new_df[col] - origin_y
+            elif '_Z' in col.upper():
+                new_df[col] = new_df[col] - origin_z
+                
+        return new_df
+
+    ## ------ RELATIVE PELVIS-CENTERED AP COORDINATE SYSTEM ------ #
+    def define_pelvis_centered_ap_coordinate_system(self, marker_df):
+        
+        if marker_df is None:
+            print("  [Warning] marker_df is None. Skipping pelvis-centered AP coordinate system.")
+            return None
+
+        new_df = marker_df.copy()
+
+        def clean_col_name(col):
+            return str(col).split("[")[0].strip().upper().replace(" ", "")
+
+        clean_to_original = {
+            clean_col_name(col): col for col in new_df.columns
+        }
+
+        asi_x1_col = clean_to_original.get("ASI_X1")
+        asi_x2_col = clean_to_original.get("ASI_X2")
+
+        if asi_x1_col is None or asi_x2_col is None:
+            print("  [Warning] ASI_X1 and/or ASI_X2 not found. Skipping pelvis-centered AP shift.")
+            print(f"  Available columns example: {list(new_df.columns)[:12]}")
+            return new_df
+
+        pelvis_center_x = (new_df[asi_x1_col] + new_df[asi_x2_col]) / 2
+
+        for col in new_df.columns:
+            cleaned = clean_col_name(col)
+
+            if cleaned in ["TIME", "FRAME", "FRAME#"]:
+                continue
+
+            # Shift only anterior-posterior marker columns
+            # Examples: SHO_X1, ASI_X1, KNE_X2, ANKL_X1, HEE_X2
+            if "_X" in cleaned:
+                new_df.loc[:, col] = new_df.loc[:, col].sub(pelvis_center_x, axis="index")
+
+        print("  Pelvis-centered AP coordinate system applied using ASI_X1 and ASI_X2.")
+
+        return new_df
+
+    ## ------ ANTHROPOMETRIC NORMALIZATION
+    def load_participant_metadata(self, participant_id):
+        """
+        Reads the database_inventory.xlsx file to extract Mass and Height 
+        for a specific participant number within the current DB sheet.
+        """
+        import os
+        import pandas as pd
+
+        excel_path = os.path.join(self.root_dir, "data", "database_inventory.xlsx")
+        
+        if not os.path.exists(excel_path):
+            print(f"  [Error] Metadata file not found at: {excel_path}")
+            return None, None
+            
+        try:
+            # Load the sheet corresponding to the active database name
+            df_meta = pd.read_excel(excel_path, sheet_name=self.db_name)
+            
+            # Extract just the numeric digits from the participant_id string (e.g., 'P01' -> 1)
+            p_numeric = int(''.join(filter(str.isdigit, str(participant_id))))
+            
+            # Identify columns by positional index: 1st column (0)
+            p_col = df_meta.iloc[:, 0]
+            
+            # Safe parsing that handles 'P01', '1', and '1.0' correctly:
+            # 1. Convert to string
+            # 2. Split by decimal point and take the left side (turns '1.0' into '1')
+            # 3. Strip out any remaining non-digit characters
+            clean_p_col = p_col.astype(str).str.split('.').str[0]
+            clean_p_col = clean_p_col.str.replace(r'\D+', '', regex=True)
+            clean_p_col = pd.to_numeric(clean_p_col, errors='coerce') 
+            
+            # Exact match check
+            match_mask = clean_p_col == p_numeric
+            row = df_meta[match_mask]
+            
+            if row.empty:
+                print(f"  [Warning] Participant {participant_id} (parsed as {p_numeric}) not found in sheet {self.db_name}.")
+                # --- TEMPORARY DEBUG PRINTS ---
+                print(f"  [Debug] Excel Column 1 header: {df_meta.columns[0]}")
+                print(f"  [Debug] First 5 values found in Column 1: {list(p_col.dropna().head())}")
+                # ------------------------------
+                return None, None
+                
+            mass = float(row.iloc[0, 3])   # 4th column
+            height = float(row.iloc[0, 4]) # 5th column
+            
+            return mass, height
+            
+        except Exception as e:
+            print(f"  [Error] Failed to read metadata sheet: {str(e)}")
+            return None, None
+
+    def apply_anthropometric_normalization(self, normalized_trial, mass, height):
+        """
+        Applies dimensionless scaling to all loaded data frames using Body Weight and Height.
+        """
+        if normalized_trial is None: return None
+        
+        # Calculate Body Weight in Newtons
+        gravity = 9.81
+        body_weight = mass * gravity
+        
+        scaled_trial = {}
+        
+        for f_type, df in normalized_trial.items():
+            if df is None: continue
+            
+            scaled_df = df.copy()
+            
+            for col in scaled_df.columns:
+                col_upper = col.upper()
+                col_lower = col.lower() 
+                
+                # Skip tracking headers
+                if col_upper in ['TIME', 'FRAME', 'FRAME#']:
+                    continue
+                    
+                # 1. TRC Marker Positions -> Divide by Height
+                if f_type == 'trc_marker':
+                    if any(axis in col_upper for axis in ['_X', '_Y', '_Z']):
+                        scaled_df[col] = scaled_df[col] / height
+                        
+                # 2. Ground Reaction Forces, CoP, and Free Moments
+                elif f_type == 'mot_grf':
+                    # Forces (vx, vy, vz) -> Divide by Body Weight
+                    if any(f in col_lower for f in ['_vx', '_vy', '_vz']):
+                        scaled_df[col] = scaled_df[col] / body_weight
+                    # Center of Pressure (px, py, pz) -> Divide by Height
+                    elif any(p in col_lower for p in ['_px', '_py', '_pz']):
+                        scaled_df[col] = scaled_df[col] / height
+                    # Free Moments (mx, my, mz) -> Divide by Body Weight * Height
+                    elif any(m in col_lower for m in ['_mx', '_my', '_mz']):
+                        scaled_df[col] = scaled_df[col] / (body_weight * height)
+                        
+                # 3. Inverse Dynamics Joint Moments -> Divide by Body Weight * Height
+                elif f_type == 'sto_id':
+                    if '_MOMENT' in col_upper:
+                        scaled_df[col] = scaled_df[col] / (body_weight * height)
+                        
+            scaled_trial[f_type] = scaled_df
+            
+        return scaled_trial
 
 
     ## PREPARING DATA 
@@ -399,9 +583,16 @@ class DataProcessor:
         trial_map = self.get_trial_file_map(participant_id)
         processed_data = [] # List to hold trials
 
+        # --- EXTRACT ANTHROPOMETRICS ONCE PER PARTICIPANT ---
+        mass, height = self.load_participant_metadata(participant_id)
+        if mass is None or height is None:
+            print(f"  [Aborted] Cannot process participant {participant_id} without complete mass/height tracking data.")
+            return []
+
         for trial_name, files in trial_map.items():
             trial_results = {"trial_name": trial_name, "data": {}}
             
+            # --- 1. LOAD, REORIENT, AND FILTER DATA ---
             for file_key, file_path in files.items():
                 if file_path is None: continue
                 
@@ -418,7 +609,61 @@ class DataProcessor:
 
                 trial_results["data"][file_type] = self.select_relevant_data(df, file_type)
             
+            # --- 2. EXTRACT GAIT EVENTS & TIME NORMALIZE ---
+            data = trial_results["data"]
+            hs1_t, to_t, hs2_t = None, None, None
+            leg_used = None
+            
+            if data.get('mot_grf') is not None and data.get('trc_marker') is not None:
+                
+                # Try Left Leg
+                leg_used = 'L'
+                hs1_t, to_t, hs2_t = self.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='l')
+                
+                # Try Right Leg if Left fails
+                if hs1_t is None or hs2_t is None:
+                    leg_used = 'R'
+                    hs1_t, to_t, hs2_t = self.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='r')
+            
+                # --- 3. APPLY PIPELINE TO VALID CYCLES ---
+                if hs1_t is not None and hs2_t is not None:
+                    normalized_trial = {}
+                    
+                    for f_type, df in data.items():
+                        if df is not None:
+                            # A. Time Normalize (0-100%)
+                            t_col = 'Time' if 'Time' in df.columns else 'time'
+                            norm_df = self.time_normalize(df, t_col, hs1_t, hs2_t)
+                            
+                            # B. Convert Labels (L/R -> 1/2)
+                            renamed_df = self.convert_leg_labels(norm_df, f_type, leg_used)
+                            
+                            # C. Coordinate Shifts (ONLY for TRC Markers)
+                            if f_type == 'trc_marker':
+                                # Global Shift (Y, Z axes to Ankle)
+                                df_global = self.define_global_coordinate_system(renamed_df)
+                                # Relative Shift (X axis to Pelvis)
+                                df_final = self.define_pelvis_centered_ap_coordinate_system(df_global)
+                                normalized_trial[f_type] = df_final
+                            else:
+                                normalized_trial[f_type] = renamed_df
+
+                    # --- 4. APPLY ANTHROPOMETRIC SCALING ---
+                    scaled_trial = self.apply_anthropometric_normalization(normalized_trial, mass, height)
+                    
+                    trial_results['normalized_data'] = scaled_trial
+                    trial_results['gait_events'] = {'leg_used': leg_used, 'HS1': hs1_t, 'TO': to_t, 'HS2': hs2_t}
+                    trial_results['anthropometrics'] = {'mass_kg': mass, 'height_m': height}
+                    
+                else:
+                    trial_results['normalized_data'] = None
+                    trial_results['error'] = "Incomplete gait cycle or no heel strike found."
+            else:
+                trial_results['normalized_data'] = None
+                trial_results['error'] = "Missing GRF or TRC data needed for sync."
+
             processed_data.append(trial_results)
+
         return processed_data
 
     
