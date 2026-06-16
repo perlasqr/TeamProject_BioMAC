@@ -1,4 +1,4 @@
-from data_processor import DataProcessor
+from data_processorv2 import DataProcessor
 import matplotlib.pyplot as plt
 
 
@@ -43,10 +43,9 @@ def plot_reoriented_force(mot_df, force_base="ground_force_calcn_r_v"):
 
 ## ------- MAIN ------- ##
 
-root = r"C:\Users\perla\Documents\AT\TeamProject\GitHub\TeamProject" 
+root = r"/home/mohityadav001/Documents/FAU/Project/TeamProject" 
 db_name = "DB1"
 
-processor = DataProcessor(root, db_name)
 processor = DataProcessor(root, db_name)
 
 # 2. Pick a participant (e.g., the first one found)
@@ -155,35 +154,81 @@ df = all_trial_results[0]['data']['trc_marker']
 print(df.columns.duplicated().any()) # If True, you have duplicate headers!
 print(df.columns.tolist())            # See the actual names
 """
+# ==========================================
+# TEST GLOBAL COORDINATE SYSTEM METHOD
+# ==========================================
+print("\n" + "="*50)
+print("TESTING GLOBAL COORDINATE SYSTEM SHIFT")
+print("="*50)
 
-""" # TEST REORIENTATION C.S.
-if processor.participants:
-    test_p = processor.participants[23]
-    print(f"\n--- Testing participant: {test_p} ---")
-    
-    # 2. Get files for this participant
-    files = processor.get_trial_file_map(test_p)
-    
-    # 3. Load and Reorient TRC (Marker Data)
-    if files['trc_marker']:
-        trc_path = files['trc_marker'][1]
-        raw_trc = processor.load_data(trc_path, file_type='trc_marker')
-        
-        # Apply reorientation
-        oriented_trc = processor.reorient_coordinates(raw_trc, 'trc_marker')
-        
-        # Plot LHEE
-        plot_reoriented_marker(oriented_trc, marker_name="LHEE")
-        
-    # 4. Load and Reorient MOT (GRF Data)
-    if files['mot_grf']:
-        mot_path = files['mot_grf'][0]
-        raw_mot = processor.load_data(mot_path, file_type='mot_grf')
-        
-        # Apply reorientation
-        oriented_mot = processor.reorient_coordinates(raw_mot, 'mot_grf')
-        
-        # Plot right calcaneus ground reaction force
-        plot_reoriented_force(oriented_mot, force_base="ground_force_calcn_l_v")
+# Find the first valid renamed TRC dataframe
+test_trc = None
+test_trial_name = ""
+for trial in all_trial_results:
+    if 'normalized_data' in trial and 'trc_marker' in trial['normalized_data']:
+        test_trc = trial['normalized_data']['trc_marker']
+        test_trial_name = trial['trial_name']
+        break
 
-plt.show() """
+if test_trc is not None:
+    print(f"Using Trial: {test_trial_name} for test.")
+    
+    # Pick ANKL_1 and a few other marker columns to display
+    ankl_cols = [c for c in test_trc.columns if c.upper() in ['ANKL_X1', 'ANKL_Y1', 'ANKL_Z1']]
+    other_cols = [c for c in test_trc.columns if c not in ankl_cols and ('_X' in c.upper() or '_Y' in c.upper() or '_Z' in c.upper())][:3]
+    display_cols = ankl_cols + other_cols
+    
+    print("\n--- BEFORE Coordinate Shift (Row 0) ---")
+    if display_cols:
+        print(test_trc[display_cols].iloc[0].to_frame().T.to_string(index=False))
+    else:
+        print("Required columns not found.")
+
+    # Apply the new method
+    shifted_trc = processor.define_global_coordinate_system(test_trc)
+    
+    print("\n--- AFTER Coordinate Shift (Row 0) ---")
+    if display_cols:
+        print(shifted_trc[display_cols].iloc[0].to_frame().T.to_string(index=False))
+        
+        # Verify it worked
+        if len(ankl_cols) > 0:
+            val = shifted_trc[ankl_cols[0]].iloc[0]
+            if abs(val) < 1e-6:
+                print("\n-> SUCCESS: ANKL_1 is now the origin (0, 0, 0)!")
+            else:
+                print("\n-> WARNING: ANKL_1 is NOT the origin.")
+else:
+    print("Could not find normalized TRC data to test.")
+
+# TEST REORIENTATION C.S.
+# if processor.participants:
+#     test_p = processor.participants[23]
+#     print(f"\n--- Testing participant: {test_p} ---")
+    
+#     # 2. Get files for this participant
+#     files = processor.get_trial_file_map(test_p)
+    
+#     # 3. Load and Reorient TRC (Marker Data)
+#     if files['trc_marker']:
+#         trc_path = files['trc_marker'][1]
+#         raw_trc = processor.load_data(trc_path, file_type='trc_marker')
+        
+#         # Apply reorientation
+#         oriented_trc = processor.reorient_coordinates(raw_trc, 'trc_marker')
+        
+#         # Plot LHEE
+#         plot_reoriented_marker(oriented_trc, marker_name="LHEE")
+        
+#     # 4. Load and Reorient MOT (GRF Data)
+#     if files['mot_grf']:
+#         mot_path = files['mot_grf'][0]
+#         raw_mot = processor.load_data(mot_path, file_type='mot_grf')
+        
+#         # Apply reorientation
+#         oriented_mot = processor.reorient_coordinates(raw_mot, 'mot_grf')
+        
+#         # Plot right calcaneus ground reaction force
+#         plot_reoriented_force(oriented_mot, force_base="ground_force_calcn_l_v")
+
+# plt.show() """
