@@ -462,4 +462,6 @@ class DataProcessor:
 
     
 
-
+    def test_pipeline(self):
+        
+        
