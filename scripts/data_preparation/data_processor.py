@@ -24,8 +24,8 @@ class DataProcessor:
                     'mot': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}},
             'DB2': {'trc': {'x': ('x', -1), 'y': ('y', 1), 'z': ('z', -1)}, 
                     'mot': {'x': ('x', -1), 'y': ('y', 1), 'z': ('z', -1)}},
-            'DB3': {'trc': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}, 
-                    'mot': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}},
+            'DB3': {'trc': {'x': ('z', 1), 'y': ('y', 1), 'z': ('x', 1)}, 
+                    'mot': {'x': ('z', 1), 'y': ('y', 1), 'z': ('x', 1)}},
             'DB4': {'trc': {'x': ('z', 1),  'y': ('y', 1), 'z': ('x', -1)}, 
                     'mot': {'x': ('z', 1),  'y': ('y', 1), 'z': ('x', -1)}},
             'DB5': {'trc': {'x': ('x', -1), 'y': ('y', -1), 'z': ('z', 1)}, 
@@ -34,7 +34,6 @@ class DataProcessor:
         
         self.participants = self._get_participant_list()
         print(f"Initialized {self.db_name}. Found {len(self.participants)} participants.")
-
         
     def _get_participant_list(self):
         """Scans the directory to retrieve a list of all participant folder names."""
@@ -73,6 +72,14 @@ class DataProcessor:
             elif f.name.endswith('_grf.mot'): trial_map[base_name]['mot_grf'] = f
             elif f.suffix == '.sto': trial_map[base_name]['sto'] = f
             
+        # --- DEBUG GHOST TRIALS ---
+        #for t_name, f_dict in trial_map.items():
+        #    if f_dict['trc'] is None or f_dict['mot_grf'] is None:
+        #        has_trc = "YES" if f_dict['trc'] is not None else "NO"
+        #        has_grf = "YES" if f_dict['mot_grf'] is not None else "NO"
+        #        print(f"  [Debug Map] Potential mismatch for '{t_name}' -> TRC found: {has_trc} | GRF found: {has_grf}")
+        # --------------------------
+         
         return trial_map
     
     def _get_skiprows(self, file_path):
@@ -98,7 +105,7 @@ class DataProcessor:
         
     def load_data(self, file_path, file_type=None):
         """Loads a file into a pandas DataFrame, handling specific biomech formats."""
-        print(f"Loading: {file_path.name}...")
+        #print(f"Loading: {file_path.name}...")
         ext = file_path.suffix.lower()
         
         try:
@@ -166,7 +173,7 @@ class DataProcessor:
         new_df = df.copy()
         
         if file_type == 'trc_marker':
-            print(f"Reorienting TRC coordinates for {self.db_name}...")
+            #print(f"Reorienting TRC coordinates for {self.db_name}...")
             
             # Find all unique marker names by stripping the '_X'
             markers = [col[:-2] for col in df.columns if col.endswith('_X')]
@@ -182,7 +189,7 @@ class DataProcessor:
                     new_df[orig_z] = source_data[mapping['z'][0]] * mapping['z'][1]
                     
         elif file_type == 'mot_grf':
-            print(f"Reorienting GRF coordinates for {self.db_name}...")
+            #print(f"Reorienting GRF coordinates for {self.db_name}...")
             
             # OpenSim forces end in 'vx', 'px', or 'mx'. 
             # We strip the 'x' to find the base name (e.g., 'ground_force_calcn_l_v')
@@ -200,7 +207,77 @@ class DataProcessor:
                     new_df[orig_z] = source_data[mapping['z'][0]] * mapping['z'][1]
 
         return new_df
-    
+
+    def standardize_grf_orientation(self, df, threshold=20.0):
+        """
+        Dynamically checks and corrects 180-degree flipped GRF trials.
+        Applies corrections holistically to Forces, Points of Pressure, and Moments
+        for BOTH legs to maintain a valid Right-Handed coordinate system.
+        """
+        # 1. Find the vertical force columns for Left and Right legs
+        l_vy_col = next((c for c in df.columns if c.endswith('_l_vy')), None)
+        r_vy_col = next((c for c in df.columns if c.endswith('_r_vy')), None)
+        
+        test_leg_vy = None
+        test_leg_vx = None
+        
+        # 2. Pick the leg that actually hits the force plate (has a clear stance phase)
+        if l_vy_col and df[l_vy_col].abs().max() > threshold:
+            test_leg_vy = l_vy_col
+            test_leg_vx = l_vy_col.replace('_vy', '_vx')
+        elif r_vy_col and df[r_vy_col].abs().max() > threshold:
+            test_leg_vy = r_vy_col
+            test_leg_vx = r_vy_col.replace('_vy', '_vx')
+            
+        # Failsafe: If neither leg hit the plate cleanly, just return the data as-is
+        if not test_leg_vy or not test_leg_vx or test_leg_vx not in df.columns:
+            return df
+            
+        vy_data = df[test_leg_vy].values
+        vx_data = df[test_leg_vx].values
+        
+        flip_x = False
+        flip_y = False
+        
+        # 3. Check Y-Axis (Vertical must push UP)
+        stance_indices = np.where(np.abs(vy_data) > threshold)[0]
+        if len(stance_indices) > 10:
+            # If the average vertical force during stance is negative, the axis is upside down
+            if np.mean(vy_data[stance_indices]) < 0:
+                flip_y = True
+                
+        # 4. Check X-Axis (Braking before Propulsion)
+        if len(stance_indices) > 10:
+            stance_vx = vx_data[stance_indices]
+            idx_braking = np.argmin(stance_vx)
+            idx_propulsion = np.argmax(stance_vx)
+            
+            if idx_propulsion < idx_braking:
+                flip_x = True
+                
+        # 5. Check Z-Axis (Right-Hand Rule)
+        flip_z = (flip_x != flip_y) # Python's != operator acts as an XOR for booleans
+        
+        # 6. Apply the flips globally to the entire DataFrame
+        if flip_x or flip_y or flip_z:
+            df_corrected = df.copy() # Prevent SettingWithCopy warnings
+            
+            # Group all columns by their axis ending
+            cols_x = [c for c in df.columns if c.endswith('x')]
+            cols_y = [c for c in df.columns if c.endswith('y')]
+            cols_z = [c for c in df.columns if c.endswith('z')]
+            
+            if flip_x:
+                df_corrected[cols_x] = df_corrected[cols_x] * -1
+            if flip_y:
+                df_corrected[cols_y] = df_corrected[cols_y] * -1
+            if flip_z:
+                df_corrected[cols_z] = df_corrected[cols_z] * -1
+                
+            return df_corrected
+            
+        return df
+
     ## ------ SELECTING RELEVANT COLUMNS ------ #
     def select_relevant_data(self, df, file_type):
         if df is None:
@@ -271,6 +348,75 @@ class DataProcessor:
         to_indices = np.where(transitions == -1)[0] + 1
         
         if len(hs_indices) == 0 or len(to_indices) == 0:
+            #if not silent:
+            print(f"  [Debug Events] GRF Failure ({leg}): Max force was {fz.max():.2f}. Found {len(hs_indices)} Heel Strikes and {len(to_indices)} Toe-Offs.")
+            return None, None, None
+            
+        # Grab the FIRST valid heel strike and the first toe-off that happens AFTER it
+        hs1_idx = hs_indices[0]
+        valid_tos = to_indices[to_indices > hs1_idx]
+        if len(valid_tos) == 0:
+            return None, None, None
+            
+        to_idx = valid_tos[0]
+        
+        hs1_time = times_grf[hs1_idx]
+        to_time = times_grf[to_idx]
+        
+        # 3. Find HS2 using Kinematics (Heel Marker Height)
+        times_mrk = marker_df['Time'].values
+        heel_y = marker_df[heel_y_col].values
+        
+        # Find the marker frame closest to our GRF Toe-Off event
+        to_mrk_idx = np.argmin(np.abs(times_mrk - to_time))
+        
+        # Slice the heel vertical data from Toe-Off to the end of the trial
+        heel_data_after_to = heel_y[to_mrk_idx:]
+        
+        hs2_time = None
+        
+        if len(heel_data_after_to) > 0:
+            # Find the relative index of the absolute minimum value after toe-off
+            hs2_relative_idx = np.argmin(heel_data_after_to)
+            
+            # Add the Toe-Off index back to get the true index for the whole array
+            hs2_idx = to_mrk_idx + hs2_relative_idx
+            hs2_time = times_mrk[hs2_idx]
+            
+        if hs2_time is None:
+            print(f"  [Debug Events] Kinematic Failure ({leg}): Found HS1 and TO, but could not detect HS2. Max heel height was {heel_y.max():.4f}, Min was {heel_y.min():.4f}.")
+                
+        return hs1_time, to_time, hs2_time
+    
+    def extract_gait_events_old(self, grf_df, marker_df, leg='l', force_threshold=20):
+        """
+        Finds the timestamps for HS1 (Heel Strike 1), TO (Toe-Off), and HS2 (Heel Strike 2).
+        Returns: (hs1_time, to_time, hs2_time) or (None, None, None) if not found.
+        """
+        # 1. Identify specific columns based on the active leg
+        if leg.lower() == 'l':
+            grf_v_col = next((c for c in grf_df.columns if 'calcn_l_vy' in c.lower()), None)
+            heel_y_col = 'LHEE_Y'
+        else:
+            grf_v_col = next((c for c in grf_df.columns if 'calcn_r_vy' in c.lower()), None)
+            heel_y_col = 'RHEE_Y'
+
+        if not grf_v_col or heel_y_col not in marker_df.columns:
+            print(f"  [Error] Missing columns for {leg} leg detection.")
+            return None, None, None
+
+        # 2. Find HS1 and TO using GRF (Vertical Force)
+        fz = grf_df[grf_v_col].values
+        times_grf = grf_df['time'].values
+        
+        contact = (fz > force_threshold).astype(int)
+        transitions = np.diff(contact)
+        
+        hs_indices = np.where(transitions == 1)[0] + 1
+        to_indices = np.where(transitions == -1)[0] + 1
+        
+        if len(hs_indices) == 0 or len(to_indices) == 0:
+            print(f"  [Debug Events] GRF Failure ({leg}): Max force was {fz.max():.2f}. Found {len(hs_indices)} Heel Strikes and {len(to_indices)} Toe-Offs.")
             return None, None, None
             
         # Grab the FIRST valid heel strike and the first toe-off that happens AFTER it
@@ -307,6 +453,9 @@ class DataProcessor:
             if current_h <= (ref_height + buffer) and velocity < 0:
                 hs2_time = times_mrk[i]
                 break
+            
+        if hs2_time is None:
+            print(f"  [Debug Events] Kinematic Failure ({leg}): Found HS1 and TO, but could not detect HS2. Max heel height was {heel_y.max():.4f}, Min was {heel_y.min():.4f}.")
                 
         return hs1_time, to_time, hs2_time
 
@@ -409,8 +558,8 @@ class DataProcessor:
         new_df = df.copy()
         
         # Find the origin columns (case-insensitive lookup)
-        ankl_y = next((col for col in new_df.columns if col.upper() == 'ANKL_Y1'), None)
-        ankl_z = next((col for col in new_df.columns if col.upper() == 'ANKL_Z1'), None)
+        ankl_y = next((col for col in new_df.columns if col.upper() == 'HEE_Y1'), None)
+        ankl_z = next((col for col in new_df.columns if col.upper() == 'HEE_Z1'), None)
         
         if not (ankl_y and ankl_z):
             print("  [Warning] Origin marker ANKL_1 not found in dataframe. Skipping global coordinate shift.")
@@ -468,7 +617,7 @@ class DataProcessor:
             if "_X" in cleaned:
                 new_df.loc[:, col] = new_df.loc[:, col].sub(pelvis_center_x, axis="index")
 
-        print("  Pelvis-centered AP coordinate system applied using ASI_X1 and ASI_X2.")
+        #print("  Pelvis-centered AP coordinate system applied using ASI_X1 and ASI_X2.")
 
         return new_df
 
@@ -606,11 +755,20 @@ class DataProcessor:
 
                 if file_type in ["trc_marker", "mot_grf"]:
                     df = self.reorient_coordinates(df, file_type)
+                
+                    if file_type == "mot_grf":
+                        df = self.standardize_grf_orientation(df)
 
                 trial_results["data"][file_type] = self.select_relevant_data(df, file_type)
             
             # --- 2. EXTRACT GAIT EVENTS & TIME NORMALIZE ---
             data = trial_results["data"]
+            
+            # --- DEBUG SILENT CRASHES ---
+            #if data.get('trc_marker') is None: print(f"  [Debug Load] {trial_name}: TRC failed to load into memory.")
+            #if data.get('mot_grf') is None: print(f"  [Debug Load] {trial_name}: GRF failed to load into memory.")
+            # ----------------------------
+            
             hs1_t, to_t, hs2_t = None, None, None
             leg_used = None
             
@@ -764,3 +922,118 @@ class DataProcessor:
         else:
             print("\n[Warning] No successful trials were found. ML Matrix was not created.")
 
+## ------ EXPORTING RESULTS V2 (4 PRE-BAKED FILES) ------ #
+    def export_database_results_v2(self):
+        """
+        Runs the full processing pipeline for all participants.
+        Generates a Summary Report and 4 separate ML Matrix files based on input cases:
+        1. Markers and GRF
+        2. IK only
+        3. ID only
+        4. IK and ID
+        """
+        summary_rows = []
+        ml_rows = []
+        
+        print(f"\n--- Starting V2 Database Export for {self.db_name} ---")
+        
+        for participant in self.participants:
+            print(f"Processing participant: {participant}...")
+            
+            trials = self.process_participant_files(participant)
+            
+            for trial in trials:
+                t_name = trial['trial_name']
+                is_success = trial.get('normalized_data') is not None
+                
+                # --- 1. BUILD SUMMARY REPORT ROW ---
+                status = "Success" if is_success else "Failed"
+                error_msg = trial.get('error', '')
+                leg = trial.get('gait_events', {}).get('leg_used', '') if is_success else ''
+                
+                summary_rows.append({
+                    'DB': self.db_name,
+                    'Participant': participant,
+                    'Trial': t_name,
+                    'Status': status,
+                    'Leg_Used': leg,
+                    'Error_Message': error_msg
+                })
+                
+                # --- 2. BUILD MASTER FLATTENED ROW ---
+                if is_success:
+                    flat_row = {
+                        'DB': self.db_name,
+                        'Participant': participant,
+                        'Trial': t_name,
+                        'Leg_Used': leg,
+                        'Mass_kg': trial['anthropometrics']['mass_kg'],
+                        'Height_m': trial['anthropometrics']['height_m']
+                    }
+                    
+                    norm_data = trial['normalized_data']
+                    prefix_map = {'trc_marker': 'TRC', 'mot_grf': 'GRF', 'mot_ik': 'IK', 'sto_id': 'ID'}
+                    
+                    for f_type, prefix in prefix_map.items():
+                        if f_type in norm_data and norm_data[f_type] is not None:
+                            df = norm_data[f_type]
+                            for col in df.columns:
+                                if col.upper() in ['TIME', 'FRAME', 'FRAME#']:
+                                    continue
+                                vals = df[col].values
+                                for i, val in enumerate(vals):
+                                    flat_row[f"{prefix}_{col}_{i}"] = val
+                                    
+                    ml_rows.append(flat_row)
+
+        # --- 3. SLICE AND SAVE THE CSV FILES ---
+        out_dir = self.root_dir / "results" / self.db_name
+        out_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Save Summary Report
+        df_summary = pd.DataFrame(summary_rows)
+        summary_path = out_dir / f"{self.db_name}_Processing_Report.csv"
+        df_summary.to_csv(summary_path, index=False)
+        print(f"\n[Export Complete] Summary Report saved.")
+        
+        if ml_rows:
+            # Create a temporary master dataframe in memory
+            df_master = pd.DataFrame(ml_rows)
+            
+            # The essential metadata columns that must exist in every file
+            base_cols = ['DB', 'Participant', 'Trial', 'Leg_Used', 'Mass_kg', 'Height_m']
+            
+            # Helper function to grab the base columns PLUS any column that starts with the target prefixes
+            def get_target_columns(prefixes):
+                cols = base_cols.copy()
+                for col in df_master.columns:
+                    if any(col.startswith(p) for p in prefixes):
+                        cols.append(col)
+                return cols
+
+            # --- Case 1: TRC and GRF ---
+            cols_c1 = get_target_columns(['TRC_', 'GRF_'])
+            df_c1 = df_master[cols_c1]
+            df_c1.to_csv(out_dir / f"{self.db_name}_Case1_Markers_GRF.csv", index=False)
+            print(f"  -> Case 1 saved: {df_c1.shape[1]} features (Markers + GRF)")
+
+            # --- Case 2: IK Only ---
+            cols_c2 = get_target_columns(['IK_'])
+            df_c2 = df_master[cols_c2]
+            df_c2.to_csv(out_dir / f"{self.db_name}_Case2_IK.csv", index=False)
+            print(f"  -> Case 2 saved: {df_c2.shape[1]} features (IK Only)")
+
+            # --- Case 3: ID Only ---
+            cols_c3 = get_target_columns(['ID_'])
+            df_c3 = df_master[cols_c3]
+            df_c3.to_csv(out_dir / f"{self.db_name}_Case3_ID.csv", index=False)
+            print(f"  -> Case 3 saved: {df_c3.shape[1]} features (ID Only)")
+
+            # --- Case 4: IK and ID ---
+            cols_c4 = get_target_columns(['IK_', 'ID_'])
+            df_c4 = df_master[cols_c4]
+            df_c4.to_csv(out_dir / f"{self.db_name}_Case4_IK_ID.csv", index=False)
+            print(f"  -> Case 4 saved: {df_c4.shape[1]} features (IK + ID)")
+            
+        else:
+            print("\n[Warning] No successful trials were found. ML Matrices were not created.")

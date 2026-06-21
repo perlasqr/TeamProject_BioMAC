@@ -46,7 +46,7 @@ processor = DataProcessor(root, db_name)
 
 # Trigger the entire database pipeline and export
 if processor.participants:
-    processor.export_database_results()
+    processor.export_database_results_v2()
 else:
     print("No participants to process.")
 
