@@ -40,7 +40,7 @@ def plot_reoriented_force(mot_df, force_base="ground_force_calcn_r_v"):
 ## ------- MAIN ------- ##
 
 root = r"C:\Users\perla\Documents\AT\TeamProject\GitHub\TeamProject" 
-db_name = "DB1"
+db_name = "DB5"
 
 processor = DataProcessor(root, db_name)
 
