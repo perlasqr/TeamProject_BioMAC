@@ -966,7 +966,7 @@ class DataProcessor:
                             
                             for col in df.columns:
                                 # Skip time-tracking columns
-                                if col.upper() in ['TIME', 'FRAME', 'FRAME#']:
+                                if col.upper() in ['TIME', 'FRAME', 'FRAME#', 'TIME_PERCENT']:
                                     continue
                                     
                                 # Flatten the 101 points
@@ -1054,7 +1054,7 @@ class DataProcessor:
                         if f_type in norm_data and norm_data[f_type] is not None:
                             df = norm_data[f_type]
                             for col in df.columns:
-                                if col.upper() in ['TIME', 'FRAME', 'FRAME#']:
+                                if col.upper() in ['TIME', 'FRAME', 'FRAME#', 'TIME_PERCENT']:
                                     continue
                                 vals = df[col].values
                                 for i, val in enumerate(vals):
