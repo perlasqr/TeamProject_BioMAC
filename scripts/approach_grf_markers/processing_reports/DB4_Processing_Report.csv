@@ -1,0 +1,973 @@
+DB,Participant,Trial,Status,Leg_Used,Error_Message
+DB4,P01,DB4_P01_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.187, Max: 0.048, Limit: ±0.15)"
+DB4,P01,DB4_P01_T03_relabeled,Success,R,
+DB4,P01,DB4_P01_T04_relabeled,Success,R,
+DB4,P01,DB4_P01_T05_relabeled,Success,R,
+DB4,P01,DB4_P01_T06_relabeled,Success,R,
+DB4,P01,DB4_P01_T07_relabeled,Success,R,
+DB4,P01,DB4_P01_T08_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P01,DB4_P01_T09_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P01,DB4_P01_T10_relabeled,Success,R,
+DB4,P01,DB4_P01_T11_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P01,DB4_P01_T12_relabeled,Success,R,
+DB4,P01,DB4_P01_T13_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -15.517, Max: 8.823, Limit: ±0.15)"
+DB4,P01,DB4_P01_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_1_moment (Min: -0.152, Max: 0.019, Limit: ±0.15)"
+DB4,P01,DB4_P01_T15_relabeled,Success,R,
+DB4,P01,DB4_P01_T16_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.667, Max: 0.047, Limit: ±0.15)"
+DB4,P01,DB4_P01_T17_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P01,DB4_P01_T18_relabeled,Success,R,
+DB4,P01,DB4_P01_T19_relabeled,Success,R,
+DB4,P01,DB4_P01_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.202, Max: 0.073, Limit: ±0.15)"
+DB4,P01,DB4_P01_T22_relabeled,Success,R,
+DB4,P02,DB4_P02_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.117, Max: 0.436, Limit: ±0.15)"
+DB4,P02,DB4_P02_T03_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.542, Max: 1.082, Limit: ±0.15)"
+DB4,P02,DB4_P02_T04_relabeled,Success,R,
+DB4,P02,DB4_P02_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.192, Max: 0.034, Limit: ±0.15)"
+DB4,P02,DB4_P02_T06_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.165, Max: 0.044, Limit: ±0.15)"
+DB4,P02,DB4_P02_T07_relabeled,Success,R,
+DB4,P02,DB4_P02_T08_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.197, Max: 0.026, Limit: ±0.15)"
+DB4,P02,DB4_P02_T09_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.112, Max: 0.242, Limit: ±0.15)"
+DB4,P02,DB4_P02_T10_relabeled,Success,R,
+DB4,P02,DB4_P02_T11_relabeled,Success,R,
+DB4,P02,DB4_P02_T12_relabeled,Success,R,
+DB4,P02,DB4_P02_T13_relabeled,Success,R,
+DB4,P02,DB4_P02_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.457, Max: 0.619, Limit: ±0.15)"
+DB4,P02,DB4_P02_T15_relabeled,Success,R,
+DB4,P02,DB4_P02_T16_relabeled,Success,R,
+DB4,P02,DB4_P02_T17_relabeled,Success,R,
+DB4,P02,DB4_P02_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.194, Max: 0.207, Limit: ±0.15)"
+DB4,P02,DB4_P02_T19_relabeled,Success,R,
+DB4,P03,DB4_P03_T02_relabeled,Success,R,
+DB4,P03,DB4_P03_T03_relabeled,Success,R,
+DB4,P03,DB4_P03_T04_relabeled,Success,R,
+DB4,P03,DB4_P03_T05_relabeled,Success,R,
+DB4,P03,DB4_P03_T06_relabeled,Success,R,
+DB4,P03,DB4_P03_T07_relabeled,Success,R,
+DB4,P03,DB4_P03_T08_relabeled,Success,R,
+DB4,P03,DB4_P03_T09_relabeled,Success,R,
+DB4,P03,DB4_P03_T10_relabeled,Success,R,
+DB4,P03,DB4_P03_T11_relabeled,Success,R,
+DB4,P03,DB4_P03_T12_relabeled,Success,R,
+DB4,P03,DB4_P03_T13_relabeled,Success,R,
+DB4,P03,DB4_P03_T14_relabeled,Success,R,
+DB4,P03,DB4_P03_T15_relabeled,Success,R,
+DB4,P03,DB4_P03_T16_relabeled,Success,R,
+DB4,P03,DB4_P03_T17_relabeled,Success,R,
+DB4,P03,DB4_P03_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.065, Max: 0.156, Limit: ±0.15)"
+DB4,P03,DB4_P03_T19_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.181, Max: 0.253, Limit: ±0.15)"
+DB4,P03,DB4_P03_T20_relabeled,Success,R,
+DB4,P03,DB4_P03_T21_relabeled,Success,R,
+DB4,P03,DB4_P03_T22_relabeled,Success,R,
+DB4,P04,DB4_P04_T02_relabeled,Success,R,
+DB4,P04,DB4_P04_T03_relabeled,Success,R,
+DB4,P04,DB4_P04_T04_relabeled,Success,R,
+DB4,P04,DB4_P04_T05_relabeled,Success,R,
+DB4,P04,DB4_P04_T06_relabeled,Success,R,
+DB4,P04,DB4_P04_T07_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P04,DB4_P04_T08_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.079, Max: 0.337, Limit: ±0.15)"
+DB4,P04,DB4_P04_T09_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.096, Max: 0.231, Limit: ±0.15)"
+DB4,P04,DB4_P04_T10_relabeled,Success,R,
+DB4,P04,DB4_P04_T11_relabeled,Success,R,
+DB4,P04,DB4_P04_T12_relabeled,Success,R,
+DB4,P04,DB4_P04_T13_relabeled,Success,R,
+DB4,P04,DB4_P04_T14_relabeled,Success,R,
+DB4,P04,DB4_P04_T15_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P04,DB4_P04_T16_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.194, Max: 0.031, Limit: ±0.15)"
+DB4,P04,DB4_P04_T17_relabeled,Success,R,
+DB4,P04,DB4_P04_T18_relabeled,Success,R,
+DB4,P04,DB4_P04_T19_relabeled,Success,R,
+DB4,P04,DB4_P04_T20_relabeled,Success,R,
+DB4,P04,DB4_P04_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.228, Max: 0.088, Limit: ±0.15)"
+DB4,P05,DB4_P05_T02_relabeled,Success,R,
+DB4,P05,DB4_P05_T03_relabeled,Success,R,
+DB4,P05,DB4_P05_T04_relabeled,Success,R,
+DB4,P05,DB4_P05_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.804, Max: 0.073, Limit: ±0.15)"
+DB4,P05,DB4_P05_T06_relabeled,Success,R,
+DB4,P05,DB4_P05_T07_relabeled,Success,R,
+DB4,P05,DB4_P05_T08_relabeled,Success,R,
+DB4,P05,DB4_P05_T09_relabeled,Success,R,
+DB4,P05,DB4_P05_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P05,DB4_P05_T11_relabeled,Success,R,
+DB4,P05,DB4_P05_T12_relabeled,Success,R,
+DB4,P05,DB4_P05_T13_relabeled,Success,R,
+DB4,P05,DB4_P05_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.166, Max: 0.079, Limit: ±0.15)"
+DB4,P05,DB4_P05_T15_relabeled,Success,R,
+DB4,P05,DB4_P05_T16_relabeled,Success,R,
+DB4,P05,DB4_P05_T17_relabeled,Success,R,
+DB4,P05,DB4_P05_T18_relabeled,Success,R,
+DB4,P05,DB4_P05_T19_relabeled,Success,R,
+DB4,P05,DB4_P05_T20_relabeled,Success,R,
+DB4,P05,DB4_P05_T21_relabeled,Success,R,
+DB4,P05,DB4_P05_T22_relabeled,Success,R,
+DB4,P06,DB4_P06_T02_relabeled,Success,R,
+DB4,P06,DB4_P06_T03_relabeled,Success,R,
+DB4,P06,DB4_P06_T04_relabeled,Success,R,
+DB4,P06,DB4_P06_T05_relabeled,Success,R,
+DB4,P06,DB4_P06_T06_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.784, Max: 0.064, Limit: ±0.15)"
+DB4,P06,DB4_P06_T07_relabeled,Success,R,
+DB4,P06,DB4_P06_T08_relabeled,Success,R,
+DB4,P06,DB4_P06_T09_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.361, Max: 0.749, Limit: ±0.15)"
+DB4,P06,DB4_P06_T10_relabeled,Success,R,
+DB4,P06,DB4_P06_T11_relabeled,Success,R,
+DB4,P06,DB4_P06_T12_relabeled,Success,R,
+DB4,P06,DB4_P06_T13_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.159, Max: 0.093, Limit: ±0.15)"
+DB4,P06,DB4_P06_T14_relabeled,Success,R,
+DB4,P06,DB4_P06_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.350, Max: 0.660, Limit: ±0.15)"
+DB4,P06,DB4_P06_T16_relabeled,Success,R,
+DB4,P06,DB4_P06_T17_relabeled,Success,R,
+DB4,P06,DB4_P06_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.089, Max: 0.175, Limit: ±0.15)"
+DB4,P06,DB4_P06_T19_relabeled,Success,R,
+DB4,P06,DB4_P06_T20_relabeled,Success,R,
+DB4,P06,DB4_P06_T21_relabeled,Success,R,
+DB4,P06,DB4_P06_T22_relabeled,Success,R,
+DB4,P07,DB4_P07_T02_relabeled,Success,R,
+DB4,P07,DB4_P07_T03_relabeled,Success,R,
+DB4,P07,DB4_P07_T04_relabeled,Success,R,
+DB4,P07,DB4_P07_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.241, Max: 0.183, Limit: ±0.15)"
+DB4,P07,DB4_P07_T06_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.167, Max: 0.029, Limit: ±0.15)"
+DB4,P07,DB4_P07_T07_relabeled,Success,R,
+DB4,P07,DB4_P07_T08_relabeled,Success,R,
+DB4,P07,DB4_P07_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P07,DB4_P07_T10_relabeled,Success,R,
+DB4,P07,DB4_P07_T11_relabeled,Success,R,
+DB4,P07,DB4_P07_T12_relabeled,Success,R,
+DB4,P07,DB4_P07_T13_relabeled,Success,R,
+DB4,P07,DB4_P07_T14_relabeled,Success,R,
+DB4,P07,DB4_P07_T15_relabeled,Success,R,
+DB4,P07,DB4_P07_T16_relabeled,Success,R,
+DB4,P07,DB4_P07_T17_relabeled,Success,R,
+DB4,P07,DB4_P07_T18_relabeled,Success,R,
+DB4,P07,DB4_P07_T19_relabeled,Success,R,
+DB4,P07,DB4_P07_T20_relabeled,Success,R,
+DB4,P07,DB4_P07_T21_relabeled,Success,R,
+DB4,P07,DB4_P07_T22_relabeled,Success,R,
+DB4,P08,DB4_P08_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.195, Max: 0.030, Limit: ±0.15)"
+DB4,P08,DB4_P08_T03_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P08,DB4_P08_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.279, Max: 0.218, Limit: ±0.15)"
+DB4,P08,DB4_P08_T05_relabeled,Success,R,
+DB4,P08,DB4_P08_T06_relabeled,Success,R,
+DB4,P08,DB4_P08_T07_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P08,DB4_P08_T08_relabeled,Success,R,
+DB4,P08,DB4_P08_T09_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P08,DB4_P08_T10_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P08,DB4_P08_T11_relabeled,Success,R,
+DB4,P08,DB4_P08_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.285, Max: 0.075, Limit: ±0.15)"
+DB4,P08,DB4_P08_T13_relabeled,Success,R,
+DB4,P08,DB4_P08_T14_relabeled,Success,R,
+DB4,P08,DB4_P08_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.143, Max: 0.340, Limit: ±0.15)"
+DB4,P08,DB4_P08_T16_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.245, Max: 0.172, Limit: ±0.15)"
+DB4,P08,DB4_P08_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.316, Max: 0.097, Limit: ±0.15)"
+DB4,P08,DB4_P08_T18_relabeled,Success,R,
+DB4,P08,DB4_P08_T19_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.078, Max: 0.152, Limit: ±0.15)"
+DB4,P08,DB4_P08_T20_relabeled,Success,R,
+DB4,P08,DB4_P08_T21_relabeled,Success,R,
+DB4,P08,DB4_P08_T22_relabeled,Success,R,
+DB4,P09,DB4_P09_T017_relabeled,Success,R,
+DB4,P09,DB4_P09_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.492, Max: 0.041, Limit: ±0.15)"
+DB4,P09,DB4_P09_T03_relabeled,Success,R,
+DB4,P09,DB4_P09_T04_relabeled,Success,R,
+DB4,P09,DB4_P09_T06_relabeled,Success,L,
+DB4,P09,DB4_P09_T07_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P09,DB4_P09_T08_relabeled,Success,R,
+DB4,P09,DB4_P09_T10_relabeled,Success,R,
+DB4,P09,DB4_P09_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_2_moment (Min: -0.184, Max: 0.024, Limit: ±0.15)"
+DB4,P09,DB4_P09_T12_relabeled,Success,R,
+DB4,P09,DB4_P09_T13_relabeled,Success,R,
+DB4,P09,DB4_P09_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.093, Max: 0.222, Limit: ±0.15)"
+DB4,P09,DB4_P09_T15_relabeled,Success,R,
+DB4,P09,DB4_P09_T16_relabeled,Success,R,
+DB4,P09,DB4_P09_T18_relabeled,Success,R,
+DB4,P09,DB4_P09_T19_relabeled,Success,R,
+DB4,P09,DB4_P09_T20_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P09,DB4_P09_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.069, Max: 0.161, Limit: ±0.15)"
+DB4,P09,DB4_P09_T22_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P10,DB4_P10_T02_relabeled,Success,R,
+DB4,P10,DB4_P10_T03_relabeled,Success,R,
+DB4,P10,DB4_P10_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.163, Max: 0.223, Limit: ±0.15)"
+DB4,P10,DB4_P10_T05_relabeled,Success,R,
+DB4,P10,DB4_P10_T06_relabeled,Success,R,
+DB4,P10,DB4_P10_T07_relabeled,Success,R,
+DB4,P10,DB4_P10_T08_relabeled,Success,R,
+DB4,P10,DB4_P10_T09_relabeled,Success,R,
+DB4,P10,DB4_P10_T10_relabeled,Success,R,
+DB4,P10,DB4_P10_T11_relabeled,Success,R,
+DB4,P10,DB4_P10_T12_relabeled,Success,R,
+DB4,P10,DB4_P10_T13_relabeled,Success,R,
+DB4,P10,DB4_P10_T14_relabeled,Success,R,
+DB4,P10,DB4_P10_T15_relabeled,Success,R,
+DB4,P10,DB4_P10_T16_relabeled,Success,R,
+DB4,P10,DB4_P10_T17_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P10,DB4_P10_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.073, Max: 0.155, Limit: ±0.15)"
+DB4,P10,DB4_P10_T19_relabeled,Success,R,
+DB4,P10,DB4_P10_T20_relabeled,Success,R,
+DB4,P10,DB4_P10_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.072, Max: 0.172, Limit: ±0.15)"
+DB4,P10,DB4_P10_T22_relabeled,Success,R,
+DB4,P11,DB4_P11_T02_relabeled,Success,R,
+DB4,P11,DB4_P11_T03_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P11,DB4_P11_T04_relabeled,Success,R,
+DB4,P11,DB4_P11_T05_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P11,DB4_P11_T06_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P11,DB4_P11_T07_relabeled,Success,R,
+DB4,P11,DB4_P11_T08_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P11,DB4_P11_T09_relabeled,Success,L,
+DB4,P11,DB4_P11_T10_relabeled,Success,L,
+DB4,P11,DB4_P11_T11_relabeled,Success,R,
+DB4,P11,DB4_P11_T12_relabeled,Success,L,
+DB4,P11,DB4_P11_T13_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P11,DB4_P11_T14_relabeled,Success,R,
+DB4,P11,DB4_P11_T15_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P11,DB4_P11_T16_relabeled,Success,L,
+DB4,P11,DB4_P11_T17_relabeled,Success,L,
+DB4,P11,DB4_P11_T18_relabeled,Success,L,
+DB4,P11,DB4_P11_T19_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P11,DB4_P11_T20_relabeled,Success,L,
+DB4,P11,DB4_P11_T21_relabeled,Success,L,
+DB4,P12,DB4_P12_T02_relabeled,Success,R,
+DB4,P12,DB4_P12_T03_relabeled,Success,R,
+DB4,P12,DB4_P12_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.186, Max: 0.053, Limit: ±0.15)"
+DB4,P12,DB4_P12_T05_relabeled,Success,R,
+DB4,P12,DB4_P12_T06_relabeled,Success,R,
+DB4,P12,DB4_P12_T07_relabeled,Success,R,
+DB4,P12,DB4_P12_T08_relabeled,Success,L,
+DB4,P12,DB4_P12_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P12,DB4_P12_T10_relabeled,Success,L,
+DB4,P12,DB4_P12_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P12,DB4_P12_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.210, Max: 0.385, Limit: ±0.15)"
+DB4,P12,DB4_P12_T13_relabeled,Success,R,
+DB4,P12,DB4_P12_T14_relabeled,Success,R,
+DB4,P12,DB4_P12_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.151, Max: 0.140, Limit: ±0.15)"
+DB4,P12,DB4_P12_T16_relabeled,Success,R,
+DB4,P12,DB4_P12_T17_relabeled,Success,R,
+DB4,P12,DB4_P12_T18_relabeled,Success,R,
+DB4,P12,DB4_P12_T19_relabeled,Success,R,
+DB4,P12,DB4_P12_T20_relabeled,Success,R,
+DB4,P12,DB4_P12_T21_relabeled,Success,R,
+DB4,P12,DB4_P12_T22_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.189, Max: 0.056, Limit: ±0.15)"
+DB4,P12,DB4_P12_T23_relabeled,Success,R,
+DB4,P13,DB4_P13_T02_relabeled,Success,R,
+DB4,P13,DB4_P13_T03_relabeled,Success,R,
+DB4,P13,DB4_P13_T04_relabeled,Success,R,
+DB4,P13,DB4_P13_T05_relabeled,Success,R,
+DB4,P13,DB4_P13_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P13,DB4_P13_T07_relabeled,Success,R,
+DB4,P13,DB4_P13_T08_relabeled,Success,R,
+DB4,P13,DB4_P13_T09_relabeled,Success,R,
+DB4,P13,DB4_P13_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P13,DB4_P13_T11_relabeled,Success,R,
+DB4,P13,DB4_P13_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P13,DB4_P13_T13_relabeled,Success,R,
+DB4,P13,DB4_P13_T14_relabeled,Success,R,
+DB4,P13,DB4_P13_T15_relabeled,Success,L,
+DB4,P13,DB4_P13_T16_relabeled,Success,R,
+DB4,P13,DB4_P13_T17_relabeled,Success,R,
+DB4,P13,DB4_P13_T18_relabeled,Success,R,
+DB4,P13,DB4_P13_T19_relabeled,Success,L,
+DB4,P13,DB4_P13_T20_relabeled,Success,R,
+DB4,P13,DB4_P13_T21_relabeled,Success,R,
+DB4,P13,DB4_P13_T22_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P13,DB4_P13_T23_relabeled,Success,R,
+DB4,P14,DB4_P14_T02_relabeled,Success,R,
+DB4,P14,DB4_P14_T03_relabeled,Success,R,
+DB4,P14,DB4_P14_T04_relabeled,Success,R,
+DB4,P14,DB4_P14_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.073, Max: 0.181, Limit: ±0.15)"
+DB4,P14,DB4_P14_T06_relabeled,Success,R,
+DB4,P14,DB4_P14_T07_relabeled,Success,R,
+DB4,P14,DB4_P14_T08_relabeled,Success,R,
+DB4,P14,DB4_P14_T09_relabeled,Success,R,
+DB4,P14,DB4_P14_T10_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.377, Max: 0.241, Limit: ±0.15)"
+DB4,P14,DB4_P14_T11_relabeled,Success,R,
+DB4,P14,DB4_P14_T12_relabeled,Success,R,
+DB4,P14,DB4_P14_T13_relabeled,Success,R,
+DB4,P14,DB4_P14_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.194, Max: 0.148, Limit: ±0.15)"
+DB4,P14,DB4_P14_T15_relabeled,Success,R,
+DB4,P14,DB4_P14_T16_relabeled,Success,L,
+DB4,P14,DB4_P14_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.065, Max: 0.154, Limit: ±0.15)"
+DB4,P14,DB4_P14_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.070, Max: 0.166, Limit: ±0.15)"
+DB4,P14,DB4_P14_T19_relabeled,Success,R,
+DB4,P14,DB4_P14_T20_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.154, Max: 0.273, Limit: ±0.15)"
+DB4,P14,DB4_P14_T21_relabeled,Success,L,
+DB4,P14,DB4_P14_T22_relabeled,Success,R,
+DB4,P15,DB4_P15_T02_relabeled,Success,R,
+DB4,P15,DB4_P15_T03_relabeled,Success,L,
+DB4,P15,DB4_P15_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.233, Max: 0.041, Limit: ±0.15)"
+DB4,P15,DB4_P15_T05_relabeled,Success,R,
+DB4,P15,DB4_P15_T06_relabeled,Success,R,
+DB4,P15,DB4_P15_T07_relabeled,Success,R,
+DB4,P15,DB4_P15_T08_relabeled,Success,R,
+DB4,P15,DB4_P15_T09_relabeled,Failed,,Quality Check Failed: Flatline Vertical GRF. Range (0.5) is below minimum (100.0).
+DB4,P15,DB4_P15_T10_relabeled,Success,R,
+DB4,P15,DB4_P15_T11_relabeled,Success,L,
+DB4,P15,DB4_P15_T12_relabeled,Success,R,
+DB4,P15,DB4_P15_T13_relabeled,Success,R,
+DB4,P15,DB4_P15_T14_relabeled,Success,R,
+DB4,P15,DB4_P15_T15_relabeled,Success,R,
+DB4,P15,DB4_P15_T16_relabeled,Success,R,
+DB4,P15,DB4_P15_T17_relabeled,Success,R,
+DB4,P15,DB4_P15_T18_relabeled,Success,R,
+DB4,P15,DB4_P15_T19_relabeled,Success,R,
+DB4,P15,DB4_P15_T20_relabeled,Success,R,
+DB4,P15,DB4_P15_T21_relabeled,Success,R,
+DB4,P15,DB4_P15_T22_relabeled,Success,R,
+DB4,P15,DB4_P16_T15_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P16,DB4_P16_T02_relabeled,Success,R,
+DB4,P16,DB4_P16_T03_relabeled,Success,L,
+DB4,P16,DB4_P16_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P16,DB4_P16_T05_relabeled,Success,R,
+DB4,P16,DB4_P16_T06_relabeled,Failed,,Quality Check Failed: Flatline Vertical GRF. Range (5.8) is below minimum (100.0).
+DB4,P16,DB4_P16_T07_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P16,DB4_P16_T08_relabeled,Success,L,
+DB4,P16,DB4_P16_T09_relabeled,Success,R,
+DB4,P16,DB4_P16_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P16,DB4_P16_T11_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P16,DB4_P16_T12_relabeled,Success,R,
+DB4,P16,DB4_P16_T13_relabeled,Success,L,
+DB4,P16,DB4_P16_T16_relabeled,Success,L,
+DB4,P16,DB4_P16_T17_relabeled,Success,R,
+DB4,P16,DB4_P16_T18_relabeled,Success,R,
+DB4,P16,DB4_P16_T19_relabeled,Success,L,
+DB4,P16,DB4_P16_T21_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P16,DB4_P16_T22_relabeled,Success,R,
+DB4,P16,DB4_P16_T23_relabeled,Success,R,
+DB4,P16,DB4_P16_T24_relabeled,Success,L,
+DB4,P17,DB4_P17_T02_relabeled,Success,R,
+DB4,P17,DB4_P17_T03_relabeled,Success,R,
+DB4,P17,DB4_P17_T04_relabeled,Success,R,
+DB4,P17,DB4_P17_T05_relabeled,Success,R,
+DB4,P17,DB4_P17_T06_relabeled,Success,R,
+DB4,P17,DB4_P17_T07_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P17,DB4_P17_T08_relabeled,Success,L,
+DB4,P17,DB4_P17_T09_relabeled,Success,R,
+DB4,P17,DB4_P17_T10_relabeled,Success,R,
+DB4,P17,DB4_P17_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.192, Max: 0.321, Limit: ±0.15)"
+DB4,P17,DB4_P17_T12_relabeled,Success,L,
+DB4,P17,DB4_P17_T13_relabeled,Success,R,
+DB4,P17,DB4_P17_T14_relabeled,Success,R,
+DB4,P17,DB4_P17_T15_relabeled,Success,L,
+DB4,P17,DB4_P17_T16_relabeled,Success,R,
+DB4,P17,DB4_P17_T17_relabeled,Success,L,
+DB4,P17,DB4_P17_T18_relabeled,Success,L,
+DB4,P17,DB4_P17_T19_relabeled,Success,R,
+DB4,P17,DB4_P17_T20_relabeled,Success,R,
+DB4,P17,DB4_P17_T21_relabeled,Success,R,
+DB4,P18,DB4_P18_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T07_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T13_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T14_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T15_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T17_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T18_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T19_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T20_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T21_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T22_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P18,DB4_P18_T23_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P19,DB4_P19_T02_relabeled,Success,R,
+DB4,P19,DB4_P19_T03_relabeled,Success,R,
+DB4,P19,DB4_P19_T04_relabeled,Success,L,
+DB4,P19,DB4_P19_T05_relabeled,Success,R,
+DB4,P19,DB4_P19_T06_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P19,DB4_P19_T08_relabeled,Success,R,
+DB4,P19,DB4_P19_T09_relabeled,Success,R,
+DB4,P19,DB4_P19_T11_relabeled,Success,L,
+DB4,P19,DB4_P19_T12_relabeled,Success,R,
+DB4,P19,DB4_P19_T13_relabeled,Success,L,
+DB4,P19,DB4_P19_T14_relabeled,Success,R,
+DB4,P19,DB4_P19_T15_relabeled,Success,R,
+DB4,P19,DB4_P19_T16_relabeled,Success,R,
+DB4,P19,DB4_P19_T18_relabeled,Success,R,
+DB4,P19,DB4_P19_T19_relabeled,Success,R,
+DB4,P19,DB4_P19_T20_relabeled,Success,R,
+DB4,P19,DB4_P19_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.256, Max: 1.359, Limit: ±0.15)"
+DB4,P19,DB4_P19_T22_relabeled,Success,L,
+DB4,P19,DB4_P19_T24_relabeled,Success,L,
+DB4,P19,DB4_P19_T25_relabeled,Success,R,
+DB4,P20,DB4_P20_T04_relabeled,Success,R,
+DB4,P20,DB4_P20_T05_relabeled,Success,R,
+DB4,P20,DB4_P20_T06_relabeled,Success,R,
+DB4,P20,DB4_P20_T07_relabeled,Success,L,
+DB4,P20,DB4_P20_T08_relabeled,Success,R,
+DB4,P20,DB4_P20_T09_relabeled,Success,R,
+DB4,P20,DB4_P20_T10_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.212, Max: 0.069, Limit: ±0.15)"
+DB4,P20,DB4_P20_T11_relabeled,Success,L,
+DB4,P20,DB4_P20_T13_relabeled,Success,R,
+DB4,P20,DB4_P20_T15_relabeled,Success,R,
+DB4,P20,DB4_P20_T16_relabeled,Success,L,
+DB4,P20,DB4_P20_T17_relabeled,Success,L,
+DB4,P20,DB4_P20_T18_relabeled,Success,R,
+DB4,P20,DB4_P20_T19_relabeled,Success,R,
+DB4,P20,DB4_P20_T21_relabeled,Success,L,
+DB4,P20,DB4_P20_T22_relabeled,Success,L,
+DB4,P20,DB4_P20_T23_relabeled,Success,R,
+DB4,P20,DB4_P20_T24_relabeled,Success,R,
+DB4,P21,DB4_P21_T02_relabeled,Success,L,
+DB4,P21,DB4_P21_T03_relabeled,Success,L,
+DB4,P21,DB4_P21_T04_relabeled,Success,L,
+DB4,P21,DB4_P21_T05_relabeled,Success,R,
+DB4,P21,DB4_P21_T06_relabeled,Success,R,
+DB4,P21,DB4_P21_T07_relabeled,Success,R,
+DB4,P21,DB4_P21_T08_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.104, Max: 0.260, Limit: ±0.15)"
+DB4,P21,DB4_P21_T09_relabeled,Success,L,
+DB4,P21,DB4_P21_T10_relabeled,Success,R,
+DB4,P21,DB4_P21_T11_relabeled,Success,R,
+DB4,P21,DB4_P21_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.235, Max: 0.071, Limit: ±0.15)"
+DB4,P21,DB4_P21_T13_relabeled,Success,R,
+DB4,P21,DB4_P21_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.191, Max: 0.155, Limit: ±0.15)"
+DB4,P21,DB4_P21_T15_relabeled,Success,R,
+DB4,P21,DB4_P21_T16_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P21,DB4_P21_T17_relabeled,Success,R,
+DB4,P21,DB4_P21_T18_relabeled,Success,R,
+DB4,P21,DB4_P21_T19_relabeled,Success,L,
+DB4,P21,DB4_P21_T21_relabeled,Success,R,
+DB4,P21,DB4_P21_T22_relabeled,Success,R,
+DB4,P21,DB4_P21_T23_relabeled,Success,R,
+DB4,P22,DB4_P22_T02_relabeled,Success,R,
+DB4,P22,DB4_P22_T03_relabeled,Success,R,
+DB4,P22,DB4_P22_T04_relabeled,Success,R,
+DB4,P22,DB4_P22_T05_relabeled,Success,R,
+DB4,P22,DB4_P22_T06_relabeled,Success,L,
+DB4,P22,DB4_P22_T07_relabeled,Success,R,
+DB4,P22,DB4_P22_T08_relabeled,Success,R,
+DB4,P22,DB4_P22_T09_relabeled,Success,R,
+DB4,P22,DB4_P22_T10_relabeled,Success,R,
+DB4,P22,DB4_P22_T11_relabeled,Success,L,
+DB4,P22,DB4_P22_T12_relabeled,Success,R,
+DB4,P22,DB4_P22_T13_relabeled,Success,R,
+DB4,P22,DB4_P22_T14_relabeled,Success,R,
+DB4,P22,DB4_P22_T15_relabeled,Success,L,
+DB4,P22,DB4_P22_T16_relabeled,Success,R,
+DB4,P22,DB4_P22_T17_relabeled,Success,L,
+DB4,P22,DB4_P22_T18_relabeled,Success,R,
+DB4,P22,DB4_P22_T19_relabeled,Success,L,
+DB4,P22,DB4_P22_T21_relabeled,Success,R,
+DB4,P22,DB4_P22_T23_relabeled,Success,R,
+DB4,P24,DB4_P24_T019_relabeled,Success,R,
+DB4,P24,DB4_P24_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.159, Max: 0.124, Limit: ±0.15)"
+DB4,P24,DB4_P24_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P24,DB4_P24_T05_relabeled,Success,R,
+DB4,P24,DB4_P24_T06_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.068, Max: 0.189, Limit: ±0.15)"
+DB4,P24,DB4_P24_T07_relabeled,Success,R,
+DB4,P24,DB4_P24_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P24,DB4_P24_T10_relabeled,Success,R,
+DB4,P24,DB4_P24_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P24,DB4_P24_T12_relabeled,Success,L,
+DB4,P24,DB4_P24_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.173, Max: 0.172, Limit: ±0.15)"
+DB4,P24,DB4_P24_T15_relabeled,Success,R,
+DB4,P24,DB4_P24_T16_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P24,DB4_P24_T17_relabeled,Success,R,
+DB4,P24,DB4_P24_T18_relabeled,Success,R,
+DB4,P24,DB4_P24_T21_relabeled,Success,R,
+DB4,P24,DB4_P24_T22_relabeled,Success,R,
+DB4,P24,DB4_P24_T23_relabeled,Success,R,
+DB4,P24,DB4_P24_T24_relabeled,Success,R,
+DB4,P25,DB4_P25_T02_relabeled,Success,R,
+DB4,P25,DB4_P25_T03_relabeled,Success,L,
+DB4,P25,DB4_P25_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P25,DB4_P25_T05_relabeled,Success,L,
+DB4,P25,DB4_P25_T06_relabeled,Success,R,
+DB4,P25,DB4_P25_T07_relabeled,Success,L,
+DB4,P25,DB4_P25_T08_relabeled,Success,L,
+DB4,P25,DB4_P25_T09_relabeled,Success,R,
+DB4,P25,DB4_P25_T10_relabeled,Success,L,
+DB4,P25,DB4_P25_T11_relabeled,Success,L,
+DB4,P25,DB4_P25_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P25,DB4_P25_T13_relabeled,Success,R,
+DB4,P25,DB4_P25_T14_relabeled,Success,R,
+DB4,P25,DB4_P25_T16_relabeled,Success,R,
+DB4,P25,DB4_P25_T18_relabeled,Success,R,
+DB4,P25,DB4_P25_T19_relabeled,Success,R,
+DB4,P25,DB4_P25_T20_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P25,DB4_P25_T21_relabeled,Success,L,
+DB4,P25,DB4_P25_T22_relabeled,Success,R,
+DB4,P25,DB4_P25_T23_relabeled,Success,L,
+DB4,P25,DB4_P25_T24_relabeled,Success,R,
+DB4,P26,DB4_P26_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T07_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T13_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T14_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T15_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T16_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T17_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T18_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T19_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T20_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T21_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T22_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P26,DB4_P26_T23_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P27,DB4_P27_T02_relabeled,Success,R,
+DB4,P27,DB4_P27_T04_relabeled,Success,R,
+DB4,P27,DB4_P27_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P27,DB4_P27_T06_relabeled,Success,R,
+DB4,P27,DB4_P27_T07_relabeled,Success,R,
+DB4,P27,DB4_P27_T08_relabeled,Success,R,
+DB4,P27,DB4_P27_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P27,DB4_P27_T10_relabeled,Success,L,
+DB4,P27,DB4_P27_T11_relabeled,Success,R,
+DB4,P27,DB4_P27_T12_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P27,DB4_P27_T13_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.611, Max: 0.056, Limit: ±0.15)"
+DB4,P27,DB4_P27_T14_relabeled,Success,L,
+DB4,P27,DB4_P27_T15_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P27,DB4_P27_T16_relabeled,Success,R,
+DB4,P27,DB4_P27_T17_relabeled,Success,L,
+DB4,P27,DB4_P27_T18_relabeled,Success,L,
+DB4,P27,DB4_P27_T19_relabeled,Success,L,
+DB4,P27,DB4_P27_T20_relabeled,Success,R,
+DB4,P27,DB4_P27_T21_relabeled,Success,R,
+DB4,P27,DB4_P27_T22_relabeled,Success,L,
+DB4,P27,DB4_P27_T23_relabeled,Success,R,
+DB4,P28,DB4_P28_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T07_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T13_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T14_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T15_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T16_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T17_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T18_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T19_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T20_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T21_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P28,DB4_P28_T22_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P29,DB4_P29_T02_relabeled,Success,R,
+DB4,P29,DB4_P29_T03_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.338, Max: 0.278, Limit: ±0.15)"
+DB4,P29,DB4_P29_T04_relabeled,Success,R,
+DB4,P29,DB4_P29_T05_relabeled,Success,R,
+DB4,P29,DB4_P29_T06_relabeled,Success,R,
+DB4,P29,DB4_P29_T07_relabeled,Success,R,
+DB4,P29,DB4_P29_T08_relabeled,Success,R,
+DB4,P29,DB4_P29_T09_relabeled,Success,R,
+DB4,P29,DB4_P29_T10_relabeled,Success,R,
+DB4,P29,DB4_P29_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -2.737, Max: 4.029, Limit: ±0.15)"
+DB4,P29,DB4_P29_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -1.561, Max: 0.155, Limit: ±0.15)"
+DB4,P29,DB4_P29_T13_relabeled,Success,R,
+DB4,P29,DB4_P29_T14_relabeled,Success,R,
+DB4,P29,DB4_P29_T15_relabeled,Success,R,
+DB4,P29,DB4_P29_T16_relabeled,Success,R,
+DB4,P29,DB4_P29_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.368, Max: 0.295, Limit: ±0.15)"
+DB4,P29,DB4_P29_T18_relabeled,Success,R,
+DB4,P29,DB4_P29_T19_relabeled,Success,R,
+DB4,P29,DB4_P29_T20_relabeled,Success,R,
+DB4,P29,DB4_P29_T21_relabeled,Success,R,
+DB4,P30,DB4_P30_T02_relabeled,Success,R,
+DB4,P30,DB4_P30_T03_relabeled,Success,R,
+DB4,P30,DB4_P30_T04_relabeled,Success,R,
+DB4,P30,DB4_P30_T05_relabeled,Success,R,
+DB4,P30,DB4_P30_T06_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P30,DB4_P30_T07_relabeled,Success,R,
+DB4,P30,DB4_P30_T08_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P30,DB4_P30_T09_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P30,DB4_P30_T10_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -1.090, Max: 0.099, Limit: ±0.15)"
+DB4,P30,DB4_P30_T11_relabeled,Success,R,
+DB4,P30,DB4_P30_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.201, Max: 0.172, Limit: ±0.15)"
+DB4,P30,DB4_P30_T13_relabeled,Success,R,
+DB4,P30,DB4_P30_T14_relabeled,Success,R,
+DB4,P30,DB4_P30_T15_relabeled,Success,R,
+DB4,P30,DB4_P30_T16_relabeled,Success,R,
+DB4,P30,DB4_P30_T17_relabeled,Success,R,
+DB4,P30,DB4_P30_T18_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P30,DB4_P30_T19_relabeled,Success,R,
+DB4,P31,DB4_P31_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T07_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T13_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T14_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T15_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T16_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T17_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T18_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T19_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T20_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P31,DB4_P31_T21_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T07_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T09_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T10_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T11_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T12_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T13_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T14_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T15_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T16_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T17_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T18_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T19_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T20_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P32,DB4_P32_T21_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P34,DB4_P34_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P34,DB4_P34_T03_relabeled,Success,R,
+DB4,P34,DB4_P34_T04_relabeled,Success,R,
+DB4,P34,DB4_P34_T05_relabeled,Success,R,
+DB4,P34,DB4_P34_T06_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P34,DB4_P34_T07_relabeled,Success,R,
+DB4,P34,DB4_P34_T08_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P34,DB4_P34_T09_relabeled,Success,R,
+DB4,P34,DB4_P34_T10_relabeled,Success,R,
+DB4,P34,DB4_P34_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.130, Max: 0.227, Limit: ±0.15)"
+DB4,P34,DB4_P34_T12_relabeled,Success,R,
+DB4,P34,DB4_P34_T13_relabeled,Success,R,
+DB4,P34,DB4_P34_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -2.970, Max: 4.422, Limit: ±0.15)"
+DB4,P34,DB4_P34_T15_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P34,DB4_P34_T16_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.484, Max: 0.364, Limit: ±0.15)"
+DB4,P34,DB4_P34_T17_relabeled,Success,R,
+DB4,P34,DB4_P34_T18_relabeled,Success,R,
+DB4,P34,DB4_P34_T19_relabeled,Success,R,
+DB4,P34,DB4_P34_T20_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -2.886, Max: 4.300, Limit: ±0.15)"
+DB4,P34,DB4_P34_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.093, Max: 0.177, Limit: ±0.15)"
+DB4,P34,DB4_P34_T22_relabeled,Success,R,
+DB4,P42,DB4_P42_T02_relabeled,Success,R,
+DB4,P42,DB4_P42_T03_relabeled,Success,R,
+DB4,P42,DB4_P42_T04_relabeled,Success,R,
+DB4,P42,DB4_P42_T05_relabeled,Success,R,
+DB4,P42,DB4_P42_T06_relabeled,Success,R,
+DB4,P42,DB4_P42_T07_relabeled,Success,R,
+DB4,P42,DB4_P42_T08_relabeled,Success,R,
+DB4,P42,DB4_P42_T09_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB4,P42,DB4_P42_T10_relabeled,Success,R,
+DB4,P42,DB4_P42_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -7.188, Max: 0.387, Limit: ±0.15)"
+DB4,P42,DB4_P42_T12_relabeled,Success,R,
+DB4,P42,DB4_P42_T13_relabeled,Success,R,
+DB4,P42,DB4_P42_T14_relabeled,Success,R,
+DB4,P42,DB4_P42_T15_relabeled,Success,R,
+DB4,P42,DB4_P42_T16_relabeled,Success,R,
+DB4,P42,DB4_P42_T17_relabeled,Success,R,
+DB4,P42,DB4_P42_T18_relabeled,Success,R,
+DB4,P42,DB4_P42_T19_relabeled,Success,R,
+DB4,P42,DB4_P42_T20_relabeled,Success,R,
+DB4,P42,DB4_P42_T21_relabeled,Success,R,
+DB4,P43,DB4_P43_T02_relabeled,Success,R,
+DB4,P43,DB4_P43_T03_relabeled,Success,R,
+DB4,P43,DB4_P43_T04_relabeled,Success,R,
+DB4,P43,DB4_P43_T05_relabeled,Success,R,
+DB4,P43,DB4_P43_T06_relabeled,Success,R,
+DB4,P43,DB4_P43_T07_relabeled,Success,R,
+DB4,P43,DB4_P43_T08_relabeled,Success,R,
+DB4,P43,DB4_P43_T09_relabeled,Success,R,
+DB4,P43,DB4_P43_T10_relabeled,Success,R,
+DB4,P43,DB4_P43_T11_relabeled,Success,R,
+DB4,P43,DB4_P43_T12_relabeled,Success,R,
+DB4,P43,DB4_P43_T13_relabeled,Success,R,
+DB4,P43,DB4_P43_T14_relabeled,Success,R,
+DB4,P43,DB4_P43_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.437, Max: 0.079, Limit: ±0.15)"
+DB4,P43,DB4_P43_T16_relabeled,Success,R,
+DB4,P43,DB4_P43_T17_relabeled,Success,R,
+DB4,P43,DB4_P43_T18_relabeled,Success,R,
+DB4,P43,DB4_P43_T19_relabeled,Success,R,
+DB4,P43,DB4_P43_T20_relabeled,Success,R,
+DB4,P43,DB4_P43_T21_relabeled,Success,R,
+DB4,P44,DB4_P44_T02_relabeled,Success,R,
+DB4,P44,DB4_P44_T03_relabeled,Success,R,
+DB4,P44,DB4_P44_T04_relabeled,Success,R,
+DB4,P44,DB4_P44_T05_relabeled,Success,R,
+DB4,P44,DB4_P44_T06_relabeled,Success,R,
+DB4,P44,DB4_P44_T08_relabeled,Success,R,
+DB4,P44,DB4_P44_T09_relabeled,Success,R,
+DB4,P44,DB4_P44_T10_relabeled,Success,R,
+DB4,P44,DB4_P44_T11_relabeled,Success,R,
+DB4,P44,DB4_P44_T12_relabeled,Success,R,
+DB4,P44,DB4_P44_T13_relabeled,Success,R,
+DB4,P44,DB4_P44_T14_relabeled,Success,R,
+DB4,P44,DB4_P44_T15_relabeled,Success,R,
+DB4,P44,DB4_P44_T16_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.173, Max: 0.072, Limit: ±0.15)"
+DB4,P44,DB4_P44_T17_relabeled,Success,R,
+DB4,P44,DB4_P44_T18_relabeled,Success,R,
+DB4,P44,DB4_P44_T19_relabeled,Success,R,
+DB4,P44,DB4_P44_T20_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -9.742, Max: 3.661, Limit: ±0.15)"
+DB4,P44,DB4_P44_T21_relabeled,Success,R,
+DB4,P44,DB4_P44_T22_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.074, Max: 0.161, Limit: ±0.15)"
+DB4,P45,DB4_P45_T02_relabeled,Success,R,
+DB4,P45,DB4_P45_T03_relabeled,Success,R,
+DB4,P45,DB4_P45_T04_relabeled,Success,R,
+DB4,P45,DB4_P45_T06_relabeled,Success,R,
+DB4,P45,DB4_P45_T07_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.168, Max: 0.084, Limit: ±0.15)"
+DB4,P45,DB4_P45_T08_relabeled,Success,R,
+DB4,P45,DB4_P45_T09_relabeled,Success,R,
+DB4,P45,DB4_P45_T10_relabeled,Success,R,
+DB4,P45,DB4_P45_T11_relabeled,Success,R,
+DB4,P45,DB4_P45_T12_relabeled,Success,R,
+DB4,P45,DB4_P45_T13_relabeled,Success,R,
+DB4,P45,DB4_P45_T14_relabeled,Success,R,
+DB4,P45,DB4_P45_T15_relabeled,Success,R,
+DB4,P45,DB4_P45_T17_relabeled,Success,R,
+DB4,P45,DB4_P45_T18_relabeled,Success,R,
+DB4,P45,DB4_P45_T19_relabeled,Success,R,
+DB4,P45,DB4_P45_T20_relabeled,Success,R,
+DB4,P45,DB4_P45_T21_relabeled,Success,R,
+DB4,P45,DB4_P45_T22_relabeled,Success,R,
+DB4,P45,DB4_P45_T23_relabeled,Success,R,
+DB4,P46,DB4_P46_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.261, Max: 0.052, Limit: ±0.15)"
+DB4,P46,DB4_P46_T03_relabeled,Success,R,
+DB4,P46,DB4_P46_T04_relabeled,Success,R,
+DB4,P46,DB4_P46_T05_relabeled,Success,R,
+DB4,P46,DB4_P46_T06_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.163, Max: 0.107, Limit: ±0.15)"
+DB4,P46,DB4_P46_T07_relabeled,Success,R,
+DB4,P46,DB4_P46_T08_relabeled,Success,R,
+DB4,P46,DB4_P46_T09_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -1.007, Max: 0.075, Limit: ±0.15)"
+DB4,P46,DB4_P46_T10_relabeled,Success,R,
+DB4,P46,DB4_P46_T11_relabeled,Success,R,
+DB4,P46,DB4_P46_T12_relabeled,Success,R,
+DB4,P46,DB4_P46_T13_relabeled,Success,R,
+DB4,P46,DB4_P46_T14_relabeled,Success,R,
+DB4,P46,DB4_P46_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -3.186, Max: 1.128, Limit: ±0.15)"
+DB4,P46,DB4_P46_T16_relabeled,Success,R,
+DB4,P46,DB4_P46_T17_relabeled,Success,R,
+DB4,P46,DB4_P46_T18_relabeled,Success,R,
+DB4,P46,DB4_P46_T19_relabeled,Success,R,
+DB4,P46,DB4_P46_T20_relabeled,Success,R,
+DB4,P46,DB4_P46_T21_relabeled,Success,R,
+DB4,P47,DB4_P47_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.360, Max: 0.135, Limit: ±0.15)"
+DB4,P47,DB4_P47_T03_relabeled,Success,R,
+DB4,P47,DB4_P47_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.174, Max: 0.148, Limit: ±0.15)"
+DB4,P47,DB4_P47_T05_relabeled,Success,R,
+DB4,P47,DB4_P47_T06_relabeled,Success,R,
+DB4,P47,DB4_P47_T07_relabeled,Success,R,
+DB4,P47,DB4_P47_T08_relabeled,Success,R,
+DB4,P47,DB4_P47_T09_relabeled,Success,R,
+DB4,P47,DB4_P47_T10_relabeled,Success,R,
+DB4,P47,DB4_P47_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.093, Max: 0.213, Limit: ±0.15)"
+DB4,P47,DB4_P47_T12_relabeled,Success,R,
+DB4,P47,DB4_P47_T13_relabeled,Success,R,
+DB4,P47,DB4_P47_T14_relabeled,Success,R,
+DB4,P47,DB4_P47_T15_relabeled,Success,R,
+DB4,P47,DB4_P47_T16_relabeled,Success,R,
+DB4,P47,DB4_P47_T17_relabeled,Success,R,
+DB4,P47,DB4_P47_T18_relabeled,Success,R,
+DB4,P47,DB4_P47_T19_relabeled,Success,R,
+DB4,P47,DB4_P47_T20_relabeled,Success,R,
+DB4,P47,DB4_P47_T21_relabeled,Success,R,
+DB4,P48,DB4_P48_T02_relabeled,Success,R,
+DB4,P48,DB4_P48_T03_relabeled,Success,R,
+DB4,P48,DB4_P48_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.178, Max: 0.062, Limit: ±0.15)"
+DB4,P48,DB4_P48_T05_relabeled,Success,R,
+DB4,P48,DB4_P48_T06_relabeled,Success,R,
+DB4,P48,DB4_P48_T07_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.154, Max: 0.063, Limit: ±0.15)"
+DB4,P48,DB4_P48_T08_relabeled,Success,R,
+DB4,P48,DB4_P48_T09_relabeled,Success,R,
+DB4,P48,DB4_P48_T10_relabeled,Success,R,
+DB4,P48,DB4_P48_T11_relabeled,Success,R,
+DB4,P48,DB4_P48_T12_relabeled,Success,R,
+DB4,P48,DB4_P48_T13_relabeled,Success,R,
+DB4,P48,DB4_P48_T14_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -2.637, Max: 0.926, Limit: ±0.15)"
+DB4,P48,DB4_P48_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -1.286, Max: 0.164, Limit: ±0.15)"
+DB4,P48,DB4_P48_T16_relabeled,Success,R,
+DB4,P48,DB4_P48_T17_relabeled,Success,R,
+DB4,P48,DB4_P48_T19_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.084, Max: 0.184, Limit: ±0.15)"
+DB4,P48,DB4_P48_T20_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -2.036, Max: 0.221, Limit: ±0.15)"
+DB4,P48,DB4_P48_T21_relabeled,Success,R,
+DB4,P48,DB4_P48_T22_relabeled,Success,R,
+DB4,P49,DB4_P49_T02_relabeled,Success,R,
+DB4,P49,DB4_P49_T03_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_1_moment (Min: -0.073, Max: 0.168, Limit: ±0.15)"
+DB4,P49,DB4_P49_T04_relabeled,Success,R,
+DB4,P49,DB4_P49_T05_relabeled,Success,R,
+DB4,P49,DB4_P49_T06_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.372, Max: 0.731, Limit: ±0.15)"
+DB4,P49,DB4_P49_T07_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.518, Max: 0.155, Limit: ±0.15)"
+DB4,P49,DB4_P49_T08_relabeled,Success,R,
+DB4,P49,DB4_P49_T09_relabeled,Success,R,
+DB4,P49,DB4_P49_T10_relabeled,Success,R,
+DB4,P49,DB4_P49_T11_relabeled,Success,R,
+DB4,P49,DB4_P49_T13_relabeled,Success,R,
+DB4,P49,DB4_P49_T14_relabeled,Success,R,
+DB4,P49,DB4_P49_T15_relabeled,Success,R,
+DB4,P49,DB4_P49_T16_relabeled,Success,R,
+DB4,P49,DB4_P49_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.166, Max: 0.073, Limit: ±0.15)"
+DB4,P49,DB4_P49_T18_relabeled,Success,R,
+DB4,P49,DB4_P49_T19_relabeled,Success,R,
+DB4,P49,DB4_P49_T20_relabeled,Success,R,
+DB4,P49,DB4_P49_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.365, Max: 0.130, Limit: ±0.15)"
+DB4,P49,DB4_P49_T22_relabeled,Success,R,
+DB4,P50,DB4_P50_T02_relabeled,Success,R,
+DB4,P50,DB4_P50_T03_relabeled,Success,R,
+DB4,P50,DB4_P50_T04_relabeled,Success,R,
+DB4,P50,DB4_P50_T05_relabeled,Success,R,
+DB4,P50,DB4_P50_T06_relabeled,Success,R,
+DB4,P50,DB4_P50_T07_relabeled,Success,R,
+DB4,P50,DB4_P50_T08_relabeled,Success,R,
+DB4,P50,DB4_P50_T09_relabeled,Success,R,
+DB4,P50,DB4_P50_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.481, Max: 0.181, Limit: ±0.15)"
+DB4,P50,DB4_P50_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in knee_angle_1_moment (Min: -0.191, Max: 0.024, Limit: ±0.15)"
+DB4,P50,DB4_P50_T14_relabeled,Success,R,
+DB4,P50,DB4_P50_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.317, Max: 0.115, Limit: ±0.15)"
+DB4,P50,DB4_P50_T16_relabeled,Success,R,
+DB4,P50,DB4_P50_T17_relabeled,Success,R,
+DB4,P50,DB4_P50_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.311, Max: 0.332, Limit: ±0.15)"
+DB4,P50,DB4_P50_T19_relabeled,Success,R,
+DB4,P50,DB4_P50_T20_relabeled,Success,R,
+DB4,P50,DB4_P50_T21_relabeled,Success,R,
+DB4,P50,DB4_P50_T22_relabeled,Success,R,
+DB4,P50,DB4_P50_T23_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.125, Max: 0.242, Limit: ±0.15)"
+DB4,P51,DB4_P51_T02_relabeled,Success,R,
+DB4,P51,DB4_P51_T03_relabeled,Success,R,
+DB4,P51,DB4_P51_T04_relabeled,Success,R,
+DB4,P51,DB4_P51_T05_relabeled,Success,R,
+DB4,P51,DB4_P51_T06_relabeled,Success,R,
+DB4,P51,DB4_P51_T07_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB4,P51,DB4_P51_T08_relabeled,Success,R,
+DB4,P51,DB4_P51_T09_relabeled,Success,R,
+DB4,P51,DB4_P51_T10_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -3.234, Max: 2.003, Limit: ±0.15)"
+DB4,P51,DB4_P51_T11_relabeled,Success,R,
+DB4,P51,DB4_P51_T12_relabeled,Success,R,
+DB4,P51,DB4_P51_T13_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.145, Max: 0.198, Limit: ±0.15)"
+DB4,P51,DB4_P51_T14_relabeled,Success,R,
+DB4,P51,DB4_P51_T15_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.211, Max: 0.508, Limit: ±0.15)"
+DB4,P51,DB4_P51_T16_relabeled,Success,R,
+DB4,P51,DB4_P51_T17_relabeled,Success,R,
+DB4,P51,DB4_P51_T18_relabeled,Success,R,
+DB4,P51,DB4_P51_T19_relabeled,Success,R,
+DB4,P51,DB4_P51_T20_relabeled,Success,R,
+DB4,P51,DB4_P51_T21_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.258, Max: 0.055, Limit: ±0.15)"
+DB4,P51,DB4_P51_T22_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.065, Max: 0.157, Limit: ±0.15)"
+DB4,P52,DB4_P52_T02_relabeled,Success,R,
+DB4,P52,DB4_P52_T03_relabeled,Success,R,
+DB4,P52,DB4_P52_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.709, Max: 3.348, Limit: ±0.15)"
+DB4,P52,DB4_P52_T05_relabeled,Success,R,
+DB4,P52,DB4_P52_T06_relabeled,Success,R,
+DB4,P52,DB4_P52_T07_relabeled,Success,R,
+DB4,P52,DB4_P52_T08_relabeled,Success,R,
+DB4,P52,DB4_P52_T09_relabeled,Success,R,
+DB4,P52,DB4_P52_T10_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -4.602, Max: 10.029, Limit: ±0.15)"
+DB4,P52,DB4_P52_T11_relabeled,Success,R,
+DB4,P52,DB4_P52_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -5.106, Max: 9.202, Limit: ±0.15)"
+DB4,P52,DB4_P52_T13_relabeled,Success,R,
+DB4,P52,DB4_P52_T14_relabeled,Success,R,
+DB4,P52,DB4_P52_T15_relabeled,Success,R,
+DB4,P52,DB4_P52_T16_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.727, Max: 0.092, Limit: ±0.15)"
+DB4,P52,DB4_P52_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.203, Max: 0.465, Limit: ±0.15)"
+DB4,P52,DB4_P52_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.163, Max: 0.711, Limit: ±0.15)"
+DB4,P52,DB4_P52_T19_relabeled,Success,R,
+DB4,P52,DB4_P52_T20_relabeled,Success,R,
+DB4,P52,DB4_P52_T21_relabeled,Success,R,
+DB4,P53,DB4_P53_T02_relabeled,Success,R,
+DB4,P53,DB4_P53_T03_relabeled,Success,R,
+DB4,P53,DB4_P53_T04_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -1.424, Max: 0.275, Limit: ±0.15)"
+DB4,P53,DB4_P53_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.152, Max: 0.037, Limit: ±0.15)"
+DB4,P53,DB4_P53_T06_relabeled,Success,R,
+DB4,P53,DB4_P53_T07_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.086, Max: 0.403, Limit: ±0.15)"
+DB4,P53,DB4_P53_T08_relabeled,Success,R,
+DB4,P53,DB4_P53_T09_relabeled,Success,R,
+DB4,P53,DB4_P53_T10_relabeled,Success,R,
+DB4,P53,DB4_P53_T11_relabeled,Success,R,
+DB4,P53,DB4_P53_T12_relabeled,Success,R,
+DB4,P53,DB4_P53_T13_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.164, Max: 0.042, Limit: ±0.15)"
+DB4,P53,DB4_P53_T14_relabeled,Success,R,
+DB4,P53,DB4_P53_T15_relabeled,Success,R,
+DB4,P53,DB4_P53_T16_relabeled,Success,R,
+DB4,P53,DB4_P53_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.209, Max: 0.043, Limit: ±0.15)"
+DB4,P53,DB4_P53_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.179, Max: 0.121, Limit: ±0.15)"
+DB4,P53,DB4_P53_T19_relabeled,Success,R,
+DB4,P54,DB4_P54_T02_relabeled,Success,R,
+DB4,P54,DB4_P54_T03_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.166, Max: 0.045, Limit: ±0.15)"
+DB4,P54,DB4_P54_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.126, Max: 0.171, Limit: ±0.15)"
+DB4,P54,DB4_P54_T06_relabeled,Success,R,
+DB4,P54,DB4_P54_T07_relabeled,Success,R,
+DB4,P54,DB4_P54_T08_relabeled,Success,R,
+DB4,P54,DB4_P54_T09_relabeled,Success,R,
+DB4,P54,DB4_P54_T10_relabeled,Success,R,
+DB4,P54,DB4_P54_T11_relabeled,Success,R,
+DB4,P54,DB4_P54_T13_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -3.500, Max: 22.928, Limit: ±0.15)"
+DB4,P54,DB4_P54_T14_relabeled,Success,R,
+DB4,P54,DB4_P54_T15_relabeled,Success,R,
+DB4,P54,DB4_P54_T16_relabeled,Success,R,
+DB4,P54,DB4_P54_T17_relabeled,Success,R,
+DB4,P54,DB4_P54_T18_relabeled,Success,R,
+DB4,P54,DB4_P54_T19_relabeled,Success,R,
+DB4,P54,DB4_P54_T20_relabeled,Success,R,
+DB4,P54,DB4_P54_T21_relabeled,Success,R,
+DB4,P54,DB4_P54_T22_relabeled,Success,R,
+DB4,P54,DB4_P54_T23_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -1.913, Max: 0.339, Limit: ±0.15)"
+DB4,P55,DB4_P55_T02_relabeled,Success,R,
+DB4,P55,DB4_P55_T03_relabeled,Success,R,
+DB4,P55,DB4_P55_T04_relabeled,Success,R,
+DB4,P55,DB4_P55_T05_relabeled,Success,R,
+DB4,P55,DB4_P55_T06_relabeled,Success,R,
+DB4,P55,DB4_P55_T07_relabeled,Success,R,
+DB4,P55,DB4_P55_T08_relabeled,Success,R,
+DB4,P55,DB4_P55_T10_relabeled,Success,R,
+DB4,P55,DB4_P55_T11_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.936, Max: 0.102, Limit: ±0.15)"
+DB4,P55,DB4_P55_T12_relabeled,Success,R,
+DB4,P55,DB4_P55_T13_relabeled,Success,R,
+DB4,P55,DB4_P55_T14_relabeled,Success,R,
+DB4,P55,DB4_P55_T15_relabeled,Success,R,
+DB4,P55,DB4_P55_T16_relabeled,Success,R,
+DB4,P55,DB4_P55_T18_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.162, Max: 0.143, Limit: ±0.15)"
+DB4,P55,DB4_P55_T19_relabeled,Success,R,
+DB4,P55,DB4_P55_T20_relabeled,Success,R,
+DB4,P55,DB4_P55_T21_relabeled,Success,R,
+DB4,P55,DB4_P55_T22_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -0.155, Max: 0.042, Limit: ±0.15)"
+DB4,P55,DB4_P55_T23_relabeled,Success,R,
+DB4,P56,DB4_P56_T02_relabeled,Success,R,
+DB4,P56,DB4_P56_T03_relabeled,Success,R,
+DB4,P56,DB4_P56_T04_relabeled,Success,R,
+DB4,P56,DB4_P56_T05_relabeled,Success,R,
+DB4,P56,DB4_P56_T06_relabeled,Success,R,
+DB4,P56,DB4_P56_T07_relabeled,Success,R,
+DB4,P56,DB4_P56_T08_relabeled,Success,R,
+DB4,P56,DB4_P56_T09_relabeled,Success,R,
+DB4,P56,DB4_P56_T10_relabeled,Success,R,
+DB4,P56,DB4_P56_T11_relabeled,Success,R,
+DB4,P56,DB4_P56_T12_relabeled,Success,R,
+DB4,P56,DB4_P56_T13_relabeled,Success,R,
+DB4,P56,DB4_P56_T14_relabeled,Success,R,
+DB4,P56,DB4_P56_T15_relabeled,Success,R,
+DB4,P56,DB4_P56_T16_relabeled,Success,R,
+DB4,P56,DB4_P56_T17_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_1_moment (Min: -4.933, Max: 5.425, Limit: ±0.15)"
+DB4,P56,DB4_P56_T18_relabeled,Success,R,
+DB4,P56,DB4_P56_T19_relabeled,Success,R,
+DB4,P56,DB4_P56_T20_relabeled,Success,R,
+DB4,P56,DB4_P56_T21_relabeled,Success,R,
+DB4,P57,DB4_P57_T02_relabeled,Success,R,
+DB4,P57,DB4_P57_T03_relabeled,Success,R,
+DB4,P57,DB4_P57_T04_relabeled,Success,R,
+DB4,P57,DB4_P57_T05_relabeled,Success,R,
+DB4,P57,DB4_P57_T06_relabeled,Success,R,
+DB4,P57,DB4_P57_T07_relabeled,Success,R,
+DB4,P57,DB4_P57_T08_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.065, Max: 0.153, Limit: ±0.15)"
+DB4,P57,DB4_P57_T09_relabeled,Success,R,
+DB4,P57,DB4_P57_T10_relabeled,Success,R,
+DB4,P57,DB4_P57_T11_relabeled,Success,R,
+DB4,P57,DB4_P57_T12_relabeled,Failed,,"ID Quality Check Failed: Noise detected in hip_flexion_2_moment (Min: -0.202, Max: 0.358, Limit: ±0.15)"
+DB4,P57,DB4_P57_T13_relabeled,Success,R,
+DB4,P57,DB4_P57_T14_relabeled,Success,R,
+DB4,P57,DB4_P57_T15_relabeled,Success,R,
+DB4,P57,DB4_P57_T16_relabeled,Success,R,
+DB4,P57,DB4_P57_T17_relabeled,Success,R,
+DB4,P57,DB4_P57_T18_relabeled,Success,R,
+DB4,P57,DB4_P57_T19_relabeled,Success,R,
+DB4,P57,DB4_P57_T20_relabeled,Success,R,
+DB4,P57,DB4_P57_T21_relabeled,Success,R,

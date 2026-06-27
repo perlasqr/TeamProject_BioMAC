@@ -1,0 +1,530 @@
+DB,Participant,Trial,Status,Leg_Used,Error_Message
+DB1,P01,DB1_P01_C1_T01_relabeled,Success,L,
+DB1,P01,DB1_P01_C1_T02_relabeled,Success,L,
+DB1,P01,DB1_P01_C1_T03_relabeled,Success,L,
+DB1,P01,DB1_P01_C1_T04_relabeled,Success,L,
+DB1,P01,DB1_P01_C1_T05_relabeled,Success,L,
+DB1,P01,DB1_P01_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P01,DB1_P01_C2_T02_relabeled,Success,L,
+DB1,P01,DB1_P01_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P01,DB1_P01_C2_T04_relabeled,Success,L,
+DB1,P01,DB1_P01_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P01,DB1_P01_C3_T01_relabeled,Success,L,
+DB1,P01,DB1_P01_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P01,DB1_P01_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P01,DB1_P01_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P01,DB1_P01_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C2_T02_relabeled,Success,L,
+DB1,P02,DB1_P02_C2_T03_relabeled,Success,L,
+DB1,P02,DB1_P02_C3_T01_relabeled,Success,L,
+DB1,P02,DB1_P02_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P02,DB1_P02_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C3_T01_relabeled,Success,L,
+DB1,P03,DB1_P03_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P03,DB1_P03_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C2_T01_relabeled,Success,L,
+DB1,P04,DB1_P04_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C2_T04_relabeled,Success,L,
+DB1,P04,DB1_P04_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P04,DB1_P04_C3_T01_relabeled,Success,L,
+DB1,P04,DB1_P04_C3_T02_relabeled,Success,L,
+DB1,P04,DB1_P04_C3_T03_relabeled,Success,L,
+DB1,P04,DB1_P04_C3_T04_relabeled,Success,L,
+DB1,P05,DB1_P05_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C2_T01_relabeled,Success,L,
+DB1,P05,DB1_P05_C2_T02_relabeled,Success,L,
+DB1,P05,DB1_P05_C2_T03_relabeled,Success,L,
+DB1,P05,DB1_P05_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C2_T05_relabeled,Success,L,
+DB1,P05,DB1_P05_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C3_T02_relabeled,Success,L,
+DB1,P05,DB1_P05_C3_T03_relabeled,Success,L,
+DB1,P05,DB1_P05_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P05,DB1_P05_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P06,DB1_P06_C1_T01_relabeled,Success,L,
+DB1,P06,DB1_P06_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P06,DB1_P06_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P06,DB1_P06_C1_T04_relabeled,Success,L,
+DB1,P06,DB1_P06_C2_T01_relabeled,Success,L,
+DB1,P06,DB1_P06_C2_T02_relabeled,Success,L,
+DB1,P06,DB1_P06_C2_T03_relabeled,Success,L,
+DB1,P06,DB1_P06_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P06,DB1_P06_C3_T01_relabeled,Success,R,
+DB1,P06,DB1_P06_C3_T02_relabeled,Success,L,
+DB1,P06,DB1_P06_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P06,DB1_P06_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P06,DB1_P06_C3_T05_relabeled,Success,L,
+DB1,P07,DB1_P07_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C2_T03_relabeled,Success,L,
+DB1,P07,DB1_P07_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C3_T01_relabeled,Success,L,
+DB1,P07,DB1_P07_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P07,DB1_P07_C3_T03_relabeled,Success,L,
+DB1,P07,DB1_P07_C3_T04_relabeled,Success,L,
+DB1,P08,DB1_P08_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P08,DB1_P08_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P08,DB1_P08_C1_T03_relabeled,Failed,,Quality Check Failed: Missing Braking/Propulsion. AP Range (44.4) is below minimum (50.0).
+DB1,P08,DB1_P08_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P08,DB1_P08_C2_T01_relabeled,Success,L,
+DB1,P08,DB1_P08_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P08,DB1_P08_C2_T03_relabeled,Success,L,
+DB1,P08,DB1_P08_C2_T04_relabeled,Success,L,
+DB1,P08,DB1_P08_C2_T05_relabeled,Success,L,
+DB1,P08,DB1_P08_C3_T01_relabeled,Success,L,
+DB1,P08,DB1_P08_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P08,DB1_P08_C3_T03_relabeled,Success,L,
+DB1,P08,DB1_P08_C3_T04_relabeled,Success,L,
+DB1,P08,DB1_P08_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C2_T01_relabeled,Success,L,
+DB1,P09,DB1_P09_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C2_T03_relabeled,Success,L,
+DB1,P09,DB1_P09_C2_T04_relabeled,Success,L,
+DB1,P09,DB1_P09_C2_T05_relabeled,Success,L,
+DB1,P09,DB1_P09_C3_T01_relabeled,Success,L,
+DB1,P09,DB1_P09_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P09,DB1_P09_C3_T03_relabeled,Success,L,
+DB1,P09,DB1_P09_C3_T04_relabeled,Success,L,
+DB1,P09,DB1_P09_C3_T05_relabeled,Success,L,
+DB1,P10,DB1_P10_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C2_T01_relabeled,Success,L,
+DB1,P10,DB1_P10_C2_T02_relabeled,Success,L,
+DB1,P10,DB1_P10_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C2_T04_relabeled,Success,L,
+DB1,P10,DB1_P10_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C3_T02_relabeled,Success,L,
+DB1,P10,DB1_P10_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P10,DB1_P10_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C2_T01_relabeled,Success,L,
+DB1,P11,DB1_P11_C2_T02_relabeled,Success,L,
+DB1,P11,DB1_P11_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C2_T05_relabeled,Success,L,
+DB1,P11,DB1_P11_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P11,DB1_P11_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C2_T01_relabeled,Success,L,
+DB1,P12,DB1_P12_C2_T02_relabeled,Success,L,
+DB1,P12,DB1_P12_C2_T03_relabeled,Success,L,
+DB1,P12,DB1_P12_C2_T04_relabeled,Success,L,
+DB1,P12,DB1_P12_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P12,DB1_P12_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C2_T01_relabeled,Success,L,
+DB1,P13,DB1_P13_C2_T02_relabeled,Success,L,
+DB1,P13,DB1_P13_C2_T03_relabeled,Success,L,
+DB1,P13,DB1_P13_C2_T04_relabeled,Success,L,
+DB1,P13,DB1_P13_C2_T05_relabeled,Success,L,
+DB1,P13,DB1_P13_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P13,DB1_P13_C3_T03_relabeled,Success,L,
+DB1,P14,DB1_P14_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C1_T02_relabeled,Success,L,
+DB1,P14,DB1_P14_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C2_T03_relabeled,Success,L,
+DB1,P14,DB1_P14_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P14,DB1_P14_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C2_T02_relabeled,Success,L,
+DB1,P15,DB1_P15_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C2_T05_relabeled,Success,L,
+DB1,P15,DB1_P15_C3_T01_relabeled,Success,L,
+DB1,P15,DB1_P15_C3_T02_relabeled,Success,L,
+DB1,P15,DB1_P15_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P15,DB1_P15_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P16,DB1_P16_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C2_T01_relabeled,Success,L,
+DB1,P17,DB1_P17_C2_T02_relabeled,Success,L,
+DB1,P17,DB1_P17_C2_T03_relabeled,Success,L,
+DB1,P17,DB1_P17_C2_T04_relabeled,Success,L,
+DB1,P17,DB1_P17_C2_T05_relabeled,Success,L,
+DB1,P17,DB1_P17_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P17,DB1_P17_C3_T04_relabeled,Success,L,
+DB1,P17,DB1_P17_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C2_T01_relabeled,Success,L,
+DB1,P18,DB1_P18_C2_T02_relabeled,Success,L,
+DB1,P18,DB1_P18_C2_T03_relabeled,Success,L,
+DB1,P18,DB1_P18_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C2_T05_relabeled,Success,L,
+DB1,P18,DB1_P18_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P18,DB1_P18_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C2_T01_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.153, Max: 0.004, Limit: ±0.15)"
+DB1,P19,DB1_P19_C2_T02_relabeled,Success,L,
+DB1,P19,DB1_P19_C2_T03_relabeled,Success,L,
+DB1,P19,DB1_P19_C2_T04_relabeled,Success,R,
+DB1,P19,DB1_P19_C2_T05_relabeled,Success,L,
+DB1,P19,DB1_P19_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C3_T02_relabeled,Success,L,
+DB1,P19,DB1_P19_C3_T03_relabeled,Success,L,
+DB1,P19,DB1_P19_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P19,DB1_P19_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C2_T02_relabeled,Success,L,
+DB1,P20,DB1_P20_C2_T03_relabeled,Success,L,
+DB1,P20,DB1_P20_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C3_T03_relabeled,Success,L,
+DB1,P20,DB1_P20_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P20,DB1_P20_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C2_T01_relabeled,Success,L,
+DB1,P21,DB1_P21_C2_T02_relabeled,Success,L,
+DB1,P21,DB1_P21_C2_T03_relabeled,Success,L,
+DB1,P21,DB1_P21_C2_T04_relabeled,Success,L,
+DB1,P21,DB1_P21_C3_T01_relabeled,Success,L,
+DB1,P21,DB1_P21_C3_T02_relabeled,Success,R,
+DB1,P21,DB1_P21_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P21,DB1_P21_C3_T04_relabeled,Success,L,
+DB1,P22,DB1_P22_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P22,DB1_P22_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P22,DB1_P22_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P22,DB1_P22_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P22,DB1_P22_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P22,DB1_P22_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P22,DB1_P22_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P23,DB1_P23_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P23,DB1_P23_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P23,DB1_P23_C1_T03_relabeled,Success,R,
+DB1,P23,DB1_P23_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P23,DB1_P23_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P23,DB1_P23_C2_T01_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.171, Max: 0.010, Limit: ±0.15)"
+DB1,P23,DB1_P23_C2_T02_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_1_moment (Min: -0.155, Max: 0.009, Limit: ±0.15)"
+DB1,P23,DB1_P23_C2_T03_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.159, Max: 0.003, Limit: ±0.15)"
+DB1,P23,DB1_P23_C2_T04_relabeled,Success,L,
+DB1,P23,DB1_P23_C2_T05_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.154, Max: 0.009, Limit: ±0.15)"
+DB1,P23,DB1_P23_C3_T01_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_2_moment (Min: -0.167, Max: 0.012, Limit: ±0.15)"
+DB1,P23,DB1_P23_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P23,DB1_P23_C3_T03_relabeled,Failed,,"ID Quality Check Failed: Noise detected in ankle_angle_1_moment (Min: -0.182, Max: 0.015, Limit: ±0.15)"
+DB1,P24,DB1_P24_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C2_T03_relabeled,Success,R,
+DB1,P24,DB1_P24_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P24,DB1_P24_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C2_T01_relabeled,Success,L,
+DB1,P25,DB1_P25_C2_T02_relabeled,Success,L,
+DB1,P25,DB1_P25_C2_T03_relabeled,Success,R,
+DB1,P25,DB1_P25_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C2_T05_relabeled,Success,L,
+DB1,P25,DB1_P25_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P25,DB1_P25_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C2_T02_relabeled,Success,R,
+DB1,P26,DB1_P26_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P26,DB1_P26_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C1_T03_relabeled,Success,L,
+DB1,P27,DB1_P27_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C2_T01_relabeled,Success,L,
+DB1,P27,DB1_P27_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C2_T05_relabeled,Success,L,
+DB1,P27,DB1_P27_C3_T01_relabeled,Success,L,
+DB1,P27,DB1_P27_C3_T02_relabeled,Success,L,
+DB1,P27,DB1_P27_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P27,DB1_P27_C3_T04_relabeled,Success,L,
+DB1,P27,DB1_P27_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P28,DB1_P28_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P29,DB1_P29_C1_T01_relabeled,Success,L,
+DB1,P29,DB1_P29_C1_T02_relabeled,Success,L,
+DB1,P29,DB1_P29_C1_T03_relabeled,Success,L,
+DB1,P29,DB1_P29_C1_T04_relabeled,Success,L,
+DB1,P29,DB1_P29_C2_T01_relabeled,Success,L,
+DB1,P29,DB1_P29_C2_T02_relabeled,Success,L,
+DB1,P29,DB1_P29_C2_T03_relabeled,Success,L,
+DB1,P29,DB1_P29_C2_T04_relabeled,Success,L,
+DB1,P29,DB1_P29_C3_T01_relabeled,Success,L,
+DB1,P29,DB1_P29_C3_T02_relabeled,Success,L,
+DB1,P29,DB1_P29_C3_T03_relabeled,Success,L,
+DB1,P29,DB1_P29_C3_T04_relabeled,Success,L,
+DB1,P29,DB1_P29_C3_T05_relabeled,Success,L,
+DB1,P30,DB1_P30_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P30,DB1_P30_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P30,DB1_P30_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P30,DB1_P30_C1_T04_relabeled,Success,R,
+DB1,P30,DB1_P30_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P30,DB1_P30_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P30,DB1_P30_C2_T02_relabeled,Success,L,
+DB1,P30,DB1_P30_C2_T03_relabeled,Success,L,
+DB1,P30,DB1_P30_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P30,DB1_P30_C3_T02_relabeled,Success,L,
+DB1,P30,DB1_P30_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C1_T03_relabeled,Failed,,Quality Check Failed: Missing Braking/Propulsion. AP Range (48.8) is below minimum (50.0).
+DB1,P41,DB1_P41_C1_T04_relabeled,Failed,,Quality Check Failed: Missing Braking/Propulsion. AP Range (48.8) is below minimum (50.0).
+DB1,P41,DB1_P41_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C2_T03_relabeled,Success,R,
+DB1,P41,DB1_P41_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C3_T02_relabeled,Success,L,
+DB1,P41,DB1_P41_C3_T03_relabeled,Success,L,
+DB1,P41,DB1_P41_C3_T04_relabeled,Success,L,
+DB1,P41,DB1_P41_C4_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P41,DB1_P41_C4_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C3_T01_relabeled,Success,L,
+DB1,P42,DB1_P42_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P42,DB1_P42_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P43,DB1_P43_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C2_T02_relabeled,Success,L,
+DB1,P44,DB1_P44_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C2_T04_relabeled,Success,L,
+DB1,P44,DB1_P44_C2_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P44,DB1_P44_C3_T01_relabeled,Success,L,
+DB1,P44,DB1_P44_C3_T02_relabeled,Success,L,
+DB1,P44,DB1_P44_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C1_T02_relabeled,Success,L,
+DB1,P45,DB1_P45_C1_T03_relabeled,Success,L,
+DB1,P45,DB1_P45_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C2_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P45,DB1_P45_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C2_T01_relabeled,Success,L,
+DB1,P46,DB1_P46_C2_T02_relabeled,Success,L,
+DB1,P46,DB1_P46_C2_T03_relabeled,Success,L,
+DB1,P46,DB1_P46_C2_T04_relabeled,Success,L,
+DB1,P46,DB1_P46_C3_T02_relabeled,Success,L,
+DB1,P46,DB1_P46_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P46,DB1_P46_C3_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C2_T01_relabeled,Success,L,
+DB1,P47,DB1_P47_C2_T02_relabeled,Success,L,
+DB1,P47,DB1_P47_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C3_T03_relabeled,Success,L,
+DB1,P47,DB1_P47_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P47,DB1_P47_C3_T05_relabeled,Success,L,
+DB1,P48,DB1_P48_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P48,DB1_P48_C1_T02_relabeled,Success,L,
+DB1,P48,DB1_P48_C1_T03_relabeled,Success,L,
+DB1,P48,DB1_P48_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P48,DB1_P48_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P48,DB1_P48_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P48,DB1_P48_C2_T03_relabeled,Success,L,
+DB1,P48,DB1_P48_C2_T04_relabeled,Success,L,
+DB1,P48,DB1_P48_C2_T05_relabeled,Success,L,
+DB1,P48,DB1_P48_C3_T01_relabeled,Success,L,
+DB1,P48,DB1_P48_C3_T02_relabeled,Success,L,
+DB1,P48,DB1_P48_C3_T03_relabeled,Success,L,
+DB1,P48,DB1_P48_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C2_T01_relabeled,Success,L,
+DB1,P49,DB1_P49_C2_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C2_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C2_T04_relabeled,Success,L,
+DB1,P49,DB1_P49_C3_T01_relabeled,Success,L,
+DB1,P49,DB1_P49_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P49,DB1_P49_C3_T03_relabeled,Success,L,
+DB1,P49,DB1_P49_C3_T04_relabeled,Success,L,
+DB1,P50,DB1_P50_C1_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C1_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C1_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C1_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C1_T05_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C2_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C2_T02_relabeled,Success,L,
+DB1,P50,DB1_P50_C2_T03_relabeled,Success,L,
+DB1,P50,DB1_P50_C2_T04_relabeled,Success,L,
+DB1,P50,DB1_P50_C2_T05_relabeled,Success,L,
+DB1,P50,DB1_P50_C3_T01_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C3_T02_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C3_T03_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C3_T04_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB1,P50,DB1_P50_C3_T05_relabeled,Success,L,

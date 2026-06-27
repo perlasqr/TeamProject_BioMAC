@@ -1,0 +1,930 @@
+DB,Participant,Trial,Status,Leg_Used,Error_Message
+DB5,P02,DB5_P02_T01_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T02_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T03_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T04_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T05_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T06_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T07_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T08_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T09_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T10_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T11_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T12_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T14_r_comf_relabeled,Success,R,
+DB5,P02,DB5_P02_T15_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P02,DB5_P02_T16_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T17_r_comf_relabeled,Success,R,
+DB5,P02,DB5_P02_T18_r_comf_relabeled,Success,R,
+DB5,P02,DB5_P02_T19_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T20_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T21_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T22_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T23_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T24_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T25_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T26_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T31_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T32_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T33_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T34_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T36_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T39_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T41_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T42_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P02,DB5_P02_T43_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T01_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T02_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T03_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T04_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T05_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T06_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T07_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T08_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T09_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T10_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T11_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T12_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T13_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T14_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T15_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T16_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T17_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T18_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T19_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T20_r_comf_relabeled,Success,L,
+DB5,P03,DB5_P03_T21_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T22_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T23_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T24_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T25_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T26_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P03,DB5_P03_T31_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T32_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P03,DB5_P03_T33_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T34_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T35_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T36_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T37_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T38_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T39_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T40_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T41_r_slow_relabeled,Success,L,
+DB5,P03,DB5_P03_T42_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T01_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P05,DB5_P05_T02_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P05,DB5_P05_T03_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P05,DB5_P05_T04_l_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T05_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P05,DB5_P05_T06_l_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T07_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P05,DB5_P05_T08_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P05,DB5_P05_T09_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P05,DB5_P05_T11_l_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T13_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T14_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T15_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T16_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T17_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T18_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T19_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T20_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T21_r_comf_relabeled,Success,L,
+DB5,P05,DB5_P05_T22_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T23_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T24_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T25_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T26_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T27_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T28_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T29_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T30_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T31_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T32_l_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T33_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T34_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T35_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T36_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T37_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T38_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T39_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T40_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T41_r_slow_relabeled,Success,L,
+DB5,P05,DB5_P05_T42_r_slow_relabeled,Success,L,
+DB5,P06,DB5_P06_T01_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T02_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T03_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T04_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T05_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T06_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T07_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T08_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T09_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T10_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T11_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T12_l_comf_relabeled,Success,R,
+DB5,P06,DB5_P06_T13_l_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T14_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T15_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T16_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T17_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T18_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T19_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T20_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T21_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T22_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T23_r_comf_relabeled,Success,L,
+DB5,P06,DB5_P06_T24_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T25_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T26_l_slow_relabeled,Success,L,
+DB5,P06,DB5_P06_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T31_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T32_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T33_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T34_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T36_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T39_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T40_r_slow_relabeled,Success,R,
+DB5,P06,DB5_P06_T41_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T42_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T43_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T44_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T45_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P06,DB5_P06_T46_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P08,DB5_P08_T01_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T01_l_fast_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T01_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T01_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T01_r_fast_relabeled,Success,L,
+DB5,P08,DB5_P08_T02_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T02_l_fast_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T02_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T02_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T02_r_fast_relabeled,Success,L,
+DB5,P08,DB5_P08_T03_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T03_l_fast_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T03_l_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T03_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T03_r_fast_relabeled,Success,L,
+DB5,P08,DB5_P08_T04_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T04_l_fast_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T04_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T04_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T04_r_fast_relabeled,Success,L,
+DB5,P08,DB5_P08_T05_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T05_l_fast_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T05_l_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T05_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T05_r_fast_relabeled,Success,L,
+DB5,P08,DB5_P08_T06_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T06_l_fast_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T06_l_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T06_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T07_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T07_l_fast_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T07_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T07_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T08_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T08_l_fast_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T08_l_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T08_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T09_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T09_l_fast_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T09_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P08,DB5_P08_T09_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T10_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T10_l_fast_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T10_l_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P08,DB5_P08_T10_r_comf_relabeled,Success,L,
+DB5,P08,DB5_P08_T10_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P10,DB5_P10_T01_l_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T02_l_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T04_l_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T05_l_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T06_l_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T11_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T12_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T13_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T14_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T17_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T18_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T19_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T20_r_comf_relabeled,Success,L,
+DB5,P10,DB5_P10_T21_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T22_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T23_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T24_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T25_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T26_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T29_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T30_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T32_l_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T33_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T34_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T35_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T36_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T37_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T38_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T39_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P10,DB5_P10_T41_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T42_r_slow_relabeled,Success,L,
+DB5,P10,DB5_P10_T43_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T01_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T02_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T03_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T04_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P11,DB5_P11_T05_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T07_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T08_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T09_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T10_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T11_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P11,DB5_P11_T12_l_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T13_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P11,DB5_P11_T15_r_comf_relabeled,Success,R,
+DB5,P11,DB5_P11_T16_r_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T17_r_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T18_r_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T20_r_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T21_r_comf_relabeled,Success,L,
+DB5,P11,DB5_P11_T22_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P11,DB5_P11_T23_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T24_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T25_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P11,DB5_P11_T26_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T27_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T28_l_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P11,DB5_P11_T29_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T30_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T31_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T32_l_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T33_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T34_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T35_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T36_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T37_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T38_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T39_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T40_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T41_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T42_r_slow_relabeled,Success,L,
+DB5,P11,DB5_P11_T43_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T01_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T02_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T03_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T04_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T05_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T06_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T07_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T08_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T09_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T10_l_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T11_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T12_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T13_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T14_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T15_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T16_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T17_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T18_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T19_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T20_r_comf_relabeled,Success,L,
+DB5,P12,DB5_P12_T21_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P12,DB5_P12_T22_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T23_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T24_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T25_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T26_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T27_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T28_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T29_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T30_l_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T31_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T32_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T33_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T34_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T35_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T36_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T37_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T38_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T39_r_slow_relabeled,Success,L,
+DB5,P12,DB5_P12_T40_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T01_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T02_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T03_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T04_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T05_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T06_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T07_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T08_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T09_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T10_l_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T11_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T12_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T13_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T14_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T15_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T16_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T17_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T18_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T19_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T20_r_comf_relabeled,Success,L,
+DB5,P13,DB5_P13_T21_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T22_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T23_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T24_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T25_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T27_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T28_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T29_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T30_l_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T31_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T32_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T33_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T34_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T35_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T36_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T37_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T38_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T39_r_slow_relabeled,Success,L,
+DB5,P13,DB5_P13_T40_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T01_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T02_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T03_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T04_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T05_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T06_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P15,DB5_P15_T07_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T08_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T09_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T10_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T11_l_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T12_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P15,DB5_P15_T13_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T14_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P15,DB5_P15_T15_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T16_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T17_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T18_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P15,DB5_P15_T19_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T20_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T21_r_comf_relabeled,Success,L,
+DB5,P15,DB5_P15_T22_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P15,DB5_P15_T23_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T24_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T25_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T26_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T27_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T28_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T29_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T30_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T31_l_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T32_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T33_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T34_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T35_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T36_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T37_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T38_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T39_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T40_r_slow_relabeled,Success,L,
+DB5,P15,DB5_P15_T41_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T01_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T02_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T03_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T04_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T05_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T06_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T07_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T09_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T11_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T12_l_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T13_r_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T15_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P16,DB5_P16_T16_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P16,DB5_P16_T17_r_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T18_r_comf_relabeled,Success,L,
+DB5,P16,DB5_P16_T19_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P16,DB5_P16_T20_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P16,DB5_P16_T21_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P16,DB5_P16_T22_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P16,DB5_P16_T23_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P16,DB5_P16_T24_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T26_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T27_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T28_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T29_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T30_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T31_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T32_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T33_l_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T34_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T35_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T36_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T37_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T38_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T39_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T40_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T41_r_slow_relabeled,Success,L,
+DB5,P16,DB5_P16_T42_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P16,DB5_P16_T43_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T01_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T02_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T03_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T04_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T05_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T06_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T07_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T08_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T09_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T10_l_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T11_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T12_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T13_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T14_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T15_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T16_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T17_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T18_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T19_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T20_r_comf_relabeled,Success,L,
+DB5,P17,DB5_P17_T21_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T22_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T23_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T24_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T25_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T26_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T27_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T28_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T29_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T30_l_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T31_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T32_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T33_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T34_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T35_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T36_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T37_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T38_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T39_r_slow_relabeled,Success,L,
+DB5,P17,DB5_P17_T40_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T01_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T02_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T03_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T04_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T05_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T06_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T07_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T08_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T09_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T10_l_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T11_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T12_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T13_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T15_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T17_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T18_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T19_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T20_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T21_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T22_r_comf_relabeled,Success,L,
+DB5,P19,DB5_P19_T23_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T25_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T26_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T27_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T28_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T29_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T30_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T31_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T32_l_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T33_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T34_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P19,DB5_P19_T36_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T37_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T38_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T39_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T40_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T41_r_slow_relabeled,Success,L,
+DB5,P19,DB5_P19_T42_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T01_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P20,DB5_P20_T02_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T03_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T04_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T05_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T06_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T07_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T08_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T09_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T10_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T11_l_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T12_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T13_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T15_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P20,DB5_P20_T16_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T17_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T18_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T19_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T20_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T21_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T22_r_comf_relabeled,Success,L,
+DB5,P20,DB5_P20_T23_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T24_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T25_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T26_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T27_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T28_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T29_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T30_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T31_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T32_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T33_l_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T34_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T35_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T36_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T39_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T40_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T41_r_slow_relabeled,Success,L,
+DB5,P20,DB5_P20_T42_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P20,DB5_P20_T43_r_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T01_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T02_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T03_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T04_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T05_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T06_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T07_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T08_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T09_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T10_l_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T11_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T12_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T13_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T14_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T15_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T16_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T17_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T18_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T19_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T20_r_comf_relabeled,Success,L,
+DB5,P21,DB5_P21_T21_l_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T22_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T23_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T24_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T25_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T26_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T31_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T32_r_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T33_r_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T34_r_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T36_r_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T39_r_slow_relabeled,Success,L,
+DB5,P21,DB5_P21_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P21,DB5_P21_T41_r_slow_relabeled,Success,L,
+DB5,P22,DB5_P21_T01_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T02_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T03_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T04_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T05_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T06_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T07_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T08_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T09_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T10_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T11_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T12_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T13_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T14_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T15_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T16_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T17_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T18_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T19_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T20_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T21_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T22_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T23_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T24_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T25_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T26_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T31_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T32_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T33_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T34_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T36_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T39_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P21_T41_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T01_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T02_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T03_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T04_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T05_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T06_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T07_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T08_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T09_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T10_l_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T11_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T12_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T13_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T14_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T15_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T16_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T17_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T18_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T19_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T20_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T21_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T22_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T23_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T24_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T25_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T26_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T31_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T32_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T33_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T34_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T36_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T39_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T41_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T42_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P22,DB5_P22_T43_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P23,DB5_P23_T01_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T02_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T03_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T04_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T05_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T06_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T07_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T08_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T09_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T10_l_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T11_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T12_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T13_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T14_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T15_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T16_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T17_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T18_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T19_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T20_r_comf_relabeled,Success,L,
+DB5,P23,DB5_P23_T21_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T22_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T23_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T24_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T25_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T26_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T27_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T28_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T29_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T30_l_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T32_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P23,DB5_P23_T33_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T34_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T35_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T36_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T37_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T38_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T39_r_slow_relabeled,Success,L,
+DB5,P23,DB5_P23_T40_r_slow_relabeled,Success,L,
+DB5,P24,DB5_P24_T01_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T02_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T03_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T04_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T05_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T06_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T07_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T08_l_comf_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T09_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T10_l_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T11_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T12_r_comf_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P24,DB5_P24_T13_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T14_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T15_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T16_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T17_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T18_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T19_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T20_r_comf_relabeled,Success,R,
+DB5,P24,DB5_P24_T21_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T22_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T23_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T24_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T25_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T26_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T27_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T28_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T29_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T30_l_slow_relabeled,Failed,,Missing ASI markers. Aborted Pelvis-Centered AP shift.
+DB5,P24,DB5_P24_T31_r_slow_relabeled,Success,R,
+DB5,P24,DB5_P24_T32_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T33_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T34_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T35_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T36_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T37_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T38_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T39_r_slow_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P24,DB5_P24_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T01_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T02_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T03_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T04_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T05_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T06_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T07_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T08_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T09_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T10_l_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T11_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T12_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T13_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T14_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T15_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T16_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T17_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T18_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T19_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T20_r_comf_relabeled,Success,L,
+DB5,P26,DB5_P26_T21_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T22_l_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T23_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T24_l_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T25_l_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T26_l_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T28_l_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T29_l_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T32_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T33_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T34_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T35_r_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T36_r_slow_relabeled,Success,L,
+DB5,P26,DB5_P26_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T39_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P26,DB5_P26_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P27,DB5_P27_T01_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T02_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T03_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T04_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T05_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T06_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T07_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T08_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T09_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T10_l_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T11_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T12_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T13_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T14_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T15_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T16_r_comf_relabeled,Failed,,Incomplete gait cycle or no heel strike found.
+DB5,P27,DB5_P27_T17_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T18_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T19_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T20_r_comf_relabeled,Success,L,
+DB5,P27,DB5_P27_T21_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T22_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T23_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T24_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T25_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T26_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T27_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T28_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T29_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T30_l_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T31_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P27,DB5_P27_T32_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T33_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T34_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T35_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T36_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T37_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T38_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T39_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T40_r_slow_relabeled,Success,L,
+DB5,P27,DB5_P27_T41_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T01_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T02_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T03_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T04_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T05_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T06_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T07_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T08_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T09_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T10_l_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T11_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T12_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T13_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T14_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T15_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T16_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T17_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T18_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T19_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T20_r_comf_relabeled,Success,L,
+DB5,P28,DB5_P28_T22_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T24_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T25_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T26_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T27_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T28_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T29_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T30_l_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T31_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T32_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T33_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T34_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T35_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T36_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T37_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T38_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T39_r_slow_relabeled,Success,L,
+DB5,P28,DB5_P28_T40_r_slow_relabeled,Success,L,
+DB5,P29,DB5_P29_T01_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T02_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T03_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T04_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T05_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T06_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T07_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T08_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T09_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T10_l_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T11_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T12_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T13_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T14_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T15_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T16_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T17_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T18_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T19_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T20_r_comf_relabeled,Success,L,
+DB5,P29,DB5_P29_T21_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T22_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T23_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T24_l_slow_relabeled,Success,L,
+DB5,P29,DB5_P29_T25_l_slow_relabeled,Success,L,
+DB5,P29,DB5_P29_T26_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T27_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T28_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T29_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T30_l_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T31_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T32_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T33_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T34_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T35_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T36_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T37_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T38_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T39_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
+DB5,P29,DB5_P29_T40_r_slow_relabeled,Failed,,Missing GRF or TRC data needed for sync.
