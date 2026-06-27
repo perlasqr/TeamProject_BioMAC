@@ -18,7 +18,7 @@ class DataProcessor:
         self.db_results_path = self.root_dir / "results" / self.db_name
 
         # Global Reference Axis Configuration map
-        # Structure: (target_axis) -> (source_axis, multiplier)
+        # Structure: (target_axis) -> (source_axis, multiplier)    
         self.axis_mappings = {
             'DB1': {'trc': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}, 
                     'mot': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}},
@@ -82,6 +82,28 @@ class DataProcessor:
          
         return trial_map
     
+    def consolidate_segmented_trials(self, trial_map):
+        """
+        Groups segmented trials into a single base trial dictionary.
+        Safely strips '_segment_X' to avoid accidentally merging different trials (like T04 and T05).
+        """
+        consolidated = {}
+        for trial_name, files in trial_map.items():
+            if '_segment_' in trial_name:
+                parts = trial_name.split('_segment_')
+                base_name = parts[0]  # e.g., 'DB3_P01_A_T04_relabeled'
+                segment_idx = int(parts[1].split('_')[0]) # e.g., 0 or 1
+            else:
+                base_name = trial_name
+                segment_idx = 0
+                
+            if base_name not in consolidated:
+                consolidated[base_name] = {}
+                
+            consolidated[base_name][segment_idx] = files
+            
+        return consolidated
+
     def _get_skiprows(self, file_path):
         """Determines skiprows based on file extension."""
         ext = file_path.suffix.lower()
@@ -155,129 +177,144 @@ class DataProcessor:
             print(f"Error loading {file_path.name}: {e}")
             return None
     
-    
     ## ------ REORIENTING COORDINATE SYSTEMS ------ #
-    def reorient_coordinates(self, df, file_type):
+    def map_raw_axes(self, df, file_type):
         """
-        Reorients the dataframe columns to match OpenSim standard: X = Forward, Y = Up, Z = Right
+        Maps the raw lab axes to OpenSim XYZ buckets and applies 
+        static system calibration multipliers (e.g., fixing Y-down setups).
         """
-        # Determine if we are looking at trc or mot/sto data
         mapping_key = 'trc' if file_type == 'trc_marker' else 'mot'
 
         if self.db_name not in self.axis_mappings or mapping_key not in self.axis_mappings[self.db_name]:
-            print(f"Warning: No rotation mapping found for {self.db_name}. Skipping reorientation.")
             return df
 
-        #print(f"Reorienting {file_type} coordinate system for {self.db_name}...")    
         mapping = self.axis_mappings[self.db_name][mapping_key]
         new_df = df.copy()
         
         if file_type == 'trc_marker':
-            #print(f"Reorienting TRC coordinates for {self.db_name}...")
-            
-            # Find all unique marker names by stripping the '_X'
             markers = [col[:-2] for col in df.columns if col.endswith('_X')]
-            
             for marker in markers:
                 orig_x, orig_y, orig_z = f"{marker}_X", f"{marker}_Y", f"{marker}_Z"
-                
                 if orig_y in df.columns and orig_z in df.columns:
                     source_data = {'x': df[orig_x], 'y': df[orig_y], 'z': df[orig_z]}
                     
+                    # Apply mapping: source_data['target_axis'] * multiplier
                     new_df[orig_x] = source_data[mapping['x'][0]] * mapping['x'][1]
                     new_df[orig_y] = source_data[mapping['y'][0]] * mapping['y'][1]
                     new_df[orig_z] = source_data[mapping['z'][0]] * mapping['z'][1]
                     
         elif file_type == 'mot_grf':
-            #print(f"Reorienting GRF coordinates for {self.db_name}...")
-            
-            # OpenSim forces end in 'vx', 'px', or 'mx'. 
-            # We strip the 'x' to find the base name (e.g., 'ground_force_calcn_l_v')
             base_names = [col[:-1] for col in df.columns if col.endswith('x')]
-            
             for base in base_names:
                 orig_x, orig_y, orig_z = f"{base}x", f"{base}y", f"{base}z"
-                
-                # Check if the full x/y/z vector set exists
                 if orig_y in df.columns and orig_z in df.columns:
                     source_data = {'x': df[orig_x], 'y': df[orig_y], 'z': df[orig_z]}
                     
+                    # Apply mapping: source_data['target_axis'] * multiplier
                     new_df[orig_x] = source_data[mapping['x'][0]] * mapping['x'][1]
                     new_df[orig_y] = source_data[mapping['y'][0]] * mapping['y'][1]
                     new_df[orig_z] = source_data[mapping['z'][0]] * mapping['z'][1]
 
         return new_df
-
-    def standardize_grf_orientation(self, df, threshold=20.0):
+    
+    def unify_trial_physics(self, marker_df, grf_df, threshold=20.0):
         """
-        Dynamically checks and corrects 180-degree flipped GRF trials.
-        Applies corrections holistically to Forces, Points of Pressure, and Moments
-        for BOTH legs to maintain a valid Right-Handed coordinate system.
+        SIMPLIFIED GEOMETRIC UNIFICATION:
+        1. Uses Pelvis to determine if walking +X or -X.
+        2. If -X, rotates BOTH markers and GRF 180 degrees (flips X and Z).
+        3. Ensures vertical GRF (Y) is positive, maintaining Right-Hand Rule.
         """
-        # 1. Find the vertical force columns for Left and Right legs
-        l_vy_col = next((c for c in df.columns if c.endswith('_l_vy')), None)
-        r_vy_col = next((c for c in df.columns if c.endswith('_r_vy')), None)
-        
-        test_leg_vy = None
-        test_leg_vx = None
-        
-        # 2. Pick the leg that actually hits the force plate (has a clear stance phase)
-        if l_vy_col and df[l_vy_col].abs().max() > threshold:
-            test_leg_vy = l_vy_col
-            test_leg_vx = l_vy_col.replace('_vy', '_vx')
-        elif r_vy_col and df[r_vy_col].abs().max() > threshold:
-            test_leg_vy = r_vy_col
-            test_leg_vx = r_vy_col.replace('_vy', '_vx')
-            
-        # Failsafe: If neither leg hit the plate cleanly, just return the data as-is
-        if not test_leg_vy or not test_leg_vx or test_leg_vx not in df.columns:
-            return df
-            
-        vy_data = df[test_leg_vy].values
-        vx_data = df[test_leg_vx].values
-        
-        flip_x = False
-        flip_y = False
-        
-        # 3. Check Y-Axis (Vertical must push UP)
-        stance_indices = np.where(np.abs(vy_data) > threshold)[0]
-        if len(stance_indices) > 10:
-            # If the average vertical force during stance is negative, the axis is upside down
-            if np.mean(vy_data[stance_indices]) < 0:
-                flip_y = True
-                
-        # 4. Check X-Axis (Braking before Propulsion)
-        if len(stance_indices) > 10:
-            stance_vx = vx_data[stance_indices]
-            idx_braking = np.argmin(stance_vx)
-            idx_propulsion = np.argmax(stance_vx)
-            
-            if idx_propulsion < idx_braking:
-                flip_x = True
-                
-        # 5. Check Z-Axis (Right-Hand Rule)
-        flip_z = (flip_x != flip_y) # Python's != operator acts as an XOR for booleans
-        
-        # 6. Apply the flips globally to the entire DataFrame
-        if flip_x or flip_y or flip_z:
-            df_corrected = df.copy() # Prevent SettingWithCopy warnings
-            
-            # Group all columns by their axis ending
-            cols_x = [c for c in df.columns if c.endswith('x')]
-            cols_y = [c for c in df.columns if c.endswith('y')]
-            cols_z = [c for c in df.columns if c.endswith('z')]
-            
-            if flip_x:
-                df_corrected[cols_x] = df_corrected[cols_x] * -1
-            if flip_y:
-                df_corrected[cols_y] = df_corrected[cols_y] * -1
-            if flip_z:
-                df_corrected[cols_z] = df_corrected[cols_z] * -1
-                
-            return df_corrected
-            
-        return df
+        unified_marker = marker_df.copy()
+        unified_grf = grf_df.copy()
 
+        # --- 1. DETERMINE WALKING DIRECTION FROM KINEMATICS ---
+        lasi_col = next((c for c in unified_marker.columns if 'LASI_X' in c.upper() or 'L_ASI_X' in c.upper()), None)
+        rasi_col = next((c for c in unified_marker.columns if 'RASI_X' in c.upper() or 'R_ASI_X' in c.upper()), None)
+        
+        if not lasi_col or not rasi_col:
+            return unified_marker, unified_grf
+
+        pelvis_x = (unified_marker[lasi_col] + unified_marker[rasi_col]) / 2.0
+        pelvis_x_clean = pelvis_x.dropna()
+        
+        if len(pelvis_x_clean) < 10:
+            return unified_marker, unified_grf
+            
+        delta_x = pelvis_x_clean.iloc[-1] - pelvis_x_clean.iloc[0]
+
+        # --- 2. ROTATE 180 DEGREES IF WALKING BACKWARD ---
+        # If they walked -X, we spin the entire room around the Y (vertical) axis.
+        # This mathematically forces both kinematics and kinetics to face +X.
+        if delta_x < 0:
+            # Rotate Markers
+            mrk_x_cols = [c for c in unified_marker.columns if c.endswith('_X')]
+            mrk_z_cols = [c for c in unified_marker.columns if c.endswith('_Z')]
+            unified_marker[mrk_x_cols] = unified_marker[mrk_x_cols] * -1
+            unified_marker[mrk_z_cols] = unified_marker[mrk_z_cols] * -1
+
+            # Rotate GRF (Forces, CoP, Moments)
+            grf_x_cols = [c for c in unified_grf.columns if c.endswith('x')]
+            grf_z_cols = [c for c in unified_grf.columns if c.endswith('z')]
+            unified_grf[grf_x_cols] = unified_grf[grf_x_cols] * -1
+            unified_grf[grf_z_cols] = unified_grf[grf_z_cols] * -1
+
+        # --- 3. HARDWARE CALIBRATION FAILSAFE (Vertical Axis) ---
+        # Check if the force plate was wired upside down (Y pointing into the floor)
+        l_vy = next((c for c in unified_grf.columns if c.endswith('_l_vy')), None)
+        r_vy = next((c for c in unified_grf.columns if c.endswith('_r_vy')), None)
+        
+        target_leg = None
+        for leg_vy in [l_vy, r_vy]:
+            if leg_vy and unified_grf[leg_vy].abs().max() > threshold:
+                target_leg = leg_vy
+                break
+        
+        if target_leg:
+            stance_data = unified_grf[unified_grf[target_leg].abs() > threshold]
+            
+            # If the average vertical force is negative, it's upside down
+            if len(stance_data) > 10 and stance_data[target_leg].mean() < 0:
+                grf_y_cols = [c for c in unified_grf.columns if c.endswith('y')]
+                unified_grf[grf_y_cols] = unified_grf[grf_y_cols] * -1
+                
+                # If we flip Y, we MUST also flip Z to keep the Right-Hand Rule intact
+                grf_z_cols = [c for c in unified_grf.columns if c.endswith('z')]
+                unified_grf[grf_z_cols] = unified_grf[grf_z_cols] * -1
+
+        return unified_marker, unified_grf
+
+    def validate_grf_quality(self, grf_df, target_leg_vy, force_threshold=20.0):
+        """
+        Validates that the GRF data actually resembles human walking.
+        Excludes flatlines, noise, and static standing.
+        Returns: (is_valid: bool, error_message: str)
+        """
+        target_leg_vx = target_leg_vy.replace('_vy', '_vx')
+        
+        # Isolate the data where the foot is actually on the plate
+        stance_data = grf_df[grf_df[target_leg_vy].abs() > force_threshold]
+        
+        if len(stance_data) < 10:
+            return False, "Stance phase too short or completely missing."
+            
+        # 1. Calculate Peak-to-Peak Ranges
+        y_range = stance_data[target_leg_vy].max() - stance_data[target_leg_vy].min()
+        x_range = stance_data[target_leg_vx].max() - stance_data[target_leg_vx].min()
+        
+        # --- TUNABLE BIOMECHANICAL THRESHOLDS ---
+        # If your raw data is in Newtons:
+        min_y_range = 100.0  # Walking MUST have an impact peak and mid-stance dip (>100N difference)
+        min_x_range = 50.0   # Walking MUST have distinct braking and propulsion (>50N difference)
+        
+        # 2. Apply the Rules
+        if y_range < min_y_range:
+            return False, f"Flatline Vertical GRF. Range ({y_range:.1f}) is below minimum ({min_y_range})."
+            
+        if x_range < min_x_range:
+            return False, f"Missing Braking/Propulsion. AP Range ({x_range:.1f}) is below minimum ({min_x_range})."
+            
+        return True, ""
+    
     ## ------ SELECTING RELEVANT COLUMNS ------ #
     def select_relevant_data(self, df, file_type):
         if df is None:
@@ -320,12 +357,12 @@ class DataProcessor:
         return df.copy()
 
     ## ------ EXTRACTING GAIT EVENTS & TIME-NORMALIZING ------- #
-    def extract_gait_events(self, grf_df, marker_df, leg='l', force_threshold=20):
+    def extract_gait_events(self, grf_df, marker_df, leg='l', force_threshold=10, silent=False):
         """
-        Finds the timestamps for HS1 (Heel Strike 1), TO (Toe-Off), and HS2 (Heel Strike 2).
-        Returns: (hs1_time, to_time, hs2_time) or (None, None, None) if not found.
+        Finds timestamps for HS1, TO, and HS2.
+        HS1 and TO use GRF. HS2 uses proportional kinematic timing to avoid HS3.
         """
-        # 1. Identify specific columns based on the active leg
+        # 1. Identify specific columns
         if leg.lower() == 'l':
             grf_v_col = next((c for c in grf_df.columns if 'calcn_l_vy' in c.lower()), None)
             heel_y_col = 'LHEE_Y'
@@ -334,13 +371,11 @@ class DataProcessor:
             heel_y_col = 'RHEE_Y'
 
         if not grf_v_col or heel_y_col not in marker_df.columns:
-            print(f"  [Error] Missing columns for {leg} leg detection.")
             return None, None, None
 
-        # 2. Find HS1 and TO using GRF (Vertical Force)
+        # 2. Find HS1 and TO using GRF
         fz = grf_df[grf_v_col].values
         times_grf = grf_df['time'].values
-        
         contact = (fz > force_threshold).astype(int)
         transitions = np.diff(contact)
         
@@ -348,142 +383,93 @@ class DataProcessor:
         to_indices = np.where(transitions == -1)[0] + 1
         
         if len(hs_indices) == 0 or len(to_indices) == 0:
-            #if not silent:
-            print(f"  [Debug Events] GRF Failure ({leg}): Max force was {fz.max():.2f}. Found {len(hs_indices)} Heel Strikes and {len(to_indices)} Toe-Offs.")
             return None, None, None
             
-        # Grab the FIRST valid heel strike and the first toe-off that happens AFTER it
         hs1_idx = hs_indices[0]
         valid_tos = to_indices[to_indices > hs1_idx]
-        if len(valid_tos) == 0:
-            return None, None, None
+        if len(valid_tos) == 0: return None, None, None
             
         to_idx = valid_tos[0]
-        
         hs1_time = times_grf[hs1_idx]
         to_time = times_grf[to_idx]
         
-        # 3. Find HS2 using Kinematics (Heel Marker Height)
+        # 3. Find HS2 using proportional kinematic window
         times_mrk = marker_df['Time'].values
         heel_y = marker_df[heel_y_col].values
         
-        # Find the marker frame closest to our GRF Toe-Off event
-        to_mrk_idx = np.argmin(np.abs(times_mrk - to_time))
+        stance_time = to_time - hs1_time
         
-        # Slice the heel vertical data from Toe-Off to the end of the trial
-        heel_data_after_to = heel_y[to_mrk_idx:]
+        # Reject impossible walking stance times (less than 0.4 seconds)
+        if stance_time < 0.4:
+            if not silent:
+                print(f"  [Debug] Stance too short ({stance_time:.2f}s). Likely started mid-step.")
+            return None, None, None
+
+        # --- THE SIMPLIFIED FIX ---
+        # Predict HS2 timing based on typical gait proportions (Swing ~ 66% of Stance)
+        expected_swing_time = stance_time * 0.66
+        expected_hs2_time = to_time + expected_swing_time
+        
+        # Create a tight window around the expected HS2 time (+/- 30% of swing time)
+        window_margin = expected_swing_time * 0.30
+        window_start = expected_hs2_time - window_margin
+        window_end = expected_hs2_time + window_margin
+        
+        # Find the marker frame indices that fall inside this restricted time window
+        window_mask = (times_mrk >= window_start) & (times_mrk <= window_end)
+        valid_indices = np.where(window_mask)[0]
         
         hs2_time = None
         
-        if len(heel_data_after_to) > 0:
-            # Find the relative index of the absolute minimum value after toe-off
-            hs2_relative_idx = np.argmin(heel_data_after_to)
+        if len(valid_indices) > 0:
+            # The heel must be at its lowest point inside this specific window
+            window_heel_data = heel_y[valid_indices]
+            local_min_idx = np.argmin(window_heel_data)
+            hs2_idx = valid_indices[local_min_idx]
             
-            # Add the Toe-Off index back to get the true index for the whole array
-            hs2_idx = to_mrk_idx + hs2_relative_idx
-            hs2_time = times_mrk[hs2_idx]
+            # Compare heights for the Sanity Check
+            hs1_mrk_idx = np.argmin(np.abs(times_mrk - hs1_time))
+            hs1_height = heel_y[hs1_mrk_idx]
+            hs2_height = heel_y[hs2_idx]
             
-        if hs2_time is None:
-            print(f"  [Debug Events] Kinematic Failure ({leg}): Found HS1 and TO, but could not detect HS2. Max heel height was {heel_y.max():.4f}, Min was {heel_y.min():.4f}.")
-                
-        return hs1_time, to_time, hs2_time
-    
-    def extract_gait_events_old(self, grf_df, marker_df, leg='l', force_threshold=20):
-        """
-        Finds the timestamps for HS1 (Heel Strike 1), TO (Toe-Off), and HS2 (Heel Strike 2).
-        Returns: (hs1_time, to_time, hs2_time) or (None, None, None) if not found.
-        """
-        # 1. Identify specific columns based on the active leg
-        if leg.lower() == 'l':
-            grf_v_col = next((c for c in grf_df.columns if 'calcn_l_vy' in c.lower()), None)
-            heel_y_col = 'LHEE_Y'
-        else:
-            grf_v_col = next((c for c in grf_df.columns if 'calcn_r_vy' in c.lower()), None)
-            heel_y_col = 'RHEE_Y'
-
-        if not grf_v_col or heel_y_col not in marker_df.columns:
-            print(f"  [Error] Missing columns for {leg} leg detection.")
-            return None, None, None
-
-        # 2. Find HS1 and TO using GRF (Vertical Force)
-        fz = grf_df[grf_v_col].values
-        times_grf = grf_df['time'].values
-        
-        contact = (fz > force_threshold).astype(int)
-        transitions = np.diff(contact)
-        
-        hs_indices = np.where(transitions == 1)[0] + 1
-        to_indices = np.where(transitions == -1)[0] + 1
-        
-        if len(hs_indices) == 0 or len(to_indices) == 0:
-            print(f"  [Debug Events] GRF Failure ({leg}): Max force was {fz.max():.2f}. Found {len(hs_indices)} Heel Strikes and {len(to_indices)} Toe-Offs.")
-            return None, None, None
-            
-        # Grab the FIRST valid heel strike and the first toe-off that happens AFTER it
-        hs1_idx = hs_indices[0]
-        valid_tos = to_indices[to_indices > hs1_idx]
-        if len(valid_tos) == 0:
-            return None, None, None
-            
-        to_idx = valid_tos[0]
-        
-        hs1_time = times_grf[hs1_idx]
-        to_time = times_grf[to_idx]
-        
-        # 3. Find HS2 using Kinematics (Heel Marker Height)
-        # Because Y is UP in OpenSim, we look at LHEE_Y / RHEE_Y
-        times_mrk = marker_df['Time'].values
-        heel_y = marker_df[heel_y_col].values
-        
-        # Find the marker frame closest to our GRF events
-        hs1_mrk_idx = np.argmin(np.abs(times_mrk - hs1_time))
-        to_mrk_idx = np.argmin(np.abs(times_mrk - to_time))
-        
-        ref_height = heel_y[hs1_mrk_idx]
-        buffer = 0.02 # 2 cm buffer (assuming TRC is in meters!)
-        
-        search_start = to_mrk_idx + 10 # Start looking a bit after toe-off
-        hs2_time = None
-        
-        for i in range(search_start, len(heel_y) - 1):
-            current_h = heel_y[i]
-            velocity = heel_y[i+1] - heel_y[i]
-            
-            # Condition: Heel drops near baseline height AND is moving downward
-            if current_h <= (ref_height + buffer) and velocity < 0:
-                hs2_time = times_mrk[i]
-                break
-            
-        if hs2_time is None:
-            print(f"  [Debug Events] Kinematic Failure ({leg}): Found HS1 and TO, but could not detect HS2. Max heel height was {heel_y.max():.4f}, Min was {heel_y.min():.4f}.")
-                
-        return hs1_time, to_time, hs2_time
-
-    def time_normalize(self, df, time_col_name, start_time, end_time, n_points=101):
-        """
-        Slices a DataFrame between start_time and end_time, then interpolates all columns 
-        to exactly `n_points` (0% to 100% of gait cycle).
-        """
-        # 1. Slice the data to the specific gait cycle
-        cycle_df = df[(df[time_col_name] >= start_time) & (df[time_col_name] <= end_time)].copy()
-        
-        if len(cycle_df) < 5:
-            return None # Not enough data to interpolate safely
-            
-        old_time = cycle_df[time_col_name].values
-        new_time = np.linspace(start_time, end_time, n_points)
-        
-        # 2. Interpolate each column
-        norm_data = {}
-        for col in cycle_df.columns:
-            if col == time_col_name:
-                norm_data[col] = np.linspace(0, 100, n_points) # Convert time to % Gait Cycle
+            # Sanity Check
+            if np.abs(hs2_height - hs1_height) < 0.05:
+                hs2_time = times_mrk[hs2_idx]
             else:
-                f = interp1d(old_time, cycle_df[col].values, kind='linear', fill_value="extrapolate")
-                norm_data[col] = f(new_time)
-                
-        return pd.DataFrame(norm_data)
+                if not silent:
+                    print(f"  [Debug] Sanity Check FAILED. Height diff too large.")
+        else:
+            if not silent:
+                print("  [Debug] No marker data found in the expected HS2 time window.")
 
+        return hs1_time, to_time, hs2_time
+ 
+    def time_normalize(self, df, time_col, start_t, end_t, num_points=101):
+        """
+        Time-normalizes a dataframe from start_t to end_t.
+        Strictly prevents out-of-bounds extrapolation.
+        """
+        # 1. Create the new 0-100% time vector
+        new_time = np.linspace(start_t, end_t, num_points)
+        orig_time = df[time_col].values
+        
+        # 2. Create a new dictionary to build the normalized dataframe quickly
+        norm_data = {'time_percent': np.linspace(0, 100, num_points)}
+        
+        # 3. Interpolate every column safely
+        for col in df.columns:
+            if col == time_col:
+                continue
+                
+            orig_data = df[col].values
+            
+            # THE FIX: bounds_error=False AND fill_value=np.nan stops the linear dive
+            f = interp1d(orig_time, orig_data, kind='cubic', bounds_error=False, fill_value=np.nan)
+            
+            norm_data[col] = f(new_time)
+            
+        return pd.DataFrame(norm_data)
+    
     def convert_leg_labels(self, df, file_type, leading_leg):
         if df is None: return None
 
@@ -582,6 +568,10 @@ class DataProcessor:
 
     ## ------ RELATIVE PELVIS-CENTERED AP COORDINATE SYSTEM ------ #
     def define_pelvis_centered_ap_coordinate_system(self, marker_df):
+        """
+        Shifts the AP (X) coordinate system to be relative to the Pelvis.
+        Returns None if required markers are missing.
+        """
         
         if marker_df is None:
             print("  [Warning] marker_df is None. Skipping pelvis-centered AP coordinate system.")
@@ -600,9 +590,9 @@ class DataProcessor:
         asi_x2_col = clean_to_original.get("ASI_X2")
 
         if asi_x1_col is None or asi_x2_col is None:
-            print("  [Warning] ASI_X1 and/or ASI_X2 not found. Skipping pelvis-centered AP shift.")
-            print(f"  Available columns example: {list(new_df.columns)[:12]}")
-            return new_df
+            #print("  [Warning] ASI_X1 and/or ASI_X2 not found. Skipping pelvis-centered AP shift.")
+            ##print(f"  Available columns example: {list(new_df.columns)[:12]}")
+            return None
 
         pelvis_center_x = (new_df[asi_x1_col] + new_df[asi_x2_col]) / 2
 
@@ -726,10 +716,34 @@ class DataProcessor:
             
         return scaled_trial
 
+    def validate_id_quality(self, id_df, threshold=0.15):
+        """
+        Validates that the normalized ID joint moments fall within a biomechanically 
+        plausible dimensionless range (e.g., between -0.2 and +0.2).
+        Returns: (is_valid: bool, error_message: str)
+        """
+        if id_df is None:
+            return True, "" # If no ID data exists for this trial, let it pass
+            
+        # Find only the joint moment columns
+        moment_cols = [c for c in id_df.columns if 'moment' in c.lower()]
+        
+        for col in moment_cols:
+            max_val = id_df[col].max()
+            min_val = id_df[col].min()
+            
+            # If the peak goes outside the plausible threshold, flag it
+            if max_val > threshold or min_val < -threshold:
+                return False, f"Noise detected in {col} (Min: {min_val:.3f}, Max: {max_val:.3f}, Limit: ±{threshold})"
+                
+        return True, ""
 
     ## PREPARING DATA 
     def process_participant_files(self, participant_id):
-        trial_map = self.get_trial_file_map(participant_id)
+        # --- PRE-PROCESSING: Group segments safely ---
+        raw_trial_map = self.get_trial_file_map(participant_id)
+        trial_map = self.consolidate_segmented_trials(raw_trial_map)
+        
         processed_data = [] # List to hold trials
 
         # --- EXTRACT ANTHROPOMETRICS ONCE PER PARTICIPANT ---
@@ -738,92 +752,154 @@ class DataProcessor:
             print(f"  [Aborted] Cannot process participant {participant_id} without complete mass/height tracking data.")
             return []
 
-        for trial_name, files in trial_map.items():
-            trial_results = {"trial_name": trial_name, "data": {}}
+        for base_trial_name, segments in trial_map.items():
+            trial_results = {"trial_name": base_trial_name, "data": {}}
             
-            # --- 1. LOAD, REORIENT, AND FILTER DATA ---
-            for file_key, file_path in files.items():
-                if file_path is None: continue
-                
-                # Map keys to match your file_type expected by other methods
-                file_type = "trc_marker" if file_key == 'trc' else \
-                            "mot_ik"     if file_key == 'mot_ik' else \
-                            "mot_grf"    if file_key == 'mot_grf' else "sto_id"
-                
-                df = self.load_data(file_path, file_type=file_type)
-                if df is None: continue
-
-                if file_type in ["trc_marker", "mot_grf"]:
-                    df = self.reorient_coordinates(df, file_type)
-                
-                    if file_type == "mot_grf":
-                        df = self.standardize_grf_orientation(df)
-
-                trial_results["data"][file_type] = self.select_relevant_data(df, file_type)
+            # Temporary storage to hold lists of DataFrames chronologically
+            collected_data = {'trc_marker': [], 'mot_ik': [], 'mot_grf': [], 'sto_id': []}
             
-            # --- 2. EXTRACT GAIT EVENTS & TIME NORMALIZE ---
+            # --- 1. LOAD AND COLLECT DATA CHRONOLOGICALLY ---
+            for segment_idx in sorted(segments.keys()):
+                files = segments[segment_idx]
+                
+                for file_key, file_path in files.items():
+                    if file_path is None: continue
+                    
+                    file_type = "trc_marker" if file_key == 'trc' else \
+                                "mot_ik"     if file_key == 'mot_ik' else \
+                                "mot_grf"    if file_key == 'mot_grf' else "sto_id"
+                    
+                    df = self.load_data(file_path, file_type=file_type)
+                    if df is None: continue
+
+                    # Purely map columns to buckets, NO physics yet
+                    if file_type in ["trc_marker", "mot_grf"]:
+                        df = self.map_raw_axes(df, file_type)
+
+                    relevant_df = self.select_relevant_data(df, file_type)
+                    if relevant_df is not None and not relevant_df.empty:
+                        collected_data[file_type].append(relevant_df)
+            
+            # --- 2. STITCH SEGMENTS TOGETHER ---
+            for f_type, df_list in collected_data.items():
+                if len(df_list) > 0:
+                    stitched_df = pd.concat(df_list, ignore_index=True)
+                    trial_results["data"][f_type] = stitched_df
+                else:
+                    trial_results["data"][f_type] = None
+                    
+            # --- 2.5 UNIFY PHYSICS & WALKING DIRECTION ---
+            stitched_grf = trial_results["data"].get("mot_grf")
+            stitched_mrk = trial_results["data"].get("trc_marker")
+            
+            if stitched_grf is not None and stitched_mrk is not None:
+                # A. Fix the orientation
+                unified_mrk, unified_grf = self.unify_trial_physics(stitched_mrk, stitched_grf)
+                
+                # B. Find the active leg for this trial
+                l_vy = next((c for c in unified_grf.columns if c.endswith('_l_vy')), None)
+                r_vy = next((c for c in unified_grf.columns if c.endswith('_r_vy')), None)
+                target_leg = None
+                for leg_vy in [l_vy, r_vy]:
+                    if leg_vy and unified_grf[leg_vy].abs().max() > 20.0:
+                        target_leg = leg_vy
+                        break
+                
+                # C. APPLY THE BIOMECHANICAL QUALITY GUARDRAIL
+                if target_leg:
+                    is_valid, error_msg = self.validate_grf_quality(unified_grf, target_leg)
+                    
+                    if not is_valid:
+                        # Quarantine the trial and record the exact reason in the report
+                        trial_results['error'] = f"Quality Check Failed: {error_msg}"
+                        trial_results['normalized_data'] = None
+                        processed_data.append(trial_results)
+                        continue # Skip the rest of the pipeline for this broken trial
+                
+                # D. Save the clean, unified data back into the pipeline
+                trial_results["data"]["trc_marker"] = unified_mrk
+                trial_results["data"]["mot_grf"] = unified_grf
+
+            # --- 3. EXTRACT GAIT EVENTS ---
             data = trial_results["data"]
-            
-            # --- DEBUG SILENT CRASHES ---
-            #if data.get('trc_marker') is None: print(f"  [Debug Load] {trial_name}: TRC failed to load into memory.")
-            #if data.get('mot_grf') is None: print(f"  [Debug Load] {trial_name}: GRF failed to load into memory.")
-            # ----------------------------
-            
             hs1_t, to_t, hs2_t = None, None, None
             leg_used = None
             
             if data.get('mot_grf') is not None and data.get('trc_marker') is not None:
                 
-                # Try Left Leg
+                # Try Left Leg (Silently)
                 leg_used = 'L'
-                hs1_t, to_t, hs2_t = self.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='l')
+                hs1_t, to_t, hs2_t = self.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='l', silent=True)
                 
                 # Try Right Leg if Left fails
                 if hs1_t is None or hs2_t is None:
                     leg_used = 'R'
-                    hs1_t, to_t, hs2_t = self.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='r')
-            
-                # --- 3. APPLY PIPELINE TO VALID CYCLES ---
-                if hs1_t is not None and hs2_t is not None:
-                    normalized_trial = {}
+                    hs1_t, to_t, hs2_t = self.extract_gait_events(data['mot_grf'], data['trc_marker'], leg='r', silent=False)
                     
-                    for f_type, df in data.items():
-                        if df is not None:
-                            # A. Time Normalize (0-100%)
-                            t_col = 'Time' if 'Time' in df.columns else 'time'
-                            norm_df = self.time_normalize(df, t_col, hs1_t, hs2_t)
-                            
-                            # B. Convert Labels (L/R -> 1/2)
-                            renamed_df = self.convert_leg_labels(norm_df, f_type, leg_used)
-                            
-                            # C. Coordinate Shifts (ONLY for TRC Markers)
-                            if f_type == 'trc_marker':
-                                # Global Shift (Y, Z axes to Ankle)
-                                df_global = self.define_global_coordinate_system(renamed_df)
-                                # Relative Shift (X axis to Pelvis)
-                                df_final = self.define_pelvis_centered_ap_coordinate_system(df_global)
-                                normalized_trial[f_type] = df_final
-                            else:
-                                normalized_trial[f_type] = renamed_df
+            else:
+                trial_results['error'] = "Missing GRF or TRC data needed for sync."
+            
+            # --- 4. TIME NORMALIZE & APPLY PIPELINE TO VALID CYCLES ---
+            if hs1_t is not None and hs2_t is not None:
+                normalized_trial = {}
+                
+                for f_type, df in data.items():
+                    if df is not None:
+                        # A. Time Normalize (0-100%)
+                        t_col = 'Time' if 'Time' in df.columns else 'time'
+                        norm_df = self.time_normalize(df, t_col, hs1_t, hs2_t)
+                        
+                        # B. Convert Labels (L/R -> 1/2)
+                        renamed_df = self.convert_leg_labels(norm_df, f_type, leg_used)
+                        
+                        # C. Coordinate Shifts (ONLY for TRC Markers)
+                        if f_type == 'trc_marker':
+                            # Global Shift (Y, Z axes to Ankle)
+                            df_global = self.define_global_coordinate_system(renamed_df)
+                            # Relative Shift (X axis to Pelvis)
+                            df_final = self.define_pelvis_centered_ap_coordinate_system(df_global)
 
-                    # --- 4. APPLY ANTHROPOMETRIC SCALING ---
+                            # CATCH THE FAIL STATE HERE
+                            if df_final is None:
+                                trial_results['error'] = "Missing ASI markers. Aborted Pelvis-Centered AP shift."
+                                normalized_trial = None # Destroy the trial data completely
+                                break # Stop processing any other data types for this trial
+
+                            normalized_trial[f_type] = df_final
+                        else:
+                            normalized_trial[f_type] = renamed_df
+
+                # --- 5. APPLY ANTHROPOMETRIC SCALING (Only if trial wasn't aborted) ---
+                if normalized_trial is not None:
                     scaled_trial = self.apply_anthropometric_normalization(normalized_trial, mass, height)
                     
-                    trial_results['normalized_data'] = scaled_trial
-                    trial_results['gait_events'] = {'leg_used': leg_used, 'HS1': hs1_t, 'TO': to_t, 'HS2': hs2_t}
-                    trial_results['anthropometrics'] = {'mass_kg': mass, 'height_m': height}
+                    # Assume valid until proven otherwise
+                    is_valid_id = True 
+                    id_error_msg = ""
+
+                    # Run the ID filter if ID data exists
+                    if scaled_trial is not None and scaled_trial.get('sto_id') is not None:
+                        is_valid_id, id_error_msg = self.validate_id_quality(scaled_trial['sto_id'], threshold=0.15)
                     
+                    # Quarantine or Save
+                    if not is_valid_id:
+                        trial_results['error'] = f"ID Quality Check Failed: {id_error_msg}"
+                        trial_results['normalized_data'] = None
+                    else:
+                        trial_results['normalized_data'] = scaled_trial
+                        trial_results['gait_events'] = {'leg_used': leg_used, 'HS1': hs1_t, 'TO': to_t, 'HS2': hs2_t}
+                        trial_results['anthropometrics'] = {'mass_kg': mass, 'height_m': height}
                 else:
                     trial_results['normalized_data'] = None
-                    trial_results['error'] = "Incomplete gait cycle or no heel strike found."
+
             else:
+                if 'error' not in trial_results:
+                    trial_results['error'] = "Incomplete gait cycle or no heel strike found."
                 trial_results['normalized_data'] = None
-                trial_results['error'] = "Missing GRF or TRC data needed for sync."
 
             processed_data.append(trial_results)
 
         return processed_data
-
     
     ## ------ EXPORTING RESULTS ------ #
     def export_database_results(self):
