@@ -1,0 +1,8 @@
+{
+  "hidden_size": 512,
+  "learning_rate": 0.001,
+  "batch_size": 16,
+  "best_val_loss": 0.0001431852873579106,
+  "best_epoch": 18,
+  "epochs_completed": 48
+}

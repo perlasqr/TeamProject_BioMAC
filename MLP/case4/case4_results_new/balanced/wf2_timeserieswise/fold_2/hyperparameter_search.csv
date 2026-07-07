@@ -1,0 +1,2 @@
+hidden_size,learning_rate,batch_size,best_val_loss,best_epoch,epochs_completed,runtime_seconds,reused_from_primary,primary_config_path
+256,0.001,8,0.0030828117292575137,11,41,8.486899614334106,True,case4_results_new\primary\wf2_timeserieswise\fold_2\best_hyperparameters.json
