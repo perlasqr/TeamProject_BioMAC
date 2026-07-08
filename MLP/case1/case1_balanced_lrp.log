@@ -1,0 +1,17 @@
+CASE 1 BALANCED LRP COMPLETION SUMMARY
+Generated from existing completed LRP results
+Results folder: case1_results_new
+
+Explained samples per workflow:
+838 explained samples: case1_results_new/balanced/wf3_trialwise/zennit_lrp_epsilon/lrp_metadata.csv
+833 explained samples: case1_results_new/balanced/wf1_timeserieswise/zennit_lrp_epsilon/lrp_metadata.csv
+836 explained samples: case1_results_new/balanced/wf2_featurewise/zennit_lrp_epsilon/lrp_metadata.csv
+831 explained samples: case1_results_new/balanced/wf1_featurewise/zennit_lrp_epsilon/lrp_metadata.csv
+839 explained samples: case1_results_new/balanced/wf2_timeserieswise/zennit_lrp_epsilon/lrp_metadata.csv
+
+LRP summary files:
+case1_results_new/balanced/wf3_trialwise/zennit_lrp_epsilon/lrp_summary.csv
+case1_results_new/balanced/wf1_timeserieswise/zennit_lrp_epsilon/lrp_summary.csv
+case1_results_new/balanced/wf2_featurewise/zennit_lrp_epsilon/lrp_summary.csv
+case1_results_new/balanced/wf1_featurewise/zennit_lrp_epsilon/lrp_summary.csv
+case1_results_new/balanced/wf2_timeserieswise/zennit_lrp_epsilon/lrp_summary.csv

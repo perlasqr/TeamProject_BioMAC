@@ -1,0 +1,36 @@
+{
+  "input_csv": "/Users/shahzaibali/Desktop/MLP/All_DBs_Case1_Markers_GRF.csv",
+  "analysis": "primary",
+  "grid": "paper",
+  "expected_grid_combinations": 90,
+  "methods": [
+    "wf1_featurewise",
+    "wf1_timeserieswise",
+    "wf2_featurewise",
+    "wf2_timeserieswise",
+    "wf3_trialwise"
+  ],
+  "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "n_samples": 1902,
+  "class_counts": {
+    "DB1": 169,
+    "DB2": 235,
+    "DB3": 199,
+    "DB4": 677,
+    "DB5": 622
+  },
+  "n_channels": 48,
+  "n_timepoints": 101,
+  "input_size": 4848,
+  "n_splits": 5,
+  "max_epochs": 1000,
+  "patience": 30,
+  "min_delta": 0.005,
+  "device": "mps"
+}

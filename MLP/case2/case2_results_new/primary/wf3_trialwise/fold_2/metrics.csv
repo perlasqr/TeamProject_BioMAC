@@ -1,0 +1,2 @@
+analysis,method,workflow,scaling_method,fold,n_train,n_validation,n_test,n_channels,input_size,hidden_size,learning_rate,batch_size,best_epoch,best_validation_loss,accuracy,balanced_accuracy,macro_f1,weighted_f1,macro_precision,macro_recall
+primary,wf3_trialwise,WF3,Trial-wise,2,1144,386,372,6,606,128,0.001,16,54,0.005098025425044106,0.9838709677419355,0.9740686274509806,0.9734662500837814,0.9839362542939931,0.974230858200324,0.9740686274509806

@@ -1,0 +1,2 @@
+hidden_size,learning_rate,batch_size,best_val_loss,best_epoch,epochs_completed,runtime_seconds,reused_from_primary,primary_config_path
+256,0.001,64,0.16936481699964703,66,96,3.0849671363830566,True,case2_results_new/primary/wf3_trialwise/fold_3/best_hyperparameters.json

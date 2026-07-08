@@ -1,0 +1,106 @@
+
+Case 2 full MLP training
+========================
+Analysis: balanced
+Samples: 845
+DB
+DB1    169
+DB2    169
+DB3    169
+DB4    169
+DB5    169
+Name: count, dtype: int64
+Channels: 6
+Input size: 606
+Methods: ['wf1_featurewise', 'wf1_timeserieswise', 'wf2_featurewise', 'wf2_timeserieswise', 'wf3_trialwise']
+Folds: [1, 2, 3, 4, 5]
+Fits per workflow/fold: 1 reused primary configuration
+Device: mps
+
+wf1_featurewise: Pool then feature-wise scale
+    Reusing primary hyperparameters: h=512 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.005169, best_epoch=10, runtime=0.2 min
+  Fold 1: accuracy=1.0000, balanced_accuracy=1.0000, macro_f1=1.0000
+    Reusing primary hyperparameters: h=1024 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.001280, best_epoch=32, runtime=0.4 min
+  Fold 2: accuracy=0.9824, balanced_accuracy=0.9824, macro_f1=0.9821
+    Reusing primary hyperparameters: h=32 lr=0.001 bs=16
+      sensitivity fit complete: val_loss=0.047683, best_epoch=58, runtime=0.1 min
+  Fold 3: accuracy=0.9882, balanced_accuracy=0.9882, macro_f1=0.9882
+    Reusing primary hyperparameters: h=256 lr=0.001 bs=16
+      sensitivity fit complete: val_loss=0.046982, best_epoch=17, runtime=0.1 min
+  Fold 4: accuracy=0.9643, balanced_accuracy=0.9647, macro_f1=0.9644
+    Reusing primary hyperparameters: h=64 lr=0.001 bs=16
+      sensitivity fit complete: val_loss=0.007424, best_epoch=53, runtime=0.1 min
+  Fold 5: accuracy=0.9527, balanced_accuracy=0.9520, macro_f1=0.9526
+
+wf1_timeserieswise: Pool then channel-wise trajectory scale
+    Reusing primary hyperparameters: h=128 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.001580, best_epoch=46, runtime=0.1 min
+  Fold 1: accuracy=1.0000, balanced_accuracy=1.0000, macro_f1=1.0000
+    Reusing primary hyperparameters: h=64 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.002650, best_epoch=58, runtime=0.2 min
+  Fold 2: accuracy=0.9941, balanced_accuracy=0.9941, macro_f1=0.9940
+    Reusing primary hyperparameters: h=512 lr=0.001 bs=16
+      sensitivity fit complete: val_loss=0.070793, best_epoch=30, runtime=0.2 min
+  Fold 3: accuracy=1.0000, balanced_accuracy=1.0000, macro_f1=1.0000
+    Reusing primary hyperparameters: h=512 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.026023, best_epoch=14, runtime=0.2 min
+  Fold 4: accuracy=0.9762, balanced_accuracy=0.9765, macro_f1=0.9764
+    Reusing primary hyperparameters: h=512 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.012841, best_epoch=20, runtime=0.3 min
+  Fold 5: accuracy=0.9763, balanced_accuracy=0.9759, macro_f1=0.9761
+
+wf2_featurewise: Scale every DB feature-wise, then pool
+    Reusing primary hyperparameters: h=32 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.007830, best_epoch=56, runtime=0.2 min
+  Fold 1: accuracy=0.9941, balanced_accuracy=0.9941, macro_f1=0.9941
+    Reusing primary hyperparameters: h=128 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.007876, best_epoch=74, runtime=0.2 min
+  Fold 2: accuracy=0.9882, balanced_accuracy=0.9882, macro_f1=0.9881
+    Reusing primary hyperparameters: h=256 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.014554, best_epoch=92, runtime=0.6 min
+  Fold 3: accuracy=0.9763, balanced_accuracy=0.9765, macro_f1=0.9764
+    Reusing primary hyperparameters: h=256 lr=0.0001 bs=8
+      sensitivity fit complete: val_loss=0.018707, best_epoch=167, runtime=1.0 min
+  Fold 4: accuracy=1.0000, balanced_accuracy=1.0000, macro_f1=1.0000
+    Reusing primary hyperparameters: h=256 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.006855, best_epoch=75, runtime=0.5 min
+  Fold 5: accuracy=0.9704, balanced_accuracy=0.9701, macro_f1=0.9701
+
+wf2_timeserieswise: Scale every DB channel-wise, then pool
+    Reusing primary hyperparameters: h=1024 lr=0.001 bs=16
+      sensitivity fit complete: val_loss=0.006309, best_epoch=61, runtime=0.3 min
+  Fold 1: accuracy=0.9941, balanced_accuracy=0.9941, macro_f1=0.9941
+    Reusing primary hyperparameters: h=1024 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.002038, best_epoch=25, runtime=0.4 min
+  Fold 2: accuracy=0.9765, balanced_accuracy=0.9765, macro_f1=0.9761
+    Reusing primary hyperparameters: h=512 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.070178, best_epoch=72, runtime=0.6 min
+  Fold 3: accuracy=0.9822, balanced_accuracy=0.9824, macro_f1=0.9821
+    Reusing primary hyperparameters: h=1024 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.006647, best_epoch=23, runtime=0.3 min
+  Fold 4: accuracy=0.9821, balanced_accuracy=0.9820, macro_f1=0.9818
+    Reusing primary hyperparameters: h=512 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.012531, best_epoch=33, runtime=0.4 min
+  Fold 5: accuracy=0.9822, balanced_accuracy=0.9824, macro_f1=0.9823
+
+wf3_trialwise: Scale each trial/channel independently
+    Reusing primary hyperparameters: h=1024 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.054213, best_epoch=17, runtime=0.3 min
+  Fold 1: accuracy=0.9704, balanced_accuracy=0.9706, macro_f1=0.9705
+    Reusing primary hyperparameters: h=128 lr=0.001 bs=16
+      sensitivity fit complete: val_loss=0.012078, best_epoch=40, runtime=0.1 min
+  Fold 2: accuracy=0.9529, balanced_accuracy=0.9517, macro_f1=0.9517
+    Reusing primary hyperparameters: h=256 lr=0.001 bs=64
+      sensitivity fit complete: val_loss=0.169365, best_epoch=66, runtime=0.1 min
+  Fold 3: accuracy=0.9349, balanced_accuracy=0.9346, macro_f1=0.9354
+    Reusing primary hyperparameters: h=64 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.064988, best_epoch=17, runtime=0.1 min
+  Fold 4: accuracy=0.9643, balanced_accuracy=0.9643, macro_f1=0.9643
+    Reusing primary hyperparameters: h=256 lr=0.001 bs=8
+      sensitivity fit complete: val_loss=0.045020, best_epoch=25, runtime=0.3 min
+  Fold 5: accuracy=0.9467, balanced_accuracy=0.9469, macro_f1=0.9471
+
+Completed analysis: balanced
+Summary: case2_results_new/balanced/summary_mean_std.csv

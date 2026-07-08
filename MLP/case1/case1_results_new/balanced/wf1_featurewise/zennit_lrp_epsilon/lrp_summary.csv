@@ -1,0 +1,6 @@
+analysis,method,DB,n_explained_samples,peak_gait_cycle_percent,top_feature_1,top_feature_1_percent,top_feature_2,top_feature_2_percent,top_feature_3,top_feature_3_percent
+balanced,wf1_featurewise,DB1,168,70.0,TRC_ANKL_Y1,11.079594,TRC_KNE_Y1,6.022572,TRC_ANKL_Y2,5.9991336
+balanced,wf1_featurewise,DB2,169,84.0,TRC_SHO_Z2,6.6768394,TRC_KNE_Z2,6.201392,TRC_ANKL_Z2,5.6824684
+balanced,wf1_featurewise,DB3,168,51.0,TRC_SHO_Y2,7.2263703,TRC_SHO_Y1,6.39015,TRC_KNE_Z1,5.8907123
+balanced,wf1_featurewise,DB4,169,71.0,TRC_ASI_Z1,6.783774,TRC_SHO_Z1,6.622169,GRF_ground_force_calcn_px2,6.242848
+balanced,wf1_featurewise,DB5,157,95.0,GRF_ground_force_calcn_px1,7.61928,GRF_ground_force_calcn_py2,7.550206,GRF_ground_force_calcn_vz2,7.4757524

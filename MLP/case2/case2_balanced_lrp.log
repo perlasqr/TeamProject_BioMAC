@@ -1,0 +1,35 @@
+
+Strict Zennit LRP-epsilon: balanced
+Methods: ['wf1_featurewise', 'wf1_timeserieswise', 'wf2_featurewise', 'wf2_timeserieswise', 'wf3_trialwise']
+Folds: [1, 2, 3, 4, 5]
+Epsilon: 1e-06
+  wf1_featurewise fold 1: explained 169 samples
+  wf1_featurewise fold 2: explained 167 samples
+  wf1_featurewise fold 3: explained 167 samples
+  wf1_featurewise fold 4: explained 162 samples
+  wf1_featurewise fold 5: explained 161 samples
+  Saved LRP output: case2_results_new/balanced/wf1_featurewise/zennit_lrp_epsilon
+  wf1_timeserieswise fold 1: explained 169 samples
+  wf1_timeserieswise fold 2: explained 169 samples
+  wf1_timeserieswise fold 3: explained 169 samples
+  wf1_timeserieswise fold 4: explained 164 samples
+  wf1_timeserieswise fold 5: explained 165 samples
+  Saved LRP output: case2_results_new/balanced/wf1_timeserieswise/zennit_lrp_epsilon
+  wf2_featurewise fold 1: explained 168 samples
+  wf2_featurewise fold 2: explained 168 samples
+  wf2_featurewise fold 3: explained 165 samples
+  wf2_featurewise fold 4: explained 168 samples
+  wf2_featurewise fold 5: explained 164 samples
+  Saved LRP output: case2_results_new/balanced/wf2_featurewise/zennit_lrp_epsilon
+  wf2_timeserieswise fold 1: explained 168 samples
+  wf2_timeserieswise fold 2: explained 166 samples
+  wf2_timeserieswise fold 3: explained 166 samples
+  wf2_timeserieswise fold 4: explained 165 samples
+  wf2_timeserieswise fold 5: explained 166 samples
+  Saved LRP output: case2_results_new/balanced/wf2_timeserieswise/zennit_lrp_epsilon
+  wf3_trialwise fold 1: explained 164 samples
+  wf3_trialwise fold 2: explained 162 samples
+  wf3_trialwise fold 3: explained 158 samples
+  wf3_trialwise fold 4: explained 162 samples
+  wf3_trialwise fold 5: explained 160 samples
+  Saved LRP output: case2_results_new/balanced/wf3_trialwise/zennit_lrp_epsilon
