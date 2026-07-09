@@ -1,1 +1,0 @@
-GRF plots per DB per participant are stored here.
