@@ -1,0 +1,10 @@
+{
+  "hidden_size": 512,
+  "learning_rate": 0.001,
+  "batch_size": 32,
+  "best_val_loss": 0.007011333670087917,
+  "best_epoch": 50,
+  "epochs_completed": 80,
+  "reused_from_primary": true,
+  "primary_config_path": "case3_results_new\\primary\\wf1_featurewise\\fold_1\\best_hyperparameters.json"
+}

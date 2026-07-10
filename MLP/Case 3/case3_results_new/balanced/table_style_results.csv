@@ -1,0 +1,4 @@
+Pooling workflow,Feature-wise,Time series-wise,Trial-wise
+WF1 (pool -> scale),98.93 ± 1.75,99.05 ± 1.36,-
+WF2 (scale -> pool),99.29 ± 0.78,100.00 ± 0.00,-
+WF3,-,-,99.76 ± 0.33
