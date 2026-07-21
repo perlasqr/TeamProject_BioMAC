@@ -10,8 +10,8 @@ class DataProcessor:
         """
         Initializes the processor and sets up base paths for a specific database.
         
-        :param root_dir: Path to the main directory containing 'data' and 'results' folders.
-        :param db_name: The name of the database folder (e.g., 'DB1').
+        root_dir:   Path to the main directory containing 'data' and 'results' folders.
+        db_name:    The name of the database folder (e.g., 'DB1').
         """
         self.root_dir = Path(root_dir)
         self.db_name = db_name
@@ -71,15 +71,7 @@ class DataProcessor:
             elif f.name.endswith('_ik.mot'): trial_map[base_name]['mot_ik'] = f
             elif f.name.endswith('_grf.mot'): trial_map[base_name]['mot_grf'] = f
             elif f.suffix == '.sto': trial_map[base_name]['sto'] = f
-            
-        # --- DEBUG GHOST TRIALS ---
-        #for t_name, f_dict in trial_map.items():
-        #    if f_dict['trc'] is None or f_dict['mot_grf'] is None:
-        #        has_trc = "YES" if f_dict['trc'] is not None else "NO"
-        #        has_grf = "YES" if f_dict['mot_grf'] is not None else "NO"
-        #        print(f"  [Debug Map] Potential mismatch for '{t_name}' -> TRC found: {has_trc} | GRF found: {has_grf}")
-        # --------------------------
-         
+                     
         return trial_map
     
     def consolidate_segmented_trials(self, trial_map):
@@ -127,7 +119,6 @@ class DataProcessor:
         
     def load_data(self, file_path, file_type=None):
         """Loads a file into a pandas DataFrame, handling specific biomech formats."""
-        #print(f"Loading: {file_path.name}...")
         ext = file_path.suffix.lower()
         
         try:
@@ -463,7 +454,6 @@ class DataProcessor:
                 
             orig_data = df[col].values
             
-            # THE FIX: bounds_error=False AND fill_value=np.nan stops the linear dive
             f = interp1d(orig_time, orig_data, kind='cubic', bounds_error=False, fill_value=np.nan)
             
             norm_data[col] = f(new_time)
@@ -520,15 +510,7 @@ class DataProcessor:
                     
             # Map the original raw column name to the new clean name
             new_columns[raw_col] = new_col
-            
-        # # --- DEBUG PRINT ---
-        # # Let's print out the first 3 changes it made to see if the logic worked
-        # changed_cols = {k: v for k, v in new_columns.items() if k != v}
-        # if changed_cols:
-        #     print(f"  [Debug] {file_type} successfully mapped {len(changed_cols)} columns. Example: {list(changed_cols.items())[:3]}")
-        # else:
-        #     print(f"  [Debug] {file_type} found ZERO columns to rename!")
-            
+
         # Explicitly return the renamed dataframe
         return df.rename(columns=new_columns)
 
@@ -590,8 +572,6 @@ class DataProcessor:
         asi_x2_col = clean_to_original.get("ASI_X2")
 
         if asi_x1_col is None or asi_x2_col is None:
-            #print("  [Warning] ASI_X1 and/or ASI_X2 not found. Skipping pelvis-centered AP shift.")
-            ##print(f"  Available columns example: {list(new_df.columns)[:12]}")
             return None
 
         pelvis_center_x = (new_df[asi_x1_col] + new_df[asi_x2_col]) / 2
@@ -606,8 +586,6 @@ class DataProcessor:
             # Examples: SHO_X1, ASI_X1, KNE_X2, ANKL_X1, HEE_X2
             if "_X" in cleaned:
                 new_df.loc[:, col] = new_df.loc[:, col].sub(pelvis_center_x, axis="index")
-
-        #print("  Pelvis-centered AP coordinate system applied using ASI_X1 and ASI_X2.")
 
         return new_df
 
