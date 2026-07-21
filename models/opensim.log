@@ -5,3 +5,5 @@
 [2026-03-23 10:26:20.401] [info] Loaded model FullBodyModel_MuscleActuatedLowerLimb_TorqueActuatedUpperBody from file C:/Users/perla/Documents/AT/TeamProject/GitHub/TeamProject/models/Rajagopal2015_ViconPlugInGait.osim
 [2026-03-23 10:27:00.809] [info] ExternalLoads 'Ex1' was renamed and is being reset to 'externalloads'.
 [2026-03-23 10:27:00.817] [info] ExternalLoads 'Ex2' was renamed and is being reset to 'externalloads'.
+[2026-07-21 15:37:15.651] [info] Updating Model file from 40000 to latest format...
+[2026-07-21 15:37:15.704] [info] Loaded model FullBodyModel_MuscleActuatedLowerLimb_TorqueActuatedUpperBody from file C:/Users/perla/Documents/AT/TeamProject/GitHub/TeamProject/models/Rajagopal2015_ViconPlugInGait.osim
