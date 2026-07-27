@@ -8,17 +8,19 @@ import os
 class DataProcessor:
     def __init__(self, root_dir, db_name):
         """
-        Initializes the processor and sets up base paths for a specific database.
-        
-        root_dir:   Path to the main directory containing 'data' and 'results' folders.
-        db_name:    The name of the database folder (e.g., 'DB1').
+        Initialize the processor and configure database-specific axis mappings.
+
+        Parameters:
+        - root_dir: Path to repository root containing `data` and `results`.
+        - db_name: Database folder name (e.g., 'DB1').
+
+        Returns:
+        - None
         """
         self.root_dir = Path(root_dir)
         self.db_name = db_name
         self.db_results_path = self.root_dir / "results" / self.db_name
-
-        # Global Reference Axis Configuration map
-        # Structure: (target_axis) -> (source_axis, multiplier)    
+  
         self.axis_mappings = {
             'DB1': {'trc': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}, 
                     'mot': {'x': ('z', -1), 'y': ('y', 1), 'z': ('x', 1)}},
@@ -32,52 +34,67 @@ class DataProcessor:
                     'mot': {'x': ('x', 1),  'y': ('y', 1),  'z': ('z', 1)}}
         }
         
-        self.participants = self._get_participant_list()
-        print(f"Initialized {self.db_name}. Found {len(self.participants)} participants.")
-        
-    def _get_participant_list(self):
-        """Scans the directory to retrieve a list of all participant folder names."""
         if not self.db_results_path.exists():
             print(f"Warning: Data path not found: {self.db_results_path}")
-            return []
-        return [p.name for p in self.db_results_path.iterdir() if p.is_dir()]
+            self.participants = []
+        else:
+            self.participants = [p.name for p in self.db_results_path.iterdir() if p.is_dir()]
+
+        print(f"Initialized {self.db_name}. Found {len(self.participants)} participants.")
         
-    def get_trial_file_map(self, participant_id):
+    def discover_trial_files(self, participant_id):
         """
-        Groups all related files for each trial into a dictionary.
-        Returns: { 'Trial_Name': {'trc': path, 'mot_ik': path, 'mot_grf': path, 'sto': path} }
+        Locate and group trial files for a participant (TRC, IK, GRF, STO).
+
+        Parameters:
+        - participant_id: participant folder name (string).
+
+        Returns:
+        - dict mapping base trial names -> {segment_index: {file_type: Path}}
         """
         p_res = self.db_results_path / participant_id
-        
-        # 1. Gather all potential files
-        # We look for all files recursively in the participant's folders
+
         all_files = list(p_res.rglob("*.trc")) + \
                     list(p_res.rglob("*_ik.mot")) + \
                     list(p_res.rglob("*_grf.mot")) + \
                     list(p_res.rglob("*.sto"))
-        
+
         trial_map = {}
-        
-        # 2. Extract common "Trial Name" by removing known suffixes
         for f in all_files:
-            # Create a base name by removing the file extension and type markers
             base_name = f.name.replace(".trc", "").replace("_ik.mot", "").replace("_grf.mot", "").replace("_id.sto", "")
-            
             if base_name not in trial_map:
                 trial_map[base_name] = {'trc': None, 'mot_ik': None, 'mot_grf': None, 'sto': None}
-            
-            # Map based on extension and suffix
+
             if f.suffix == '.trc': trial_map[base_name]['trc'] = f
             elif f.name.endswith('_ik.mot'): trial_map[base_name]['mot_ik'] = f
             elif f.name.endswith('_grf.mot'): trial_map[base_name]['mot_grf'] = f
             elif f.suffix == '.sto': trial_map[base_name]['sto'] = f
-                     
-        return trial_map
-    
+
+        consolidated = {}
+        for trial_name, files in trial_map.items():
+            if '_segment_' in trial_name:
+                parts = trial_name.split('_segment_')
+                base_name = parts[0]
+                segment_idx = int(parts[1].split('_')[0])
+            else:
+                base_name = trial_name
+                segment_idx = 0
+
+            if base_name not in consolidated:
+                consolidated[base_name] = {}
+            consolidated[base_name][segment_idx] = files
+
+        return consolidated
+
     def consolidate_segmented_trials(self, trial_map):
         """
-        Groups segmented trials into a single base trial dictionary.
-        Safely strips '_segment_X' to avoid accidentally merging different trials (like T04 and T05).
+        Consolidate segmented trial entries into base trial groups.
+
+        Parameters:
+        - trial_map: dict as returned by `discover_trial_files`.
+
+        Returns:
+        - dict mapping base trial names -> {segment_index: files}
         """
         consolidated = {}
         for trial_name, files in trial_map.items():
@@ -96,29 +113,20 @@ class DataProcessor:
             
         return consolidated
 
-    def _get_skiprows(self, file_path):
-        """Determines skiprows based on file extension."""
-        ext = file_path.suffix.lower()
-        
-        if ext in ['.mot', '.sto']:
-            with open(file_path, 'r') as f:
-                for i, line in enumerate(f):
-                    if 'endheader' in line:
-                        return i + 1
-            return 11 # Fallback if 'endheader' is missing
-            
-        elif ext == '.trc': # TRC files use a fixed header structure
-            with open(file_path, 'r') as f:
-                for i, line in enumerate(f):
-                    # Look for the line starting with 'Frame#'
-                    if line.startswith('Frame#'):
-                        return i
-            return 5 # Fallback if 'endheader' is missing
-            
-        return 0
-        
     def load_data(self, file_path, file_type=None):
-        """Loads a file into a pandas DataFrame, handling specific biomech formats."""
+        """
+        Load a biomechanics file into a pandas.DataFrame.
+
+        Supports TRC (marker), MOT/STO (tabular) formats. Avoids brittle
+        parsing by detecting header lengths and returning None on error.
+
+        Parameters:
+        - file_path: pathlib.Path to the file.
+        - file_type: optional hint string (unused for parsing).
+
+        Returns:
+        - pandas.DataFrame or None on failure.
+        """
         ext = file_path.suffix.lower()
         
         try:
@@ -156,8 +164,14 @@ class DataProcessor:
                 return df
                     
             elif ext in ['.mot', '.sto']:
-                # --- Dynamic MOT/STO Loading Logic ---
-                skip = self._get_skiprows(file_path)
+                skip = 0
+                with open(file_path, 'r') as f:
+                    for i, line in enumerate(f):
+                        if 'endheader' in line:
+                            skip = i + 1
+                            break
+                if skip == 0:
+                    skip = 11
                 return pd.read_csv(file_path, sep='\t', skiprows=skip)
                 
             else:
@@ -171,8 +185,14 @@ class DataProcessor:
     ## ------ REORIENTING COORDINATE SYSTEMS ------ #
     def map_raw_axes(self, df, file_type):
         """
-        Maps the raw lab axes to OpenSim XYZ buckets and applies 
-        static system calibration multipliers (e.g., fixing Y-down setups).
+        Re-map raw lab axes into a consistent OpenSim XYZ convention.
+
+        Parameters:
+        - df: DataFrame of raw signals.
+        - file_type: 'trc_marker' or 'mot_grf' to select mapping rules.
+
+        Returns:
+        - DataFrame with remapped columns.
         """
         mapping_key = 'trc' if file_type == 'trc_marker' else 'mot'
 
@@ -210,10 +230,14 @@ class DataProcessor:
     
     def unify_trial_physics(self, marker_df, grf_df, threshold=20.0):
         """
-        SIMPLIFIED GEOMETRIC UNIFICATION:
-        1. Uses Pelvis to determine if walking +X or -X.
-        2. If -X, rotates BOTH markers and GRF 180 degrees (flips X and Z).
-        3. Ensures vertical GRF (Y) is positive, maintaining Right-Hand Rule.
+        Normalize trial orientation and GRF sign conventions.
+
+        Parameters:
+        - marker_df, grf_df: DataFrames of markers and GRF.
+        - threshold: force threshold to detect stance (N).
+
+        Returns:
+        - (marker_df, grf_df) corrected for walking direction and sensor sign.
         """
         unified_marker = marker_df.copy()
         unified_grf = grf_df.copy()
@@ -276,9 +300,15 @@ class DataProcessor:
 
     def validate_grf_quality(self, grf_df, target_leg_vy, force_threshold=20.0):
         """
-        Validates that the GRF data actually resembles human walking.
-        Excludes flatlines, noise, and static standing.
-        Returns: (is_valid: bool, error_message: str)
+        Quick quality check for GRF signals targeting a single leg channel.
+
+        Parameters:
+        - grf_df: DataFrame with GRF channels.
+        - target_leg_vy: column name of vertical force for the target leg.
+        - force_threshold: threshold to identify stance frames.
+
+        Returns:
+        - (is_valid: bool, message: str)
         """
         target_leg_vx = target_leg_vy.replace('_vy', '_vx')
         
@@ -308,6 +338,16 @@ class DataProcessor:
     
     ## ------ SELECTING RELEVANT COLUMNS ------ #
     def select_relevant_data(self, df, file_type):
+        """
+        Select and return only the columns needed for downstream steps.
+
+        Parameters:
+        - df: input DataFrame.
+        - file_type: 'trc_marker', 'mot_grf', 'mot_ik', or 'sto_id'.
+
+        Returns:
+        - filtered DataFrame or None when input is invalid.
+        """
         if df is None:
             print("Warning: Input DataFrame is None. Skipping column selection.")
             return None
@@ -350,10 +390,21 @@ class DataProcessor:
     ## ------ EXTRACTING GAIT EVENTS & TIME-NORMALIZING ------- #
     def extract_gait_events(self, grf_df, marker_df, leg='l', force_threshold=10, silent=False):
         """
-        Finds timestamps for HS1, TO, and HS2.
-        HS1 and TO use GRF. HS2 uses proportional kinematic timing to avoid HS3.
+        Detect gait events HS1 (first heel-strike), TO (toe-off), and HS2 (second heel-strike).
+
+        Parameters:
+        - grf_df: DataFrame containing GRF channels and a `time` column.
+        - marker_df: DataFrame containing marker positions including `LHEE_Y`/`RHEE_Y` and `Time`.
+        - leg: 'l' or 'r' to select left or right channels (default 'l').
+        - force_threshold: vertical GRF threshold (N) to consider contact (default 10).
+        - silent: if True, suppress debug prints.
+
+        Returns:
+        - (hs1_time, to_time, hs2_time): timestamps (float) in GRF/marker timebase.
+          Any value may be None if detection failed or data are insufficient.
         """
-        # 1. Identify specific columns
+
+        # 1) Select the vertical GRF channel and corresponding heel marker name
         if leg.lower() == 'l':
             grf_v_col = next((c for c in grf_df.columns if 'calcn_l_vy' in c.lower()), None)
             heel_y_col = 'LHEE_Y'
@@ -361,74 +412,78 @@ class DataProcessor:
             grf_v_col = next((c for c in grf_df.columns if 'calcn_r_vy' in c.lower()), None)
             heel_y_col = 'RHEE_Y'
 
+        # Require both GRF channel and heel marker to proceed
         if not grf_v_col or heel_y_col not in marker_df.columns:
             return None, None, None
 
-        # 2. Find HS1 and TO using GRF
+        # 2) Compute contact boolean from vertical GRF and find rising/falling edges
         fz = grf_df[grf_v_col].values
         times_grf = grf_df['time'].values
+        # contact: 1 when force > threshold, 0 otherwise
         contact = (fz > force_threshold).astype(int)
         transitions = np.diff(contact)
-        
+
+        # rising edges (0->1) mark HS candidates; falling edges (1->0) mark TO candidates
         hs_indices = np.where(transitions == 1)[0] + 1
         to_indices = np.where(transitions == -1)[0] + 1
-        
+
+        # Need at least one HS and one TO
         if len(hs_indices) == 0 or len(to_indices) == 0:
             return None, None, None
-            
+
+        # Choose the first HS and the first TO that occurs after that HS
         hs1_idx = hs_indices[0]
         valid_tos = to_indices[to_indices > hs1_idx]
-        if len(valid_tos) == 0: return None, None, None
-            
+        if len(valid_tos) == 0:
+            return None, None, None
+
         to_idx = valid_tos[0]
         hs1_time = times_grf[hs1_idx]
         to_time = times_grf[to_idx]
-        
-        # 3. Find HS2 using proportional kinematic window
+
+        # 3) Estimate HS2 using the heel marker within a proportional kinematic window
         times_mrk = marker_df['Time'].values
         heel_y = marker_df[heel_y_col].values
-        
+
         stance_time = to_time - hs1_time
-        
-        # Reject impossible walking stance times (less than 0.4 seconds)
+
+        # Reject implausible stance durations (likely mid-cycle start)
         if stance_time < 0.4:
             if not silent:
                 print(f"  [Debug] Stance too short ({stance_time:.2f}s). Likely started mid-step.")
             return None, None, None
 
-        # --- THE SIMPLIFIED FIX ---
-        # Predict HS2 timing based on typical gait proportions (Swing ~ 66% of Stance)
+        # Predict HS2 time from empirical gait proportions (Swing ~ 66% of stance)
         expected_swing_time = stance_time * 0.66
         expected_hs2_time = to_time + expected_swing_time
-        
-        # Create a tight window around the expected HS2 time (+/- 30% of swing time)
+
+        # Search +/-30% of the expected swing time to find local minimal heel height
         window_margin = expected_swing_time * 0.30
         window_start = expected_hs2_time - window_margin
         window_end = expected_hs2_time + window_margin
-        
-        # Find the marker frame indices that fall inside this restricted time window
+
+        # Mask marker frames inside the search window
         window_mask = (times_mrk >= window_start) & (times_mrk <= window_end)
         valid_indices = np.where(window_mask)[0]
-        
+
         hs2_time = None
-        
+
         if len(valid_indices) > 0:
-            # The heel must be at its lowest point inside this specific window
+            # Find the local minima of heel vertical position within the window
             window_heel_data = heel_y[valid_indices]
             local_min_idx = np.argmin(window_heel_data)
             hs2_idx = valid_indices[local_min_idx]
-            
-            # Compare heights for the Sanity Check
+
+            # Sanity-check: HS2 heel height should be similar to HS1 heel height
             hs1_mrk_idx = np.argmin(np.abs(times_mrk - hs1_time))
             hs1_height = heel_y[hs1_mrk_idx]
             hs2_height = heel_y[hs2_idx]
-            
-            # Sanity Check
+
             if np.abs(hs2_height - hs1_height) < 0.05:
                 hs2_time = times_mrk[hs2_idx]
             else:
                 if not silent:
-                    print(f"  [Debug] Sanity Check FAILED. Height diff too large.")
+                    print("  [Debug] Sanity Check FAILED. Height diff too large.")
         else:
             if not silent:
                 print("  [Debug] No marker data found in the expected HS2 time window.")
@@ -437,30 +492,54 @@ class DataProcessor:
  
     def time_normalize(self, df, time_col, start_t, end_t, num_points=101):
         """
-        Time-normalizes a dataframe from start_t to end_t.
-        Strictly prevents out-of-bounds extrapolation.
+        Time-normalize signals between `start_t` and `end_t` to `num_points`.
+
+        Parameters:
+        - df: DataFrame containing the time series.
+        - time_col: name of the time column in `df`.
+        - start_t, end_t: start and end times (seconds) for the window.
+        - num_points: output sample count (default 101 for 0..100%).
+
+        Returns:
+        - DataFrame with `num_points` rows and a `time_percent` column (0-100%).
         """
-        # 1. Create the new 0-100% time vector
+        # 1. Create the new absolute time vector and get the original time
         new_time = np.linspace(start_t, end_t, num_points)
         orig_time = df[time_col].values
-        
-        # 2. Create a new dictionary to build the normalized dataframe quickly
+
+        # 2. Prepare output container with deterministic percent column
         norm_data = {'time_percent': np.linspace(0, 100, num_points)}
-        
-        # 3. Interpolate every column safely
+
+        # 3. Interpolate each signal onto `new_time`. Skip the original time column.
         for col in df.columns:
             if col == time_col:
                 continue
-                
+
             orig_data = df[col].values
-            
+
+            # Cubic interpolation; out-of-bounds points become NaN (no extrapolation)
             f = interp1d(orig_time, orig_data, kind='cubic', bounds_error=False, fill_value=np.nan)
-            
+
+            # Store the resampled signal
             norm_data[col] = f(new_time)
-            
+
         return pd.DataFrame(norm_data)
     
     def convert_leg_labels(self, df, file_type, leading_leg):
+        """
+        Normalize left/right leg labels to consistent numeric sides.
+
+        Parameters:
+        - df: DataFrame to rename.
+        - file_type: 'trc_marker', 'mot_grf', 'mot_ik', or 'sto_id'.
+        - leading_leg: 'l' or 'r' indicating the leading limb.
+
+        Returns:
+        - Renamed DataFrame or None if input is None.
+        Note:
+        - Columns with suffix `_1` are mapped to the leading limb.
+        - Columns with suffix `_2` are mapped to the following limb.
+        """
         if df is None: return None
 
         if leading_leg.lower() not in ["l", "r"]:
@@ -517,15 +596,19 @@ class DataProcessor:
     ## ------ GLOBAL COORDINATE SYSTEM ------ #
     def define_global_coordinate_system(self, df):
         """
-        Defines a global coordinate system for all TRC markers such that ANKL_1 
-        (ANKL_Y1, ANKL_Z1) becomes the origin (0, 0) at each frame.
+        Defines a global coordinate system for all TRC markers such that HEE_1 
+        (HEE_Y1, HEE_Z1) becomes the origin (0, 0) at each frame.
         Uses subtraction in each corresponding axis.
+        
+        Note:
+        - The `_1` suffix refers to the leading limb (used as origin).
+        - The `_2` suffix refers to the following limb.
         """
         if df is None: return None
         
         new_df = df.copy()
         
-        # Find the origin columns (case-insensitive lookup)
+        # 1) Find origin columns (case-insensitive)
         ankl_y = next((col for col in new_df.columns if col.upper() == 'HEE_Y1'), None)
         ankl_z = next((col for col in new_df.columns if col.upper() == 'HEE_Z1'), None)
         
@@ -536,7 +619,7 @@ class DataProcessor:
         origin_y = new_df[ankl_y]
         origin_z = new_df[ankl_z]
         
-        # Apply subtraction to all marker coordinates corresponding to X, Y, Z axes
+        # 2) Subtract origin from marker Y/Z axes
         for col in new_df.columns:
             if col.lower() == 'time' or col.lower() == 'frame':
                 continue
@@ -551,8 +634,13 @@ class DataProcessor:
     ## ------ RELATIVE PELVIS-CENTERED AP COORDINATE SYSTEM ------ #
     def define_pelvis_centered_ap_coordinate_system(self, marker_df):
         """
-        Shifts the AP (X) coordinate system to be relative to the Pelvis.
-        Returns None if required markers are missing.
+        Shift AP (X) coordinates to be relative to the pelvis center.
+
+        Parameters:
+        - marker_df: DataFrame of TRC marker positions.
+
+        Returns:
+        - DataFrame with AP coordinates shifted, or None if required markers missing.
         """
         
         if marker_df is None:
@@ -592,12 +680,16 @@ class DataProcessor:
     ## ------ ANTHROPOMETRIC NORMALIZATION
     def load_participant_metadata(self, participant_id):
         """
-        Reads the database_inventory.xlsx file to extract Mass and Height 
-        for a specific participant number within the current DB sheet.
-        """
-        import os
-        import pandas as pd
+        Read participant Mass and Height from the `data/database_inventory.xlsx` sheet
+        corresponding to the current database (`self.db_name`).
 
+        Parameters:
+        - participant_id: participant folder/name string (e.g., 'P01' or '01').
+
+        Returns:
+        - (mass_kg: float, height_m: float) on success; (None, None) if not found
+          or on error.
+        """
         excel_path = os.path.join(self.root_dir, "data", "database_inventory.xlsx")
         
         if not os.path.exists(excel_path):
@@ -607,25 +699,18 @@ class DataProcessor:
         try:
             # Load the sheet corresponding to the active database name
             df_meta = pd.read_excel(excel_path, sheet_name=self.db_name)
-            
-            # Extract just the numeric digits from the participant_id string (e.g., 'P01' -> 1)
+
+            # Extract participant numeric id and clean the Excel first column
             p_numeric = int(''.join(filter(str.isdigit, str(participant_id))))
-            
-            # Identify columns by positional index: 1st column (0)
             p_col = df_meta.iloc[:, 0]
-            
-            # Safe parsing that handles 'P01', '1', and '1.0' correctly:
-            # 1. Convert to string
-            # 2. Split by decimal point and take the left side (turns '1.0' into '1')
-            # 3. Strip out any remaining non-digit characters
             clean_p_col = p_col.astype(str).str.split('.').str[0]
             clean_p_col = clean_p_col.str.replace(r'\D+', '', regex=True)
             clean_p_col = pd.to_numeric(clean_p_col, errors='coerce') 
-            
+
             # Exact match check
             match_mask = clean_p_col == p_numeric
             row = df_meta[match_mask]
-            
+
             if row.empty:
                 print(f"  [Warning] Participant {participant_id} (parsed as {p_numeric}) not found in sheet {self.db_name}.")
                 # --- TEMPORARY DEBUG PRINTS ---
@@ -633,23 +718,32 @@ class DataProcessor:
                 print(f"  [Debug] First 5 values found in Column 1: {list(p_col.dropna().head())}")
                 # ------------------------------
                 return None, None
-                
+
             mass = float(row.iloc[0, 3])   # 4th column
             height = float(row.iloc[0, 4]) # 5th column
-            
+
             return mass, height
-            
+
         except Exception as e:
             print(f"  [Error] Failed to read metadata sheet: {str(e)}")
             return None, None
 
     def apply_anthropometric_normalization(self, normalized_trial, mass, height):
         """
-        Applies dimensionless scaling to all loaded data frames using Body Weight and Height.
+        Scale trial signals to dimensionless units using participant mass and height.
+
+        Parameters:
+        - normalized_trial: dict of DataFrames keyed by file type (e.g., 'trc_marker', 'mot_grf', 'sto_id').
+        - mass: participant mass in kilograms.
+        - height: participant height in meters.
+
+        Returns:
+        - scaled_trial: dict of scaled DataFrames (same keys as `normalized_trial`).
+          Returns None if input is None.
         """
         if normalized_trial is None: return None
         
-        # Calculate Body Weight in Newtons
+        # 1) Compute body weight (N)
         gravity = 9.81
         body_weight = mass * gravity
         
@@ -663,32 +757,27 @@ class DataProcessor:
             for col in scaled_df.columns:
                 col_upper = col.upper()
                 col_lower = col.lower() 
-                
+
                 # Skip tracking headers
                 if col_upper in ['TIME', 'FRAME', 'FRAME#']:
                     continue
-                    
-                # 1. TRC Marker Positions -> Divide by Height
-                if f_type == 'trc_marker':
-                    if any(axis in col_upper for axis in ['_X', '_Y', '_Z']):
-                        scaled_df[col] = scaled_df[col] / height
-                        
-                # 2. Ground Reaction Forces, CoP, and Free Moments
+
+                # TRC marker positions -> divide by height
+                if f_type == 'trc_marker' and any(axis in col_upper for axis in ['_X', '_Y', '_Z']):
+                    scaled_df[col] = scaled_df[col] / height
+
+                # GRF: forces -> BW, CoP -> height, moments -> BW*height
                 elif f_type == 'mot_grf':
-                    # Forces (vx, vy, vz) -> Divide by Body Weight
                     if any(f in col_lower for f in ['_vx', '_vy', '_vz']):
                         scaled_df[col] = scaled_df[col] / body_weight
-                    # Center of Pressure (px, py, pz) -> Divide by Height
                     elif any(p in col_lower for p in ['_px', '_py', '_pz']):
                         scaled_df[col] = scaled_df[col] / height
-                    # Free Moments (mx, my, mz) -> Divide by Body Weight * Height
                     elif any(m in col_lower for m in ['_mx', '_my', '_mz']):
                         scaled_df[col] = scaled_df[col] / (body_weight * height)
-                        
-                # 3. Inverse Dynamics Joint Moments -> Divide by Body Weight * Height
-                elif f_type == 'sto_id':
-                    if '_MOMENT' in col_upper:
-                        scaled_df[col] = scaled_df[col] / (body_weight * height)
+
+                # ID moments -> BW * height
+                elif f_type == 'sto_id' and '_MOMENT' in col_upper:
+                    scaled_df[col] = scaled_df[col] / (body_weight * height)
                         
             scaled_trial[f_type] = scaled_df
             
@@ -696,9 +785,15 @@ class DataProcessor:
 
     def validate_id_quality(self, id_df, threshold=0.15):
         """
-        Validates that the normalized ID joint moments fall within a biomechanically 
-        plausible dimensionless range (e.g., between -0.2 and +0.2).
-        Returns: (is_valid: bool, error_message: str)
+        Validate normalized inverse-dynamics (ID) joint moment magnitudes.
+
+        Parameters:
+        - id_df: DataFrame containing normalized joint moment columns (dimensionless).
+        - threshold: absolute threshold for acceptable peak moments (default 0.15).
+
+        Returns:
+        - (is_valid: bool, error_message: str): `is_valid` is False when any moment
+          exceeds ±`threshold`; `error_message` describes the failing channel.
         """
         if id_df is None:
             return True, "" # If no ID data exists for this trial, let it pass
@@ -718,9 +813,25 @@ class DataProcessor:
 
     ## PREPARING DATA 
     def process_participant_files(self, participant_id):
+        """
+        Execute the end-to-end processing pipeline for a single participant.
+
+        Steps:
+        1. Discover and load TRC/MOT/STO files (handles segmented trials).
+        2. Map raw axes, select relevant columns, and stitch segments.
+        3. Unify physics (walking direction and GRF sign), validate GRF quality.
+        4. Extract gait events, time-normalize cycles, relabel limbs, apply coordinate shifts.
+        5. Apply anthropometric normalization and ID quality checks.
+
+        Parameters:
+        - participant_id: folder/name of the participant to process.
+
+        Returns:
+        - List of per-trial dictionaries containing raw/stiched data, normalized_data,
+          gait_events, anthropometrics, and any error messages.
+        """
         # --- PRE-PROCESSING: Group segments safely ---
-        raw_trial_map = self.get_trial_file_map(participant_id)
-        trial_map = self.consolidate_segmented_trials(raw_trial_map)
+        trial_map = self.discover_trial_files(participant_id)
         
         processed_data = [] # List to hold trials
 
@@ -882,10 +993,15 @@ class DataProcessor:
     ## ------ EXPORTING RESULTS ------ #
     def export_database_results(self):
         """
-        Runs the full processing pipeline for all participants in the database.
-        Generates two files:
-        1. A Summary Report CSV tracking success/failure for every trial.
-        2. A Master ML Matrix CSV with flattened 101-point features for all valid trials.
+        Process all participants and export Summary and ML Matrix CSV files.
+
+        Parameters:
+        - None (uses `self.participants` and `self.db_name`).
+
+        Returns:
+        - None. Writes CSV files to `results/<DB_NAME>/`:
+          - `<DB>_Processing_Report.csv` (summary)
+          - `<DB>_ML_Matrix.csv` (flattened features) when successful trials exist.
         """
         summary_rows = []
         ml_rows = []
@@ -976,15 +1092,21 @@ class DataProcessor:
         else:
             print("\n[Warning] No successful trials were found. ML Matrix was not created.")
 
-## ------ EXPORTING RESULTS V2 (4 PRE-BAKED FILES) ------ #
+    ## ------ EXPORTING RESULTS V2 (4 PRE-BAKED FILES) ------ #
     def export_database_results_v2(self):
         """
-        Runs the full processing pipeline for all participants.
-        Generates a Summary Report and 4 separate ML Matrix files based on input cases:
-        1. Markers and GRF
-        2. IK only
-        3. ID only
-        4. IK and ID
+        Process all participants and export Summary and four ML Matrix CSV files.
+
+        Parameters:
+        - None (uses `self.participants` and `self.db_name`).
+
+        Returns:
+        - None. Writes CSVs to `results/<DB_NAME>/`:
+          - `<DB>_Processing_Report.csv` (summary)
+          - `<DB>_Case1_Markers_GRF.csv`
+          - `<DB>_Case2_IK.csv`
+          - `<DB>_Case3_ID.csv`
+          - `<DB>_Case4_IK_ID.csv`
         """
         summary_rows = []
         ml_rows = []

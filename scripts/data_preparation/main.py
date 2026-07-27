@@ -1,10 +1,9 @@
 from data_processor import DataProcessor
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as plt
 
 ## ------- MAIN ------- ##
 root = r"C:\Users\perla\Documents\AT\TeamProject\GitHub\TeamProject" 
-db_name = "DB5"
+db_name = "DB3"
 
 processor = DataProcessor(root, db_name)
 
