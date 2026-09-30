@@ -1,0 +1,37 @@
+{
+  "input_csv": "C:\\Users\\perla\\Desktop\\MLP\\All_DBs_Case4_IK_ID.csv",
+  "analysis": "primary",
+  "grid": "paper",
+  "reuse_primary_hyperparameters": false,
+  "expected_grid_combinations": 90,
+  "methods": [
+    "wf1_featurewise",
+    "wf1_timeserieswise",
+    "wf2_featurewise",
+    "wf2_timeserieswise",
+    "wf3_trialwise"
+  ],
+  "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "n_samples": 1902,
+  "class_counts": {
+    "DB1": 169,
+    "DB2": 235,
+    "DB3": 199,
+    "DB4": 677,
+    "DB5": 622
+  },
+  "n_channels": 12,
+  "n_timepoints": 101,
+  "input_size": 1212,
+  "n_splits": 5,
+  "max_epochs": 1000,
+  "patience": 30,
+  "min_delta": 0.005,
+  "device": "cpu"
+}

@@ -1,0 +1,6 @@
+analysis,method,DB,n_explained_samples,peak_gait_cycle_percent,top_feature_1,top_feature_1_percent,top_feature_2,top_feature_2_percent,top_feature_3,top_feature_3_percent
+primary,wf2_timeserieswise,DB1,169,18.0,ID_ankle_angle_2_moment,47.365974,ID_ankle_angle_1_moment,23.45757,ID_knee_angle_2_moment,23.086794
+primary,wf2_timeserieswise,DB2,235,5.0,ID_ankle_angle_2_moment,45.634926,ID_hip_flexion_2_moment,13.752486,ID_hip_flexion_1_moment,13.375754
+primary,wf2_timeserieswise,DB3,199,61.0,ID_ankle_angle_1_moment,27.774584,ID_hip_flexion_1_moment,21.828157,ID_hip_flexion_2_moment,19.562454
+primary,wf2_timeserieswise,DB4,677,13.0,ID_hip_flexion_2_moment,34.904037,ID_knee_angle_2_moment,30.541779,ID_hip_flexion_1_moment,17.09512
+primary,wf2_timeserieswise,DB5,622,98.0,ID_hip_flexion_1_moment,29.740223,ID_knee_angle_2_moment,21.078665,ID_ankle_angle_2_moment,19.004023

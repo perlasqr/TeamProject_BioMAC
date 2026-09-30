@@ -1,0 +1,2 @@
+analysis,method,workflow,scaling_method,fold,n_train,n_validation,n_test,n_channels,input_size,hidden_size,learning_rate,batch_size,best_epoch,best_validation_loss,accuracy,balanced_accuracy,macro_f1,weighted_f1,macro_precision,macro_recall
+balanced,wf1_featurewise,WF1,Feature-wise,3,507,169,169,48,4848,256,0.001,16,1,0.013698367384047462,0.9940828402366864,0.9941176470588236,0.9941163746484966,0.9940815602973044,0.9942857142857143,0.9941176470588236
