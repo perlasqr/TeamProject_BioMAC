@@ -1,1 +1,0 @@
-Processing workflow: Run main.py for each database (DB1–DB5) to generate the individual database outputs. Once all required databases have been processed, run join_dbfeatures.py to combine the case-specific outputs into merged datasets.
