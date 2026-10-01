@@ -5,3 +5,5 @@
 #*.sto
 #*.c3d
 .DS_Store
+/GItLab/Data_processing/__pycache__
+/GItLab/Data_processing/.vscode
